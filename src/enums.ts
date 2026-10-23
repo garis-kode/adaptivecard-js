@@ -149,7 +149,8 @@ export enum ActionAlignment {
 
 export enum ImageStyle {
     Default,
-    Person
+    Person,
+    RoundedCorners
 }
 
 export enum ShowCardActionMode {

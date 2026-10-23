@@ -373,6 +373,12 @@ export class Image extends CardElement {
 
     //#endregion
 
+    protected populateSchema(schema: SerializableObjectSchema) {
+        super.populateSchema(schema);
+
+        schema.remove(CardElement.heightProperty);
+    }
+
     getJsonTypeName(): string {
         return "Image";
     }
