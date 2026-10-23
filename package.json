@@ -1,0 +1,60 @@
+{
+  "name": "adaptivecard-node",
+  "version": "0.1.0",
+  "description": "Lightweight, server-side builder for Adaptive Card JSON (object model + serialization core, no DOM).",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "adaptive-cards",
+    "adaptivecards",
+    "adaptive-card",
+    "json",
+    "server",
+    "node"
+  ],
+  "homepage": "https://github.com/microsoft/AdaptiveCards/tree/main/source/nodejs/adaptivecard-node#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/AdaptiveCards.git",
+    "directory": "source/nodejs/adaptivecard-node"
+  },
+  "bugs": {
+    "url": "https://github.com/microsoft/AdaptiveCards/issues"
+  },
+  "sideEffects": true,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:js": "bun build ./src/index.ts --outdir=./dist --target=node --format=esm --sourcemap=linked && bun build ./src/index.ts --outdir=./dist --target=node --format=cjs --entry-naming=\"[dir]/[name].cjs\" --sourcemap=linked",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build": "bun run clean && bun run build:js && bun run build:types",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.0"
+  }
+}
