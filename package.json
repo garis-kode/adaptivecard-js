@@ -1,5 +1,5 @@
 {
-  "name": "adaptivecard-node",
+  "name": "@gariskode/adaptivecard-js",
   "version": "0.1.0",
   "description": "Lightweight, server-side builder for Adaptive Card JSON (object model + serialization core, no DOM).",
   "type": "module",
@@ -12,14 +12,13 @@
     "server",
     "node"
   ],
-  "homepage": "https://github.com/microsoft/AdaptiveCards/tree/main/source/nodejs/adaptivecard-node#readme",
+  "homepage": "https://github.com/garis-kode/adaptivecard-js#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microsoft/AdaptiveCards.git",
-    "directory": "source/nodejs/adaptivecard-node"
+    "url": "git+https://github.com/garis-kode/adaptivecard-js.git"
   },
   "bugs": {
-    "url": "https://github.com/microsoft/AdaptiveCards/issues"
+    "url": "https://github.com/garis-kode/adaptivecard-js/issues"
   },
   "sideEffects": true,
   "main": "./dist/index.cjs",

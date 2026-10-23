@@ -1,10 +1,10 @@
-# adaptivecard-node
+# @gariskode/adaptivecard-js
 
 A lightweight, **server-side** builder for [Adaptive Card](https://adaptivecards.io) JSON.
 
-The existing `adaptivecards` package in this monorepo is a client-side library: its
-object model is fused with an HTML/DOM rendering layer. `adaptivecard-node` re-implements
-only the declarative **serialization core** and **object model** of that SDK — the same
+Microsoft's `adaptivecards` SDK is a client-side library: its object model is fused with
+an HTML/DOM rendering layer. `@gariskode/adaptivecard-js` re-implements only the
+declarative **serialization core** and **object model** of that SDK — the same
 `SerializableObject` / `PropertyDefinition` / `@property` patterns — with **zero DOM
 dependencies**, so you can author Adaptive Card JSON on a Node.js server.
 
@@ -14,7 +14,13 @@ dependencies**, so you can author Adaptive Card JSON on a Node.js server.
 - Build-only: object → JSON via `toJSON()`. (Property definitions already declare the
   logic needed to add JSON → object parsing later.)
 
-## Install / build
+## Install
+
+```bash
+npm install @gariskode/adaptivecard-js
+```
+
+### Build from source
 
 Built and tested with [Bun](https://bun.sh). From this package directory:
 
@@ -27,7 +33,7 @@ bun test        # bun's built-in test runner
 ## Usage
 
 ```ts
-import { AdaptiveCard, TextBlock, Versions, TextSize, OpenUrlAction } from "adaptivecard-node";
+import { AdaptiveCard, TextBlock, Versions, TextSize, OpenUrlAction } from "@gariskode/adaptivecard-js";
 
 const card = new AdaptiveCard();
 card.version = Versions.v1_5;
@@ -51,7 +57,7 @@ console.log(JSON.stringify(card.toJSON(), null, 2));
 require a newer schema version. Pass an explicit context to override:
 
 ```ts
-import { SerializationContext, Versions } from "adaptivecard-node";
+import { SerializationContext, Versions } from "@gariskode/adaptivecard-js";
 
 card.toJSON(new SerializationContext(Versions.v1_4));
 ```
