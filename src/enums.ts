@@ -26,6 +26,21 @@ export class ActionMode {
     static readonly Primary: "primary" = "primary";
     static readonly Secondary: "secondary" = "secondary";
 }
+
+export class TargetWidth {
+    static readonly VeryNarrow: "VeryNarrow" = "VeryNarrow";
+    static readonly Narrow: "Narrow" = "Narrow";
+    static readonly Standard: "Standard" = "Standard";
+    static readonly Wide: "Wide" = "Wide";
+    static readonly AtLeastVeryNarrow: "AtLeast:VeryNarrow" = "AtLeast:VeryNarrow";
+    static readonly AtLeastNarrow: "AtLeast:Narrow" = "AtLeast:Narrow";
+    static readonly AtLeastStandard: "AtLeast:Standard" = "AtLeast:Standard";
+    static readonly AtLeastWide: "AtLeast:Wide" = "AtLeast:Wide";
+    static readonly AtMostVeryNarrow: "AtMost:VeryNarrow" = "AtMost:VeryNarrow";
+    static readonly AtMostNarrow: "AtMost:Narrow" = "AtMost:Narrow";
+    static readonly AtMostStandard: "AtMost:Standard" = "AtMost:Standard";
+    static readonly AtMostWide: "AtMost:Wide" = "AtMost:Wide";
+}
 /* eslint-enable @typescript-eslint/no-extraneous-class, @typescript-eslint/naming-convention */
 
 export enum Size {
@@ -40,6 +55,22 @@ export enum ImageSize {
     Small,
     Medium,
     Large
+}
+
+export enum IconSize {
+    xxSmall,
+    xSmall,
+    Small,
+    Standard,
+    Medium,
+    Large,
+    xLarge,
+    xxLarge
+}
+
+export enum IconStyle {
+    Regular,
+    Filled
 }
 
 export enum ImageSetPresentationStyle {

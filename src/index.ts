@@ -10,6 +10,7 @@ export * from "./card-object";
 export * from "./actions";
 export * from "./card-elements";
 export * from "./table";
+export * from "./icon";
 export * from "./carousel";
 export { GlobalRegistry, CardObjectRegistry } from "./registry";
 export type { ITypeRegistration } from "./registry";
@@ -36,6 +37,7 @@ import {
     ShowCardAction
 } from "./card-elements";
 import { Table } from "./table";
+import { Icon } from "./icon";
 import { Carousel } from "./carousel";
 import {
     OpenUrlAction,
@@ -62,6 +64,7 @@ GlobalRegistry.defaultElements.register("Input.Number", NumberInput);
 GlobalRegistry.defaultElements.register("Input.ChoiceSet", ChoiceSetInput);
 GlobalRegistry.defaultElements.register("Input.Toggle", ToggleInput);
 GlobalRegistry.defaultElements.register("Table", Table, Versions.v1_5);
+GlobalRegistry.defaultElements.register("Icon", Icon, Versions.v1_6);
 GlobalRegistry.defaultElements.register("Carousel", Carousel, Versions.v1_6);
 
 // Register default action types.

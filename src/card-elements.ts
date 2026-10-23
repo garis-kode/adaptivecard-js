@@ -28,7 +28,7 @@ import {
 
 // Serialization context. Kept as a distinct type (mirroring the client SDK) so
 // that element/action registries can be attached when parse support is added.
-export class SerializationContext extends BaseSerializationContext {}
+export class SerializationContext extends BaseSerializationContext { }
 
 const containerStyleValues = [
     { value: Enums.ContainerStyle.Default },
@@ -44,6 +44,21 @@ export class ContainerStyleProperty extends ValueSetProperty {
         super(targetVersion, name, containerStyleValues.slice());
     }
 }
+
+const targetWidthValues = [
+    { value: Enums.TargetWidth.VeryNarrow },
+    { value: Enums.TargetWidth.Narrow },
+    { value: Enums.TargetWidth.Standard },
+    { value: Enums.TargetWidth.Wide },
+    { value: Enums.TargetWidth.AtLeastVeryNarrow },
+    { value: Enums.TargetWidth.AtLeastNarrow },
+    { value: Enums.TargetWidth.AtLeastStandard },
+    { value: Enums.TargetWidth.AtLeastWide },
+    { value: Enums.TargetWidth.AtMostVeryNarrow },
+    { value: Enums.TargetWidth.AtMostNarrow },
+    { value: Enums.TargetWidth.AtMostStandard },
+    { value: Enums.TargetWidth.AtMostWide }
+];
 
 export type CardElementHeight = "auto" | "stretch";
 
@@ -75,9 +90,17 @@ export abstract class CardElement extends CardObject {
         Enums.Spacing,
         Enums.Spacing.Default
     );
+    static readonly targetWidthProperty = new ValueSetProperty(
+        Versions.v1_6,
+        "targetWidth",
+        targetWidthValues.slice()
+    );
 
     @property(CardElement.horizontalAlignmentProperty)
     horizontalAlignment?: Enums.HorizontalAlignment;
+
+    @property(CardElement.targetWidthProperty)
+    targetWidth?: string;
 
     @property(CardElement.spacingProperty)
     spacing: Enums.Spacing = Enums.Spacing.Default;
@@ -1232,7 +1255,7 @@ export class Authentication extends SerializableObject {
 }
 
 export class AdaptiveCard extends ContainerWithActions {
-    static readonly schemaUrl = "http://adaptivecards.io/schemas/adaptive-card.json";
+    static readonly schemaUrl = "https://adaptivecards.io/schemas/adaptive-card.json";
 
     //#region Schema
 

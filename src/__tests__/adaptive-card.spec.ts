@@ -20,7 +20,7 @@ test("AdaptiveCard serializes a simple card", () => {
     card.addItem(title);
 
     expect(card.toJSON()).toEqual({
-        $schema: "http://adaptivecards.io/schemas/adaptive-card.json",
+        $schema: "https://adaptivecards.io/schemas/adaptive-card.json",
         type: "AdaptiveCard",
         version: "1.5",
         body: [
