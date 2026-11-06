@@ -1,0 +1,10 @@
+{
+  "name": "AdaptiveCards JS",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceFolder": "/var/www/html",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/var/www/html,type=bind",
+  "remoteUser": "bun",
+  "postCreateCommand": "bash .devcontainer/post-create.sh"
+}
