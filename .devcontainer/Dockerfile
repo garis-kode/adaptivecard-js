@@ -18,11 +18,7 @@ RUN apt-get update \
 
 # Set the default shell to bash
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
-
-# Change the OS default shell for the dev user
 RUN usermod --shell /bin/bash bun
-
-# Set the runtime shell for applications
 ENV SHELL=/bin/bash
 
 USER bun
