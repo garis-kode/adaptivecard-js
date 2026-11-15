@@ -17,25 +17,18 @@ Once triggered, the automated workflow:
 3. **Generates Release Notes**: Compiles notes from pull requests and commits merged since the previous release.
 4. **Creates GitHub Release**: Publishes the GitHub release and creates the git tag `v<version>`.
 5. **Updates Changelog**: Runs the changelog updater job to append the new release notes and timestamp into `CHANGELOG.md` and commits it back to the repository.
+6. **Publishes to npm (OIDC)**: Checks out the updated release branch, verifies the target version is not yet published on npm, and publishes the package using npm Trusted Publishing (OIDC) without stored npm tokens.
 
 ---
 
-## 2. Publish Manually to npm
+## 2. One-Time npm Trusted Publisher Setup
 
-After the GitHub Release workflow completes:
+Before running the workflow for the first time, configure **Trusted Publisher** for `adaptivecard-js` on npmjs.com:
 
-1. Pull the latest `main` branch (including the synchronized `package.json` and `CHANGELOG.md`):
-   ```bash
-   git checkout main
-   git pull origin main
-   ```
-2. Ensure you are authenticated with npm:
-   ```bash
-   npm whoami
-   # or: npm login
-   ```
-3. Publish the package (`prepublishOnly` will automatically run `bun run check && bun run test:pack`, and `prepack` will run `bun run build`):
-   ```bash
-   npm publish --access public
-   # or: bun publish --access public
-   ```
+1. Open the package **Settings** on [npmjs.com](https://www.npmjs.com/package/adaptivecard-js/access) and locate **Trusted Publisher**.
+2. Select **GitHub Actions** and enter:
+   - **Organization or user**: `garis-kode`
+   - **Repository**: `adaptivecard-js`
+   - **Workflow filename**: `release.yml`
+   - **Environment name**: _(leave blank)_
+3. Save the configuration. No `NPM_TOKEN` secret is required in GitHub Actions.
