@@ -15,7 +15,7 @@
 
 ## Overview
 
-A fluent, fully typed TypeScript/JavaScript builder for Microsoft Adaptive Cards (v1.6), supporting both ESM (`import`) and CommonJS (`require`) across Node.js ($\ge 20$), Bun ($\ge 1.0$), and modern bundlers.
+A fluent, fully typed TypeScript/JavaScript builder for Microsoft Adaptive Cards (v1.6), supporting both ESM and CommonJS
 
 ---
 
