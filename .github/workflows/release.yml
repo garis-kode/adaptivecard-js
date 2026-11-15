@@ -146,3 +146,10 @@ jobs:
       branch: ${{ github.ref_name }}
       version: "v${{ needs.release.outputs.version }}"
       notes: ${{ needs.release.outputs.notes }}
+
+  publish:
+    needs: [release, update-changelog]
+    uses: ./.github/workflows/publish.yml
+    permissions:
+      contents: read
+      id-token: write
