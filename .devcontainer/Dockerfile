@@ -23,4 +23,8 @@ ENV SHELL=/bin/bash
 
 USER bun
 
+ENV BUN_INSTALL="/home/bun/.bun" \
+    BUN_INSTALL_BIN="/home/bun/.bun/bin" \
+    PATH="/home/bun/.bun/bin:${PATH}"
+
 WORKDIR /var/www/html
