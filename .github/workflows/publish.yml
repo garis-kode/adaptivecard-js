@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   publish:
-    name: Publish to npm
+    name: Stage npm package for approval
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -45,5 +45,5 @@ jobs:
         run: |
           npm view adaptivecard-js@$(node -p "require('./package.json').version") version && exit 1 || true
 
-      - name: Publish package
-        run: npm publish
+      - name: Stage package for approval
+        run: npm stage publish
