@@ -1,9 +1,39 @@
 {
   "name": "adaptivecard-js",
+  "description": "Fluent TypeScript builder that programmatically constructs Microsoft Adaptive Card (v1.6) JSON payloads.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "adaptivecards",
+    "adaptive-cards",
+    "microsoft-teams",
+    "teams",
+    "json",
+    "builder",
+    "typescript"
+  ],
+  "homepage": "https://github.com/garis-kode/adaptivecard-js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garis-kode/adaptivecard-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/garis-kode/adaptivecard-js/issues"
+  },
+  "author": {
+    "name": "Garis Kode",
+    "email": "office@gariskode.com"
+  },
   "module": "index.ts",
   "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
   "scripts": {
-    "typecheck": "bun check"
+    "test": "bun test",
+    "typecheck": "bun --check",
+    "fmt": "bun fmt",
+    "fmt:check": "bun fmt --check"
   },
   "devDependencies": {
     "@types/bun": "latest"

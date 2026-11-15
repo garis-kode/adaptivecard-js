@@ -1,0 +1,503 @@
+{
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.6",
+    "speak": "Hawaii holiday escape deals start tonight",
+    "body": [
+        {
+            "type": "ColumnSet",
+            "targetWidth": "Narrow",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "auto",
+                    "items": [
+                        {
+                            "type": "Icon",
+                            "name": "Megaphone",
+                            "style": "Filled",
+                            "size": "xxSmall",
+                            "color": "Accent"
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "spacing": "Small",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Posted in Employee Deals",
+                            "isSubtle": true,
+                            "size": "Small",
+                            "wrap": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "ColumnSet",
+            "targetWidth": "Narrow",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "auto",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/OfficeDev/Microsoft-Teams-Card-Samples/main/samples/communication/assets/avatar.png",
+                            "height": "auto",
+                            "altText": "Avatar of Laurence Gibertson"
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Laurence Gibertson",
+                            "weight": "Bolder",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "Oct 22",
+                            "isSubtle": true,
+                            "size": "Small",
+                            "wrap": true,
+                            "spacing": "None"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "ColumnSet",
+            "targetWidth": "atLeast:Narrow",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "targetWidth": "atLeast:Standard",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "auto",
+                                    "items": [
+                                        {
+                                            "type": "Icon",
+                                            "name": "Megaphone",
+                                            "style": "Filled",
+                                            "size": "xxSmall",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "spacing": "Small",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Posted in Employee Deals",
+                                            "isSubtle": true,
+                                            "size": "Small",
+                                            "wrap": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "targetWidth": "atLeast:Standard",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "auto",
+                                    "items": [
+                                        {
+                                            "type": "Image",
+                                            "url": "https://raw.githubusercontent.com/OfficeDev/Microsoft-Teams-Card-Samples/main/samples/communication/assets/avatar.png",
+                                            "height": "auto",
+                                            "altText": "Avatar of Laurence Gibertson"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Laurence Gibertson",
+                                            "weight": "Bolder",
+                                            "wrap": true
+                                        },
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Oct 22",
+                                            "isSubtle": true,
+                                            "size": "Small",
+                                            "wrap": true,
+                                            "spacing": "None"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "Hawaii holiday escape deals start tonight!",
+                            "size": "Large",
+                            "weight": "Bolder",
+                            "wrap": true,
+                            "spacing": "Small"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "For a limited time, you can book a four night stay at luxury resort on the island of Maui for only $999 per person.",
+                            "maxLines": 3,
+                            "wrap": true,
+                            "spacing": "Small"
+                        },
+                        {
+                            "type": "ColumnSet",
+                            "height": "stretch",
+                            "spacing": "ExtraLarge",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": "auto",
+                                    "verticalContentAlignment": "Bottom",
+                                    "spacing": "None",
+                                    "items": [
+                                        {
+                                            "type": "Icon",
+                                            "name": "ThumbLike",
+                                            "horizontalAlignment": "Right",
+                                            "id": "likeOutline",
+                                            "size": "xxSmall"
+                                        },
+                                        {
+                                            "type": "Icon",
+                                            "name": "ThumbLike",
+                                            "horizontalAlignment": "Right",
+                                            "id": "likeFilled",
+                                            "style": "Filled",
+                                            "size": "xxSmall",
+                                            "isVisible": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": "stretch",
+                                    "verticalContentAlignment": "Bottom",
+                                    "spacing": "Small",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "26 people like this",
+                                            "size": "Small",
+                                            "wrap": true,
+                                            "id": "commentLike"
+                                        },
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "27 people like this",
+                                            "size": "Small",
+                                            "wrap": true,
+                                            "id": "commentUnlike",
+                                            "isVisible": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "auto",
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/OfficeDev/Microsoft-Teams-Card-Samples/main/samples/communication/assets/hero_image.png",
+                            "width": "150px",
+                            "height": "auto",
+                            "style": "RoundedCorners",
+                            "altText": "Beach Image",
+                            "targetWidth": "atLeast:Standard"
+                        },
+                        {
+                            "type": "Image",
+                            "url": "https://raw.githubusercontent.com/OfficeDev/Microsoft-Teams-Card-Samples/main/samples/communication/assets/hero_image.png",
+                            "width": "100px",
+                            "height": "auto",
+                            "style": "RoundedCorners",
+                            "altText": "Beach Image",
+                            "targetWidth": "Narrow"
+                        },
+                        {
+                            "type": "ActionSet",
+                            "targetWidth": "atLeast:Standard",
+                            "spacing": "Medium",
+                            "actions": [
+                                {
+                                    "type": "Action.ToggleVisibility",
+                                    "title": "Like",
+                                    "targetElements": [
+                                        {
+                                            "elementId": "likeFilled"
+                                        },
+                                        {
+                                            "elementId": "likeOutline"
+                                        },
+                                        {
+                                            "elementId": "commentLike"
+                                        },
+                                        {
+                                            "elementId": "commentUnlike"
+                                        },
+                                        {
+                                            "elementId": "likeFilled2"
+                                        },
+                                        {
+                                            "elementId": "likeOutline2"
+                                        },
+                                        {
+                                            "elementId": "commentLike2"
+                                        },
+                                        {
+                                            "elementId": "commentUnlike2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Action.Submit",
+                                    "title": "Comment"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "targetWidth": "VeryNarrow",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Icon",
+                                    "name": "Megaphone",
+                                    "style": "Filled",
+                                    "size": "xxSmall",
+                                    "color": "Accent"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "spacing": "Small",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Posted in Employee Deals",
+                                    "isSubtle": true,
+                                    "size": "Small",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/OfficeDev/Microsoft-Teams-Card-Samples/main/samples/communication/assets/avatar.png",
+                                    "height": "auto",
+                                    "altText": "Avatar of Laurence Gibertson"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Laurence Gibertson",
+                                    "weight": "Bolder",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Oct 22",
+                                    "isSubtle": true,
+                                    "size": "Small",
+                                    "wrap": true,
+                                    "spacing": "None"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Hawaii holiday escape deals start tonight!",
+                    "size": "Large",
+                    "weight": "Bolder",
+                    "wrap": true,
+                    "spacing": "Small"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "For a limited time, you can book a four night stay at luxury resort on the island of Maui for only $999 per person.",
+                                    "maxLines": 4,
+                                    "wrap": true,
+                                    "spacing": "Small"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "https://raw.githubusercontent.com/OfficeDev/Microsoft-Teams-Card-Samples/main/samples/communication/assets/hero_image.png",
+                                    "width": "60px",
+                                    "style": "RoundedCorners"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "ColumnSet",
+                    "spacing": "ExtraLarge",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "verticalContentAlignment": "Center",
+                            "spacing": "None",
+                            "items": [
+                                {
+                                    "type": "Icon",
+                                    "name": "ThumbLike",
+                                    "horizontalAlignment": "Right",
+                                    "id": "likeOutline2",
+                                    "size": "xxSmall"
+                                },
+                                {
+                                    "type": "Icon",
+                                    "name": "ThumbLike",
+                                    "horizontalAlignment": "Right",
+                                    "id": "likeFilled2",
+                                    "style": "Filled",
+                                    "size": "xxSmall",
+                                    "isVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "verticalContentAlignment": "Center",
+                            "spacing": "Small",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "26 people like this",
+                                    "size": "Small",
+                                    "wrap": true,
+                                    "id": "commentLike2"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "27 people like this",
+                                    "size": "Small",
+                                    "wrap": true,
+                                    "id": "commentUnlike2",
+                                    "isVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "ActionSet",
+            "targetWidth": "atMost:Narrow",
+            "spacing": "Medium",
+            "actions": [
+                {
+                    "type": "Action.ToggleVisibility",
+                    "title": "Like",
+                    "targetElements": [
+                        {
+                            "elementId": "likeFilled"
+                        },
+                        {
+                            "elementId": "likeOutline"
+                        },
+                        {
+                            "elementId": "commentLike"
+                        },
+                        {
+                            "elementId": "commentUnlike"
+                        },
+                        {
+                            "elementId": "likeFilled2"
+                        },
+                        {
+                            "elementId": "likeOutline2"
+                        },
+                        {
+                            "elementId": "commentLike2"
+                        },
+                        {
+                            "elementId": "commentUnlike2"
+                        }
+                    ]
+                },
+                {
+                    "type": "Action.Submit",
+                    "title": "Comment"
+                }
+            ]
+        }
+    ]
+}

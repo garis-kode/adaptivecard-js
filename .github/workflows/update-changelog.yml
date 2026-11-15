@@ -1,0 +1,55 @@
+name: Update Changelog
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        description: 'Target branch'
+        default: 'main'
+        type: string
+      version:
+        description: 'Released version'
+        required: true
+        type: string
+      notes:
+        description: 'Release notes'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    name: Update Changelog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.branch }}
+
+      - name: Extract release date from git tag
+        id: release_date
+        run: |
+          TIMESTAMP_OF_RELEASE_COMMIT=$(git log -1 --date=unix --format=%ad "${{ inputs.version }}" 2>/dev/null || date +%s)
+          FORMATTED_DATE=$(date -u -d @"$TIMESTAMP_OF_RELEASE_COMMIT" +%Y-%m-%d)
+          echo "date=$FORMATTED_DATE" >> "$GITHUB_OUTPUT"
+
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          release-date: ${{ steps.release_date.outputs.date }}
+          release-notes: ${{ inputs.notes }}
+          latest-version: ${{ inputs.version }}
+          compare-url-target-revision: ${{ inputs.branch }}
+          parse-github-usernames: true
+
+      - name: Commit updated CHANGELOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: ${{ inputs.branch }}
+          commit_message: "docs(changelog): update for ${{ inputs.version }}"
+          file_pattern: CHANGELOG.md
