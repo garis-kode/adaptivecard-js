@@ -1,5 +1,5 @@
-import { Node } from '../../Node.ts';
-import { HasKey } from '../../Support/HasKey.ts';
+import { Node } from "../../Node.js";
+import { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Represents a set of Teams-specific properties on an image.
@@ -30,7 +30,7 @@ export class TeamsImageProperties extends Node {
    * `Image.allowExpand` property.
    */
   public allowExpand(allow = true): this {
-    return this.set('allowExpand', allow);
+    return this.set("allowExpand", allow);
   }
 
   public getType(): string | null {

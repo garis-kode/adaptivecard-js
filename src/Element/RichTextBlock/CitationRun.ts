@@ -1,4 +1,4 @@
-import { AbstractInlineElement } from '../AbstractInlineElement.ts';
+import { AbstractInlineElement } from "../AbstractInlineElement.js";
 
 /**
  * A citation inside a RichTextBlock element.
@@ -18,7 +18,7 @@ export class CitationRun extends AbstractInlineElement {
    * The text to display. A subset of markdown is supported.
    */
   public text(text: string): this {
-    return this.set('text', text);
+    return this.set("text", text);
   }
 
   /**
@@ -26,17 +26,17 @@ export class CitationRun extends AbstractInlineElement {
    * TextBlock at runtime.
    */
   public textDynamic(expression: string): this {
-    return this.set('text.dynamic', expression);
+    return this.set("text.dynamic", expression);
   }
 
   /**
    * The index of the reference to be cited. Indexing starts at 1.
    */
   public referenceIndex(referenceIndex: number): this {
-    return this.set('referenceIndex', referenceIndex);
+    return this.set("referenceIndex", referenceIndex);
   }
 
   public getType(): string {
-    return 'CitationRun';
+    return "CitationRun";
   }
 }

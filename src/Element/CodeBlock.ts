@@ -1,11 +1,11 @@
-import { CodeBlockLanguage } from '../Enum/CodeBlockLanguage.ts';
-import { Height } from '../Enum/Height.ts';
-import { HorizontalAlignment } from '../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { CodeBlockLanguage } from "../Enum/CodeBlockLanguage.js";
+import { Height } from "../Enum/Height.js";
+import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * A formatted and syntax-colored code block.
@@ -47,7 +47,7 @@ export class CodeBlock extends AbstractBlockElement {
    * The code snippet to display.
    */
   public codeSnippet(codeSnippet: string): this {
-    return this.set('codeSnippet', codeSnippet);
+    return this.set("codeSnippet", codeSnippet);
   }
 
   /**
@@ -57,17 +57,17 @@ export class CodeBlock extends AbstractBlockElement {
    * "PowerShell", "Python", "Sql", "TypeScript", "VbNet", "Verilog", "Vhdl", "Xml".
    */
   public language(language: CodeBlockLanguage): this {
-    return this.set('language', language);
+    return this.set("language", language);
   }
 
   /**
    * A number that represents the line in the file from where the code snippet was extracted.
    */
   public startLineNumber(startLineNumber: number): this {
-    return this.set('startLineNumber', startLineNumber);
+    return this.set("startLineNumber", startLineNumber);
   }
 
   public getType(): string {
-    return 'CodeBlock';
+    return "CodeBlock";
   }
 }

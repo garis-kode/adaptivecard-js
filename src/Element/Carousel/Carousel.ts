@@ -1,10 +1,10 @@
-import { Height } from '../../Enum/Height.ts';
-import { PageAnimation } from '../../Enum/PageAnimation.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { CarouselPage } from './CarouselPage.ts';
+import { Height } from "../../Enum/Height.js";
+import { PageAnimation } from "../../Enum/PageAnimation.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { CarouselPage } from "./CarouselPage.js";
 
 /**
  * A carousel with sliding pages.
@@ -39,13 +39,13 @@ export class Carousel extends AbstractBlockElement {
   public addPages(page: CarouselPage | Iterable<CarouselPage>): this {
     if (!(page instanceof CarouselPage) && Symbol.iterator in Object(page)) {
       for (const item of page) {
-        this.push('pages', item);
+        this.push("pages", item);
       }
 
       return this;
     }
 
-    return this.push('pages', page);
+    return this.push("pages", page);
   }
 
   /**
@@ -61,7 +61,7 @@ export class Carousel extends AbstractBlockElement {
    * auto-rotation; the minimum accepted value is 1000.
    */
   public autoLoopInterval(milliseconds: number): this {
-    return this.set('autoLoopInterval', milliseconds);
+    return this.set("autoLoopInterval", milliseconds);
   }
 
   /**
@@ -69,14 +69,14 @@ export class Carousel extends AbstractBlockElement {
    * Valid values: "Slide", "CrossFade", "None".
    */
   public pageAnimation(animation: PageAnimation): this {
-    return this.set('pageAnimation', animation);
+    return this.set("pageAnimation", animation);
   }
 
   /**
    * Controls if the container should bleed into its parent. A bleeding container extends into its parent's padding.
    */
   public bleed(bleed = true): this {
-    return this.set('bleed', bleed);
+    return this.set("bleed", bleed);
   }
 
   /**
@@ -84,10 +84,10 @@ export class Carousel extends AbstractBlockElement {
    * Valid values: "<number>px".
    */
   public minHeight(minHeight: string): this {
-    return this.set('minHeight', minHeight);
+    return this.set("minHeight", minHeight);
   }
 
   public getType(): string {
-    return 'Carousel';
+    return "Carousel";
   }
 }

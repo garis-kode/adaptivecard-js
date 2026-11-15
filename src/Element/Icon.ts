@@ -1,12 +1,12 @@
-import { AbstractAction } from '../Action/AbstractAction.ts';
-import { Colors } from '../Enum/Colors.ts';
-import { HorizontalAlignment } from '../Enum/HorizontalAlignment.ts';
-import { IconSize } from '../Enum/IconSize.ts';
-import { IconStyle } from '../Enum/IconStyle.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { HasHorizontalAlignment } from '../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { AbstractAction } from "../Action/AbstractAction.js";
+import { Colors } from "../Enum/Colors.js";
+import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
+import { IconSize } from "../Enum/IconSize.js";
+import { IconStyle } from "../Enum/IconStyle.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * A standalone icon element. Icons can be picked from the vast Adaptive Card icon catalog.
@@ -39,7 +39,7 @@ export class Icon extends AbstractBlockElement {
    * The name of the icon to display.
    */
   public name(name: string): this {
-    return this.set('name', name);
+    return this.set("name", name);
   }
 
   /**
@@ -47,7 +47,7 @@ export class Icon extends AbstractBlockElement {
    * Valid values: "Default", "Dark", "Light", "Accent", "Good", "Warning", "Attention".
    */
   public color(color: Colors): this {
-    return this.set('color', color);
+    return this.set("color", color);
   }
 
   /**
@@ -55,7 +55,7 @@ export class Icon extends AbstractBlockElement {
    * Valid values: "xxSmall", "xSmall", "Small", "Standard", "Medium", "Large", "xLarge", "xxLarge".
    */
   public size(size: IconSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -63,7 +63,7 @@ export class Icon extends AbstractBlockElement {
    * Valid values: "Regular", "Filled".
    */
   public style(style: IconStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
@@ -73,10 +73,10 @@ export class Icon extends AbstractBlockElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'Icon';
+    return "Icon";
   }
 }

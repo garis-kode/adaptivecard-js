@@ -1,15 +1,15 @@
-import { Colors } from '../Enum/Colors.ts';
-import { FontType } from '../Enum/FontType.ts';
-import { Height } from '../Enum/Height.ts';
-import { HorizontalAlignment } from '../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { TextBlockStyle } from '../Enum/TextBlockStyle.ts';
-import { TextSize } from '../Enum/TextSize.ts';
-import { TextWeight } from '../Enum/TextWeight.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { Colors } from "../Enum/Colors.js";
+import { FontType } from "../Enum/FontType.js";
+import { Height } from "../Enum/Height.js";
+import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { TextBlockStyle } from "../Enum/TextBlockStyle.js";
+import { TextSize } from "../Enum/TextSize.js";
+import { TextWeight } from "../Enum/TextWeight.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * A block of text, optionally formatted using Markdown.
@@ -29,7 +29,10 @@ export class TextBlock extends AbstractBlockElement {
     }
   }
 
-  public static make(text: string | null = null, wrap: boolean | null = null): TextBlock {
+  public static make(
+    text: string | null = null,
+    wrap: boolean | null = null,
+  ): TextBlock {
     return new TextBlock(text, wrap);
   }
 
@@ -61,7 +64,7 @@ export class TextBlock extends AbstractBlockElement {
    * The text to display. A subset of markdown is supported.
    */
   public text(text: string): this {
-    return this.set('text', text);
+    return this.set("text", text);
   }
 
   /**
@@ -69,7 +72,7 @@ export class TextBlock extends AbstractBlockElement {
    * `text` property of the TextBlock at runtime.
    */
   public textDynamic(expression: string): this {
-    return this.set('text.dynamic', expression);
+    return this.set("text.dynamic", expression);
   }
 
   /**
@@ -77,7 +80,7 @@ export class TextBlock extends AbstractBlockElement {
    * Valid values: "Small", "Default", "Medium", "Large", "ExtraLarge".
    */
   public size(size: TextSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -85,7 +88,7 @@ export class TextBlock extends AbstractBlockElement {
    * Valid values: "Lighter", "Default", "Bolder".
    */
   public weight(weight: TextWeight): this {
-    return this.set('weight', weight);
+    return this.set("weight", weight);
   }
 
   /**
@@ -93,7 +96,7 @@ export class TextBlock extends AbstractBlockElement {
    * Valid values: "Default", "Dark", "Light", "Accent", "Good", "Warning", "Attention".
    */
   public color(color: Colors): this {
-    return this.set('color', color);
+    return this.set("color", color);
   }
 
   /**
@@ -101,28 +104,28 @@ export class TextBlock extends AbstractBlockElement {
    * Valid values: "Default", "Monospace".
    */
   public fontType(fontType: FontType): this {
-    return this.set('fontType', fontType);
+    return this.set("fontType", fontType);
   }
 
   /**
    * Controls whether the text should be renderer using a subtler variant of the select color.
    */
   public isSubtle(subtle = true): this {
-    return this.set('isSubtle', subtle);
+    return this.set("isSubtle", subtle);
   }
 
   /**
    * The maximum number of lines to display.
    */
   public maxLines(maxLines: number): this {
-    return this.set('maxLines', maxLines);
+    return this.set("maxLines", maxLines);
   }
 
   /**
    * Controls if the text should wrap.
    */
   public wrap(wrap = true): this {
-    return this.set('wrap', wrap);
+    return this.set("wrap", wrap);
   }
 
   /**
@@ -130,17 +133,17 @@ export class TextBlock extends AbstractBlockElement {
    * Valid values: "default", "columnHeader", "heading".
    */
   public style(style: TextBlockStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
    * The Id of the input the TextBlock should act as the label of.
    */
   public labelFor(inputId: string): this {
-    return this.set('labelFor', inputId);
+    return this.set("labelFor", inputId);
   }
 
   public getType(): string {
-    return 'TextBlock';
+    return "TextBlock";
   }
 }

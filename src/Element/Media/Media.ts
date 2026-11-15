@@ -1,10 +1,10 @@
-import { Height } from '../../Enum/Height.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { CaptionSource } from './CaptionSource.ts';
-import { MediaSource } from './MediaSource.ts';
+import { Height } from "../../Enum/Height.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { CaptionSource } from "./CaptionSource.js";
+import { MediaSource } from "./MediaSource.js";
 
 /**
  * A media element that makes it possible to embed videos inside a card.
@@ -39,13 +39,13 @@ export class Media extends AbstractBlockElement {
   public addSources(source: MediaSource | Iterable<MediaSource>): this {
     if (!(source instanceof MediaSource) && Symbol.iterator in Object(source)) {
       for (const item of source) {
-        this.push('sources', item);
+        this.push("sources", item);
       }
 
       return this;
     }
 
-    return this.push('sources', source);
+    return this.push("sources", source);
   }
 
   /**
@@ -59,16 +59,21 @@ export class Media extends AbstractBlockElement {
   /**
    * Add caption sources for the media.
    */
-  public addCaptionSources(source: CaptionSource | Iterable<CaptionSource>): this {
-    if (!(source instanceof CaptionSource) && Symbol.iterator in Object(source)) {
+  public addCaptionSources(
+    source: CaptionSource | Iterable<CaptionSource>,
+  ): this {
+    if (
+      !(source instanceof CaptionSource) &&
+      Symbol.iterator in Object(source)
+    ) {
       for (const item of source) {
-        this.push('captionSources', item);
+        this.push("captionSources", item);
       }
 
       return this;
     }
 
-    return this.push('captionSources', source);
+    return this.push("captionSources", source);
   }
 
   /**
@@ -83,17 +88,17 @@ export class Media extends AbstractBlockElement {
    * The URL of the poster image to display.
    */
   public poster(url: string): this {
-    return this.set('poster', url);
+    return this.set("poster", url);
   }
 
   /**
    * The alternate text for the media, used for accessibility purposes.
    */
   public altText(altText: string): this {
-    return this.set('altText', altText);
+    return this.set("altText", altText);
   }
 
   public getType(): string {
-    return 'Media';
+    return "Media";
   }
 }

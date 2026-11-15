@@ -1,79 +1,79 @@
-import { AbstractAction } from './Action/AbstractAction.ts';
-import { DonutChart } from './Chart/Donut/DonutChart.ts';
-import { DonutChartData } from './Chart/Donut/DonutChartData.ts';
-import { GaugeChart } from './Chart/Gauge/GaugeChart.ts';
-import { GaugeChartLegend } from './Chart/Gauge/GaugeChartLegend.ts';
-import { HorizontalBarChart } from './Chart/HorizontalBar/HorizontalBarChart.ts';
-import { HorizontalBarChartDataValue } from './Chart/HorizontalBar/HorizontalBarChartDataValue.ts';
-import { StackedHorizontalBarChart } from './Chart/HorizontalBar/StackedHorizontalBarChart.ts';
-import { StackedHorizontalBarChartData } from './Chart/HorizontalBar/StackedHorizontalBarChartData.ts';
-import { LineChart } from './Chart/Line/LineChart.ts';
-import { LineChartData } from './Chart/Line/LineChartData.ts';
-import { PieChart } from './Chart/Pie/PieChart.ts';
-import { GroupedVerticalBarChart } from './Chart/VerticalBar/GroupedVerticalBarChart.ts';
-import { GroupedVerticalBarChartData } from './Chart/VerticalBar/GroupedVerticalBarChartData.ts';
-import { VerticalBarChart } from './Chart/VerticalBar/VerticalBarChart.ts';
-import { VerticalBarChartDataValue } from './Chart/VerticalBar/VerticalBarChartDataValue.ts';
-import { AbstractBlockElement } from './Element/AbstractBlockElement.ts';
-import { Accordion } from './Element/Accordion.ts';
-import { ActionSet } from './Element/ActionSet.ts';
-import { Badge } from './Element/Badge.ts';
-import { Carousel } from './Element/Carousel/Carousel.ts';
-import { CodeBlock } from './Element/CodeBlock.ts';
-import { ColumnSet } from './Element/Column/ColumnSet.ts';
-import { CompoundButton } from './Element/CompoundButton.ts';
-import { Container } from './Element/Container.ts';
-import { Fact } from './Element/Fact/Fact.ts';
-import { FactSet } from './Element/Fact/FactSet.ts';
-import { Icon } from './Element/Icon.ts';
-import { Image } from './Element/Image/Image.ts';
-import { ImageSet } from './Element/Image/ImageSet.ts';
-import { Media } from './Element/Media/Media.ts';
-import { ProgressBar } from './Element/Progress/ProgressBar.ts';
-import { ProgressRing } from './Element/Progress/ProgressRing.ts';
-import { Rating } from './Element/Rating.ts';
-import { RichTextBlock } from './Element/RichTextBlock/RichTextBlock.ts';
-import { Table } from './Element/Table/Table.ts';
-import { TabSet } from './Element/TabSet.ts';
-import { TextBlock } from './Element/TextBlock.ts';
-import { ChartColorSet } from './Enum/ChartColorSet.ts';
-import { CodeBlockLanguage } from './Enum/CodeBlockLanguage.ts';
-import { ContainerStyle } from './Enum/ContainerStyle.ts';
-import { VerticalAlignment } from './Enum/VerticalAlignment.ts';
-import { ChoiceSetInput } from './Input/ChoiceSet/ChoiceSetInput.ts';
-import { DateInput } from './Input/DateInput.ts';
-import { NumberInput } from './Input/NumberInput.ts';
-import { RatingInput } from './Input/RatingInput.ts';
-import { TextInput } from './Input/TextInput.ts';
-import { TimeInput } from './Input/TimeInput.ts';
-import { ToggleInput } from './Input/ToggleInput.ts';
-import { AbstractLayout } from './Layout/AbstractLayout.ts';
-import { AreaGridLayout } from './Layout/AreaGridLayout.ts';
-import { FlowLayout } from './Layout/FlowLayout.ts';
-import { StackLayout } from './Layout/StackLayout.ts';
-import { Node } from './Node.ts';
-import { HostCapabilities } from './Other/HostCapabilities.ts';
-import { AdaptiveCardReference } from './Shared/AdaptiveCardReference.ts';
-import { Authentication } from './Shared/Authentication.ts';
-import { BackgroundImage } from './Shared/BackgroundImage.ts';
-import { DocumentReference } from './Shared/DocumentReference.ts';
-import { Metadata } from './Shared/Metadata.ts';
-import { Refresh } from './Shared/Refresh.ts';
-import { Resources } from './Shared/Resources.ts';
-import { TeamsCardProperties } from './Shared/TeamsCardProperties.ts';
-import { HasItems } from './Support/HasItems.ts';
-import { HasKey } from './Support/HasKey.ts';
-import { HasLayouts } from './Support/HasLayouts.ts';
+import { AbstractAction } from "./Action/AbstractAction.js";
+import { DonutChart } from "./Chart/Donut/DonutChart.js";
+import { DonutChartData } from "./Chart/Donut/DonutChartData.js";
+import { GaugeChart } from "./Chart/Gauge/GaugeChart.js";
+import { GaugeChartLegend } from "./Chart/Gauge/GaugeChartLegend.js";
+import { HorizontalBarChart } from "./Chart/HorizontalBar/HorizontalBarChart.js";
+import { HorizontalBarChartDataValue } from "./Chart/HorizontalBar/HorizontalBarChartDataValue.js";
+import { StackedHorizontalBarChart } from "./Chart/HorizontalBar/StackedHorizontalBarChart.js";
+import { StackedHorizontalBarChartData } from "./Chart/HorizontalBar/StackedHorizontalBarChartData.js";
+import { LineChart } from "./Chart/Line/LineChart.js";
+import { LineChartData } from "./Chart/Line/LineChartData.js";
+import { PieChart } from "./Chart/Pie/PieChart.js";
+import { GroupedVerticalBarChart } from "./Chart/VerticalBar/GroupedVerticalBarChart.js";
+import { GroupedVerticalBarChartData } from "./Chart/VerticalBar/GroupedVerticalBarChartData.js";
+import { VerticalBarChart } from "./Chart/VerticalBar/VerticalBarChart.js";
+import { VerticalBarChartDataValue } from "./Chart/VerticalBar/VerticalBarChartDataValue.js";
+import { AbstractBlockElement } from "./Element/AbstractBlockElement.js";
+import { Accordion } from "./Element/Accordion.js";
+import { ActionSet } from "./Element/ActionSet.js";
+import { Badge } from "./Element/Badge.js";
+import { Carousel } from "./Element/Carousel/Carousel.js";
+import { CodeBlock } from "./Element/CodeBlock.js";
+import { ColumnSet } from "./Element/Column/ColumnSet.js";
+import { CompoundButton } from "./Element/CompoundButton.js";
+import { Container } from "./Element/Container.js";
+import { Fact } from "./Element/Fact/Fact.js";
+import { FactSet } from "./Element/Fact/FactSet.js";
+import { Icon } from "./Element/Icon.js";
+import { Image } from "./Element/Image/Image.js";
+import { ImageSet } from "./Element/Image/ImageSet.js";
+import { Media } from "./Element/Media/Media.js";
+import { ProgressBar } from "./Element/Progress/ProgressBar.js";
+import { ProgressRing } from "./Element/Progress/ProgressRing.js";
+import { Rating } from "./Element/Rating.js";
+import { RichTextBlock } from "./Element/RichTextBlock/RichTextBlock.js";
+import { Table } from "./Element/Table/Table.js";
+import { TabSet } from "./Element/TabSet.js";
+import { TextBlock } from "./Element/TextBlock.js";
+import { ChartColorSet } from "./Enum/ChartColorSet.js";
+import { CodeBlockLanguage } from "./Enum/CodeBlockLanguage.js";
+import { ContainerStyle } from "./Enum/ContainerStyle.js";
+import { VerticalAlignment } from "./Enum/VerticalAlignment.js";
+import { ChoiceSetInput } from "./Input/ChoiceSet/ChoiceSetInput.js";
+import { DateInput } from "./Input/DateInput.js";
+import { NumberInput } from "./Input/NumberInput.js";
+import { RatingInput } from "./Input/RatingInput.js";
+import { TextInput } from "./Input/TextInput.js";
+import { TimeInput } from "./Input/TimeInput.js";
+import { ToggleInput } from "./Input/ToggleInput.js";
+import { AbstractLayout } from "./Layout/AbstractLayout.js";
+import { AreaGridLayout } from "./Layout/AreaGridLayout.js";
+import { FlowLayout } from "./Layout/FlowLayout.js";
+import { StackLayout } from "./Layout/StackLayout.js";
+import { Node } from "./Node.js";
+import { HostCapabilities } from "./Other/HostCapabilities.js";
+import { AdaptiveCardReference } from "./Shared/AdaptiveCardReference.js";
+import { Authentication } from "./Shared/Authentication.js";
+import { BackgroundImage } from "./Shared/BackgroundImage.js";
+import { DocumentReference } from "./Shared/DocumentReference.js";
+import { Metadata } from "./Shared/Metadata.js";
+import { Refresh } from "./Shared/Refresh.js";
+import { Resources } from "./Shared/Resources.js";
+import { TeamsCardProperties } from "./Shared/TeamsCardProperties.js";
+import { HasItems } from "./Support/HasItems.js";
+import { HasKey } from "./Support/HasKey.js";
+import { HasLayouts } from "./Support/HasLayouts.js";
 
 /**
  * An Adaptive Card, containing a free-form body of card elements, and an optional set of actions.
  */
 export class AdaptiveCard extends Node {
   public static readonly SCHEMA_URL =
-    'https://adaptivecards.io/schemas/adaptive-card.json';
-  public static readonly DEFAULT_VERSION = '1.6';
+    "https://adaptivecards.io/schemas/adaptive-card.json";
+  public static readonly DEFAULT_VERSION = "1.6";
 
-  private readonly hasItems = new HasItems(this, 'body');
+  private readonly hasItems = new HasItems(this, "body");
   private readonly hasKey = new HasKey(this);
   private readonly hasLayouts = new HasLayouts(this);
 
@@ -82,12 +82,14 @@ export class AdaptiveCard extends Node {
     this.version(version);
   }
 
-  public static make(version: string = AdaptiveCard.DEFAULT_VERSION): AdaptiveCard {
+  public static make(
+    version: string = AdaptiveCard.DEFAULT_VERSION,
+  ): AdaptiveCard {
     return new AdaptiveCard(version);
   }
 
   public getType(): string {
-    return 'AdaptiveCard';
+    return "AdaptiveCard";
   }
 
   /**
@@ -105,11 +107,15 @@ export class AdaptiveCard extends Node {
     return this.hasLayouts.layouts(layouts);
   }
 
-  public addStackLayout(callback: ((layout: StackLayout) => void) | null = null): this {
+  public addStackLayout(
+    callback: ((layout: StackLayout) => void) | null = null,
+  ): this {
     return this.hasLayouts.addStackLayout(callback);
   }
 
-  public addFlowLayout(callback: ((layout: FlowLayout) => void) | null = null): this {
+  public addFlowLayout(
+    callback: ((layout: FlowLayout) => void) | null = null,
+  ): this {
     return this.hasLayouts.addFlowLayout(callback);
   }
 
@@ -119,7 +125,9 @@ export class AdaptiveCard extends Node {
     return this.hasLayouts.addAreaGridLayout(callback);
   }
 
-  public addItems(element: AbstractBlockElement | Iterable<AbstractBlockElement>): this {
+  public addItems(
+    element: AbstractBlockElement | Iterable<AbstractBlockElement>,
+  ): this {
     return this.hasItems.addItems(element);
   }
 
@@ -134,7 +142,10 @@ export class AdaptiveCard extends Node {
     return this.hasItems.addTextBlock(text, configure);
   }
 
-  public addImage(url: string, configure: ((image: Image) => unknown) | null = null): this {
+  public addImage(
+    url: string,
+    configure: ((image: Image) => unknown) | null = null,
+  ): this {
     return this.hasItems.addImage(url, configure);
   }
 
@@ -144,11 +155,15 @@ export class AdaptiveCard extends Node {
     return this.hasItems.addRichTextBlock(configure);
   }
 
-  public addContainer(configure: ((container: Container) => unknown) | null = null): this {
+  public addContainer(
+    configure: ((container: Container) => unknown) | null = null,
+  ): this {
     return this.hasItems.addContainer(configure);
   }
 
-  public addColumnSet(configure: ((columnSet: ColumnSet) => unknown) | null = null): this {
+  public addColumnSet(
+    configure: ((columnSet: ColumnSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addColumnSet(configure);
   }
 
@@ -159,7 +174,9 @@ export class AdaptiveCard extends Node {
     return this.hasItems.addFactSet(facts, configure);
   }
 
-  public addImageSet(configure: ((imageSet: ImageSet) => unknown) | null = null): this {
+  public addImageSet(
+    configure: ((imageSet: ImageSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addImageSet(configure);
   }
 
@@ -171,7 +188,9 @@ export class AdaptiveCard extends Node {
     return this.hasItems.addTable(configure);
   }
 
-  public addActionSet(configure: ((actionSet: ActionSet) => unknown) | null = null): this {
+  public addActionSet(
+    configure: ((actionSet: ActionSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addActionSet(configure);
   }
 
@@ -182,15 +201,21 @@ export class AdaptiveCard extends Node {
     return this.hasItems.addBadge(text, configure);
   }
 
-  public addCarousel(configure: ((carousel: Carousel) => unknown) | null = null): this {
+  public addCarousel(
+    configure: ((carousel: Carousel) => unknown) | null = null,
+  ): this {
     return this.hasItems.addCarousel(configure);
   }
 
-  public addAccordion(configure: ((accordion: Accordion) => unknown) | null = null): this {
+  public addAccordion(
+    configure: ((accordion: Accordion) => unknown) | null = null,
+  ): this {
     return this.hasItems.addAccordion(configure);
   }
 
-  public addTabSet(configure: ((tabSet: TabSet) => unknown) | null = null): this {
+  public addTabSet(
+    configure: ((tabSet: TabSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addTabSet(configure);
   }
 
@@ -210,7 +235,10 @@ export class AdaptiveCard extends Node {
     return this.hasItems.addCompoundButton(title, description, configure);
   }
 
-  public addIcon(name: string, configure: ((icon: Icon) => unknown) | null = null): this {
+  public addIcon(
+    name: string,
+    configure: ((icon: Icon) => unknown) | null = null,
+  ): this {
     return this.hasItems.addIcon(name, configure);
   }
 
@@ -310,7 +338,13 @@ export class AdaptiveCard extends Node {
     segments: Iterable<GaugeChartLegend> | null = null,
     configure: ((gaugeChart: GaugeChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addGaugeChart(title, showTitle, value, segments, configure);
+    return this.hasItems.addGaugeChart(
+      title,
+      showTitle,
+      value,
+      segments,
+      configure,
+    );
   }
 
   public addHorizontalBarChart(
@@ -320,7 +354,8 @@ export class AdaptiveCard extends Node {
     xAxisTitle: string | null = null,
     yAxisTitle: string | null = null,
     colorSet: ChartColorSet | null = null,
-    configure: ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
+    configure:
+      ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
   ): this {
     return this.hasItems.addHorizontalBarChart(
       title,
@@ -425,7 +460,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6".
    */
   public version(version: string): this {
-    return this.set('version', version);
+    return this.set("version", version);
   }
 
   /**
@@ -441,22 +476,25 @@ export class AdaptiveCard extends Node {
    * A URL to the Adaptive Card schema the card is authored against.
    */
   public schema(schema: string): this {
-    return this.set('$schema', schema);
+    return this.set("$schema", schema);
   }
 
   /**
    * Add card level actions, which always appear at the bottom of the card.
    */
   public addActions(action: AbstractAction | Iterable<AbstractAction>): this {
-    if (!(action instanceof AbstractAction) && Symbol.iterator in Object(action)) {
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
       for (const item of action) {
-        this.push('actions', item);
+        this.push("actions", item);
       }
 
       return this;
     }
 
-    return this.push('actions', action);
+    return this.push("actions", action);
   }
 
   /**
@@ -471,14 +509,14 @@ export class AdaptiveCard extends Node {
    * not supported.
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   /**
    * The text that should be displayed if the client is not able to render the card.
    */
   public fallbackText(text: string): this {
-    return this.set('fallbackText', text);
+    return this.set("fallbackText", text);
   }
 
   /**
@@ -486,7 +524,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "BackgroundImage".
    */
   public backgroundImage(backgroundImage: BackgroundImage): this {
-    return this.set('backgroundImage', backgroundImage);
+    return this.set("backgroundImage", backgroundImage);
   }
 
   /**
@@ -494,7 +532,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "<number>px".
    */
   public minHeight(minHeight: string): this {
-    return this.set('minHeight', minHeight);
+    return this.set("minHeight", minHeight);
   }
 
   /**
@@ -502,7 +540,7 @@ export class AdaptiveCard extends Node {
    * otherwise they will not be validated and their values will not be sent to the Bot.
    */
   public id(id: string): this {
-    return this.set('id', id);
+    return this.set("id", id);
   }
 
   /**
@@ -511,7 +549,7 @@ export class AdaptiveCard extends Node {
    * the `requires` property.
    */
   public fallback(fallback: unknown): this {
-    return this.set('fallback', fallback);
+    return this.set("fallback", fallback);
   }
 
   /**
@@ -521,14 +559,14 @@ export class AdaptiveCard extends Node {
    * Valid values: "HostCapabilities".
    */
   public requires(requires: HostCapabilities): this {
-    return this.set('requires', requires);
+    return this.set("requires", requires);
   }
 
   /**
    * The area of a `Layout.AreaGrid` layout in which an element should be displayed.
    */
   public gridArea(gridArea: string): this {
-    return this.set('grid.area', gridArea);
+    return this.set("grid.area", gridArea);
   }
 
   /**
@@ -536,7 +574,7 @@ export class AdaptiveCard extends Node {
    * that allow sorting across a collection of elements.
    */
   public isSortKey(isSortKey = true): this {
-    return this.set('isSortKey', isSortKey);
+    return this.set("isSortKey", isSortKey);
   }
 
   /**
@@ -544,7 +582,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "Top", "Center", "Bottom".
    */
   public verticalContentAlignment(alignment: VerticalAlignment): this {
-    return this.set('verticalContentAlignment', alignment);
+    return this.set("verticalContentAlignment", alignment);
   }
 
   /**
@@ -554,28 +592,28 @@ export class AdaptiveCard extends Node {
    * Valid values: "default", "emphasis", "accent", "good", "attention", "warning".
    */
   public style(style: ContainerStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
    * Controls if the content of the card is to be rendered left-to-right or right-to-left.
    */
   public rtl(rtl = true): this {
-    return this.set('rtl', rtl);
+    return this.set("rtl", rtl);
   }
 
   /**
    * The text that should be spoken for the entire card.
    */
   public speak(speak: string): this {
-    return this.set('speak', speak);
+    return this.set("speak", speak);
   }
 
   /**
    * The locale associated with the element.
    */
   public lang(lang: string): this {
-    return this.set('lang', lang);
+    return this.set("lang", lang);
   }
 
   /**
@@ -583,7 +621,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "RefreshDefinition".
    */
   public refresh(refresh: Refresh): this {
-    return this.set('refresh', refresh);
+    return this.set("refresh", refresh);
   }
 
   /**
@@ -592,7 +630,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "Authentication".
    */
   public authentication(authentication: Authentication): this {
-    return this.set('authentication', authentication);
+    return this.set("authentication", authentication);
   }
 
   /**
@@ -600,7 +638,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "CardMetadata".
    */
   public metadata(metadata: Metadata): this {
-    return this.set('metadata', metadata);
+    return this.set("metadata", metadata);
   }
 
   /**
@@ -608,10 +646,10 @@ export class AdaptiveCard extends Node {
    */
   public msteams(msteams: TeamsCardProperties, useCamelCaseKey = false): this {
     if (useCamelCaseKey) {
-      return this.set('msTeams', msteams);
+      return this.set("msTeams", msteams);
     }
 
-    return this.set('msteams', msteams);
+    return this.set("msteams", msteams);
   }
 
   /**
@@ -619,7 +657,7 @@ export class AdaptiveCard extends Node {
    * Valid values: "Resources".
    */
   public resources(resources: Resources): this {
-    return this.set('resources', resources);
+    return this.set("resources", resources);
   }
 
   /**
@@ -637,13 +675,13 @@ export class AdaptiveCard extends Node {
       Symbol.iterator in Object(reference)
     ) {
       for (const item of reference) {
-        this.push('references', item);
+        this.push("references", item);
       }
 
       return this;
     }
 
-    return this.push('references', reference);
+    return this.push("references", reference);
   }
 
   /**
@@ -664,17 +702,19 @@ export class AdaptiveCard extends Node {
     const base = super.toObject();
 
     const ordered: Record<string, unknown> = {
-      $schema: base['$schema'] ?? AdaptiveCard.SCHEMA_URL,
-      type: base['type'],
+      $schema:
+        (Object.hasOwn(base, "$schema") ? base["$schema"] : undefined) ??
+        AdaptiveCard.SCHEMA_URL,
+      type: Object.hasOwn(base, "type") ? base["type"] : undefined,
     };
 
-    if (base['version'] !== undefined) {
-      ordered['version'] = base['version'];
+    if (Object.hasOwn(base, "version") && base["version"] !== undefined) {
+      Node.defineOwnProperty(ordered, "version", base["version"]);
     }
 
     for (const [key, value] of Object.entries(base)) {
-      if (!(key in ordered)) {
-        ordered[key] = value;
+      if (!Object.hasOwn(ordered, key)) {
+        Node.defineOwnProperty(ordered, key, value);
       }
     }
 

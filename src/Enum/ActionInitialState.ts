@@ -1,4 +1,4 @@
 export enum ActionInitialState {
-    Normal = 'Normal',
-    Toggled = 'Toggled',
+  Normal = "Normal",
+  Toggled = "Toggled",
 }

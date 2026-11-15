@@ -1,4 +1,4 @@
 export enum MentionType {
-    Person = 'Person',
-    Tag = 'Tag',
+  Person = "Person",
+  Tag = "Tag",
 }

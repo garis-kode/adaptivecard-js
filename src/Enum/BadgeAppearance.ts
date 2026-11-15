@@ -1,4 +1,4 @@
 export enum BadgeAppearance {
-    Filled = 'Filled',
-    Tint = 'Tint',
+  Filled = "Filled",
+  Tint = "Tint",
 }

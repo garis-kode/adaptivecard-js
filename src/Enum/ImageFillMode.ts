@@ -1,6 +1,6 @@
 export enum ImageFillMode {
-    Cover = 'cover',
-    RepeatHorizontally = 'repeatHorizontally',
-    RepeatVertically = 'repeatVertically',
-    Repeat = 'repeat',
+  Cover = "cover",
+  RepeatHorizontally = "repeatHorizontally",
+  RepeatVertically = "repeatVertically",
+  Repeat = "repeat",
 }

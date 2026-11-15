@@ -1,12 +1,12 @@
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { ProgressRingLabelPosition } from '../../Enum/ProgressRingLabelPosition.ts';
-import { ProgressRingSize } from '../../Enum/ProgressRingSize.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { ProgressRingLabelPosition } from "../../Enum/ProgressRingLabelPosition.js";
+import { ProgressRingSize } from "../../Enum/ProgressRingSize.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
 
 /**
  * A spinning ring element, to indicate progress.
@@ -55,7 +55,7 @@ export class ProgressRing extends AbstractBlockElement {
    * The label of the progress ring.
    */
   public label(label: string): this {
-    return this.set('label', label);
+    return this.set("label", label);
   }
 
   /**
@@ -63,7 +63,7 @@ export class ProgressRing extends AbstractBlockElement {
    * Valid values: "Before", "After", "Above", "Below".
    */
   public labelPosition(position: ProgressRingLabelPosition): this {
-    return this.set('labelPosition', position);
+    return this.set("labelPosition", position);
   }
 
   /**
@@ -71,10 +71,10 @@ export class ProgressRing extends AbstractBlockElement {
    * Valid values: "Tiny", "Small", "Medium", "Large".
    */
   public size(size: ProgressRingSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   public getType(): string {
-    return 'ProgressRing';
+    return "ProgressRing";
   }
 }

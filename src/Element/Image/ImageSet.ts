@@ -1,12 +1,12 @@
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { ImageSetSize } from '../../Enum/ImageSetSize.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { Image } from './Image.ts';
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { ImageSetSize } from "../../Enum/ImageSetSize.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { Image } from "./Image.js";
 
 /**
  * A set of images, displayed side-by-side and wrapped across multiple rows as needed.
@@ -50,13 +50,13 @@ export class ImageSet extends AbstractBlockElement {
   public addImages(image: Image | Iterable<Image>): this {
     if (!(image instanceof Image) && Symbol.iterator in Object(image)) {
       for (const item of image) {
-        this.push('images', item);
+        this.push("images", item);
       }
 
       return this;
     }
 
-    return this.push('images', image);
+    return this.push("images", image);
   }
 
   /**
@@ -72,10 +72,10 @@ export class ImageSet extends AbstractBlockElement {
    * Valid values: "Small", "Medium", "Large".
    */
   public imageSize(size: ImageSetSize): this {
-    return this.set('imageSize', size);
+    return this.set("imageSize", size);
   }
 
   public getType(): string {
-    return 'ImageSet';
+    return "ImageSet";
   }
 }

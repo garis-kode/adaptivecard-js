@@ -1,11 +1,11 @@
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { ProgressBarColor } from '../../Enum/ProgressBarColor.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { ProgressBarColor } from "../../Enum/ProgressBarColor.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
 
 /**
  * A progress bar element, to represent a value within a range.
@@ -47,14 +47,14 @@ export class ProgressBar extends AbstractBlockElement {
    * The value of the progress bar. Must be between 0 and `max`.
    */
   public value(value: number | null): this {
-    return this.set('value', value);
+    return this.set("value", value);
   }
 
   /**
    * The maximum value of the progress bar.
    */
   public max(max: number): this {
-    return this.set('max', max);
+    return this.set("max", max);
   }
 
   /**
@@ -63,10 +63,10 @@ export class ProgressBar extends AbstractBlockElement {
    * Valid values: "Accent", "Good", "Warning", "Attention".
    */
   public color(color: ProgressBarColor): this {
-    return this.set('color', color);
+    return this.set("color", color);
   }
 
   public getType(): string {
-    return 'ProgressBar';
+    return "ProgressBar";
   }
 }

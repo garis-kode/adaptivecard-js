@@ -1,15 +1,15 @@
-import { BadgeAppearance } from '../Enum/BadgeAppearance.ts';
-import { BadgeShape } from '../Enum/BadgeShape.ts';
-import { BadgeSize } from '../Enum/BadgeSize.ts';
-import { BadgeStyle } from '../Enum/BadgeStyle.ts';
-import { Height } from '../Enum/Height.ts';
-import { HorizontalAlignment } from '../Enum/HorizontalAlignment.ts';
-import { IconPosition } from '../Enum/IconPosition.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { BadgeAppearance } from "../Enum/BadgeAppearance.js";
+import { BadgeShape } from "../Enum/BadgeShape.js";
+import { BadgeSize } from "../Enum/BadgeSize.js";
+import { BadgeStyle } from "../Enum/BadgeStyle.js";
+import { Height } from "../Enum/Height.js";
+import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
+import { IconPosition } from "../Enum/IconPosition.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * A badge element to show an icon and/or text in a compact form over a colored background.
@@ -72,7 +72,7 @@ export class Badge extends AbstractBlockElement {
    * The text to display.
    */
   public text(text: string): this {
-    return this.set('text', text);
+    return this.set("text", text);
   }
 
   /**
@@ -80,7 +80,7 @@ export class Badge extends AbstractBlockElement {
    * Valid values: "Medium", "Large", "ExtraLarge".
    */
   public size(size: BadgeSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -88,7 +88,7 @@ export class Badge extends AbstractBlockElement {
    * Valid values: "Square", "Rounded", "Circular".
    */
   public shape(shape: BadgeShape): this {
-    return this.set('shape', shape);
+    return this.set("shape", shape);
   }
 
   /**
@@ -96,7 +96,7 @@ export class Badge extends AbstractBlockElement {
    * Valid values: "Default", "Subtle", "Informative", "Accent", "Good", "Attention", "Warning".
    */
   public style(style: BadgeStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
@@ -104,7 +104,7 @@ export class Badge extends AbstractBlockElement {
    * Valid values: "Filled", "Tint".
    */
   public appearance(appearance: BadgeAppearance): this {
-    return this.set('appearance', appearance);
+    return this.set("appearance", appearance);
   }
 
   /**
@@ -113,7 +113,7 @@ export class Badge extends AbstractBlockElement {
    * the regular style is used.
    */
   public icon(icon: string): this {
-    return this.set('icon', icon);
+    return this.set("icon", icon);
   }
 
   /**
@@ -121,17 +121,17 @@ export class Badge extends AbstractBlockElement {
    * Valid values: "Before", "After".
    */
   public iconPosition(iconPosition: IconPosition): this {
-    return this.set('iconPosition', iconPosition);
+    return this.set("iconPosition", iconPosition);
   }
 
   /**
    * Controls the tooltip text to display when the badge is hovered over.
    */
   public tooltip(tooltip: string): this {
-    return this.set('tooltip', tooltip);
+    return this.set("tooltip", tooltip);
   }
 
   public getType(): string {
-    return 'Badge';
+    return "Badge";
   }
 }

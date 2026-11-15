@@ -1,8 +1,8 @@
-import { AbstractAction } from '../../Action/AbstractAction.ts';
-import { ImageStyle } from '../../Enum/ImageStyle.ts';
-import { TextSize } from '../../Enum/TextSize.ts';
-import { ThemedUrl } from '../../Other/ThemedUrl.ts';
-import { AbstractInlineElement } from '../AbstractInlineElement.ts';
+import { AbstractAction } from "../../Action/AbstractAction.js";
+import { ImageStyle } from "../../Enum/ImageStyle.js";
+import { TextSize } from "../../Enum/TextSize.js";
+import { ThemedUrl } from "../../Other/ThemedUrl.js";
+import { AbstractInlineElement } from "../AbstractInlineElement.js";
 
 /**
  * An inline image inside a RichTextBlock element.
@@ -21,7 +21,7 @@ export class ImageRun extends AbstractInlineElement {
    * The URL (or Base64-encoded Data URI) of the image. Acceptable formats are PNG, JPEG, GIF and SVG.
    */
   public url(url: string): this {
-    return this.set('url', url);
+    return this.set("url", url);
   }
 
   /**
@@ -29,7 +29,7 @@ export class ImageRun extends AbstractInlineElement {
    * Valid values: "Small", "Default", "Medium", "Large", "ExtraLarge".
    */
   public size(size: TextSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -37,22 +37,25 @@ export class ImageRun extends AbstractInlineElement {
    * Valid values: "Default", "Person", "RoundedCorners".
    */
   public style(style: ImageStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
    * Add a set of theme-specific image URLs.
    */
   public addThemedUrls(themedUrl: ThemedUrl | Iterable<ThemedUrl>): this {
-    if (!(themedUrl instanceof ThemedUrl) && Symbol.iterator in Object(themedUrl)) {
+    if (
+      !(themedUrl instanceof ThemedUrl) &&
+      Symbol.iterator in Object(themedUrl)
+    ) {
       for (const item of themedUrl) {
-        this.push('themedUrls', item);
+        this.push("themedUrls", item);
       }
 
       return this;
     }
 
-    return this.push('themedUrls', themedUrl);
+    return this.push("themedUrls", themedUrl);
   }
 
   /**
@@ -70,10 +73,10 @@ export class ImageRun extends AbstractInlineElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'ImageRun';
+    return "ImageRun";
   }
 }

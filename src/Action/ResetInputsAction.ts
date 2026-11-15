@@ -1,62 +1,64 @@
-import { HasMenuActions } from '../Support/HasMenuActions.ts';
-import { AbstractAction } from './AbstractAction.ts';
+import { HasMenuActions } from "../Support/HasMenuActions.js";
+import { AbstractAction } from "./AbstractAction.js";
 
 /**
  * Resets the values of the inputs in the card.
  */
 export class ResetInputsAction extends AbstractAction {
-    private readonly hasMenuActions = new HasMenuActions(this);
+  private readonly hasMenuActions = new HasMenuActions(this);
 
-    public constructor(title: string | null = null) {
-        super();
-        if (title !== null) {
-            this.title(title);
-        }
+  public constructor(title: string | null = null) {
+    super();
+    if (title !== null) {
+      this.title(title);
+    }
+  }
+
+  public static make(title: string | null = null): ResetInputsAction {
+    return new ResetInputsAction(title);
+  }
+
+  /**
+   * Add actions to display in the overflow menu of a Split action button.
+   */
+  public addMenuActions(
+    action: AbstractAction | Iterable<AbstractAction>,
+  ): this {
+    return this.hasMenuActions.addMenuActions(action);
+  }
+
+  /**
+   * The actions to display in the overflow menu of a Split action button.
+   * Valid values: "Action.Execute", "Action.InsertImage", "Action.OpenUrl", "Action.OpenUrlDialog",
+   * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
+   */
+  public menuActions(actions: Iterable<AbstractAction>): this {
+    return this.hasMenuActions.menuActions(actions);
+  }
+
+  /**
+   * Add the Ids of the inputs that should be reset.
+   */
+  public addTargetInputIds(id: string | Iterable<string>): this {
+    if (typeof id !== "string" && Symbol.iterator in Object(id)) {
+      for (const item of id) {
+        this.push("targetInputIds", item);
+      }
+
+      return this;
     }
 
-    public static make(title: string | null = null): ResetInputsAction {
-        return new ResetInputsAction(title);
-    }
+    return this.push("targetInputIds", id);
+  }
 
-    /**
-     * Add actions to display in the overflow menu of a Split action button.
-     */
-    public addMenuActions(action: AbstractAction | Iterable<AbstractAction>): this {
-        return this.hasMenuActions.addMenuActions(action);
-    }
+  /**
+   * The Ids of the inputs that should be reset.
+   */
+  public targetInputIds(targetInputIds: Iterable<string>): this {
+    return this.addTargetInputIds(targetInputIds);
+  }
 
-    /**
-     * The actions to display in the overflow menu of a Split action button.
-     * Valid values: "Action.Execute", "Action.InsertImage", "Action.OpenUrl", "Action.OpenUrlDialog",
-     * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
-     */
-    public menuActions(actions: Iterable<AbstractAction>): this {
-        return this.hasMenuActions.menuActions(actions);
-    }
-
-    /**
-     * Add the Ids of the inputs that should be reset.
-     */
-    public addTargetInputIds(id: string | Iterable<string>): this {
-        if (typeof id !== 'string' && Symbol.iterator in Object(id)) {
-            for (const item of id) {
-                this.push('targetInputIds', item);
-            }
-
-            return this;
-        }
-
-        return this.push('targetInputIds', id);
-    }
-
-    /**
-     * The Ids of the inputs that should be reset.
-     */
-    public targetInputIds(targetInputIds: Iterable<string>): this {
-        return this.addTargetInputIds(targetInputIds);
-    }
-
-    public getType(): string {
-        return 'Action.ResetInputs';
-    }
+  public getType(): string {
+    return "Action.ResetInputs";
+  }
 }

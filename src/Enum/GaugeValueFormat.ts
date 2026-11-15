@@ -1,4 +1,4 @@
 export enum GaugeValueFormat {
-    Percentage = 'Percentage',
-    Fraction = 'Fraction',
+  Percentage = "Percentage",
+  Fraction = "Fraction",
 }

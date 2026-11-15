@@ -1,5 +1,5 @@
 export enum PageAnimation {
-    Slide = 'Slide',
-    CrossFade = 'CrossFade',
-    None = 'None',
+  Slide = "Slide",
+  CrossFade = "CrossFade",
+  None = "None",
 }

@@ -1,5 +1,5 @@
 export enum ChoiceInputStyle {
-    Compact = 'compact',
-    Expanded = 'expanded',
-    Filtered = 'filtered',
+  Compact = "compact",
+  Expanded = "expanded",
+  Filtered = "filtered",
 }

@@ -1,11 +1,11 @@
-import { AbstractAction } from '../Action/AbstractAction.ts';
-import { Height } from '../Enum/Height.ts';
-import { HorizontalAlignment } from '../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { AbstractAction } from "../Action/AbstractAction.js";
+import { Height } from "../Enum/Height.js";
+import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * Displays a set of action, which can be placed anywhere in the card.
@@ -47,15 +47,18 @@ export class ActionSet extends AbstractBlockElement {
    * Add an action to the set.
    */
   public addActions(action: AbstractAction | Iterable<AbstractAction>): this {
-    if (!(action instanceof AbstractAction) && Symbol.iterator in Object(action)) {
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
       for (const item of action) {
-        this.push('actions', item);
+        this.push("actions", item);
       }
 
       return this;
     }
 
-    return this.push('actions', action);
+    return this.push("actions", action);
   }
 
   /**
@@ -69,6 +72,6 @@ export class ActionSet extends AbstractBlockElement {
   }
 
   public getType(): string {
-    return 'ActionSet';
+    return "ActionSet";
   }
 }

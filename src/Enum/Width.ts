@@ -1,4 +1,4 @@
 export enum Width {
-    Auto = 'auto',
-    Stretch = 'stretch',
+  Auto = "auto",
+  Stretch = "stretch",
 }

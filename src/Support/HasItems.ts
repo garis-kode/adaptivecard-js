@@ -1,62 +1,67 @@
-import { DonutChart } from '../Chart/Donut/DonutChart.ts';
-import { DonutChartData } from '../Chart/Donut/DonutChartData.ts';
-import { GaugeChart } from '../Chart/Gauge/GaugeChart.ts';
-import { GaugeChartLegend } from '../Chart/Gauge/GaugeChartLegend.ts';
-import { HorizontalBarChart } from '../Chart/HorizontalBar/HorizontalBarChart.ts';
-import { HorizontalBarChartDataValue } from '../Chart/HorizontalBar/HorizontalBarChartDataValue.ts';
-import { StackedHorizontalBarChart } from '../Chart/HorizontalBar/StackedHorizontalBarChart.ts';
-import { StackedHorizontalBarChartData } from '../Chart/HorizontalBar/StackedHorizontalBarChartData.ts';
-import { LineChart } from '../Chart/Line/LineChart.ts';
-import { LineChartData } from '../Chart/Line/LineChartData.ts';
-import { PieChart } from '../Chart/Pie/PieChart.ts';
-import { GroupedVerticalBarChart } from '../Chart/VerticalBar/GroupedVerticalBarChart.ts';
-import { GroupedVerticalBarChartData } from '../Chart/VerticalBar/GroupedVerticalBarChartData.ts';
-import { VerticalBarChart } from '../Chart/VerticalBar/VerticalBarChart.ts';
-import { VerticalBarChartDataValue } from '../Chart/VerticalBar/VerticalBarChartDataValue.ts';
-import { AbstractBlockElement } from '../Element/AbstractBlockElement.ts';
-import { Accordion } from '../Element/Accordion.ts';
-import { ActionSet } from '../Element/ActionSet.ts';
-import { Badge } from '../Element/Badge.ts';
-import { Carousel } from '../Element/Carousel/Carousel.ts';
-import { CodeBlock } from '../Element/CodeBlock.ts';
-import { ColumnSet } from '../Element/Column/ColumnSet.ts';
-import { CompoundButton } from '../Element/CompoundButton.ts';
-import { Container } from '../Element/Container.ts';
-import { Fact } from '../Element/Fact/Fact.ts';
-import { FactSet } from '../Element/Fact/FactSet.ts';
-import { Icon } from '../Element/Icon.ts';
-import { Image } from '../Element/Image/Image.ts';
-import { ImageSet } from '../Element/Image/ImageSet.ts';
-import { Media } from '../Element/Media/Media.ts';
-import { ProgressBar } from '../Element/Progress/ProgressBar.ts';
-import { ProgressRing } from '../Element/Progress/ProgressRing.ts';
-import { Rating } from '../Element/Rating.ts';
-import { RichTextBlock } from '../Element/RichTextBlock/RichTextBlock.ts';
-import { Table } from '../Element/Table/Table.ts';
-import { TabSet } from '../Element/TabSet.ts';
-import { TextBlock } from '../Element/TextBlock.ts';
-import { ChartColorSet } from '../Enum/ChartColorSet.ts';
-import { CodeBlockLanguage } from '../Enum/CodeBlockLanguage.ts';
-import { ChoiceSetInput } from '../Input/ChoiceSet/ChoiceSetInput.ts';
-import { DateInput } from '../Input/DateInput.ts';
-import { NumberInput } from '../Input/NumberInput.ts';
-import { RatingInput } from '../Input/RatingInput.ts';
-import { TextInput } from '../Input/TextInput.ts';
-import { TimeInput } from '../Input/TimeInput.ts';
-import { ToggleInput } from '../Input/ToggleInput.ts';
-import { Node } from '../Node.ts';
+import { DonutChart } from "../Chart/Donut/DonutChart.js";
+import { DonutChartData } from "../Chart/Donut/DonutChartData.js";
+import { GaugeChart } from "../Chart/Gauge/GaugeChart.js";
+import { GaugeChartLegend } from "../Chart/Gauge/GaugeChartLegend.js";
+import { HorizontalBarChart } from "../Chart/HorizontalBar/HorizontalBarChart.js";
+import { HorizontalBarChartDataValue } from "../Chart/HorizontalBar/HorizontalBarChartDataValue.js";
+import { StackedHorizontalBarChart } from "../Chart/HorizontalBar/StackedHorizontalBarChart.js";
+import { StackedHorizontalBarChartData } from "../Chart/HorizontalBar/StackedHorizontalBarChartData.js";
+import { LineChart } from "../Chart/Line/LineChart.js";
+import { LineChartData } from "../Chart/Line/LineChartData.js";
+import { PieChart } from "../Chart/Pie/PieChart.js";
+import { GroupedVerticalBarChart } from "../Chart/VerticalBar/GroupedVerticalBarChart.js";
+import { GroupedVerticalBarChartData } from "../Chart/VerticalBar/GroupedVerticalBarChartData.js";
+import { VerticalBarChart } from "../Chart/VerticalBar/VerticalBarChart.js";
+import { VerticalBarChartDataValue } from "../Chart/VerticalBar/VerticalBarChartDataValue.js";
+import { AbstractBlockElement } from "../Element/AbstractBlockElement.js";
+import { Accordion } from "../Element/Accordion.js";
+import { ActionSet } from "../Element/ActionSet.js";
+import { Badge } from "../Element/Badge.js";
+import { Carousel } from "../Element/Carousel/Carousel.js";
+import { CodeBlock } from "../Element/CodeBlock.js";
+import { ColumnSet } from "../Element/Column/ColumnSet.js";
+import { CompoundButton } from "../Element/CompoundButton.js";
+import { Container } from "../Element/Container.js";
+import { Fact } from "../Element/Fact/Fact.js";
+import { FactSet } from "../Element/Fact/FactSet.js";
+import { Icon } from "../Element/Icon.js";
+import { Image } from "../Element/Image/Image.js";
+import { ImageSet } from "../Element/Image/ImageSet.js";
+import { Media } from "../Element/Media/Media.js";
+import { ProgressBar } from "../Element/Progress/ProgressBar.js";
+import { ProgressRing } from "../Element/Progress/ProgressRing.js";
+import { Rating } from "../Element/Rating.js";
+import { RichTextBlock } from "../Element/RichTextBlock/RichTextBlock.js";
+import { Table } from "../Element/Table/Table.js";
+import { TabSet } from "../Element/TabSet.js";
+import { TextBlock } from "../Element/TextBlock.js";
+import { ChartColorSet } from "../Enum/ChartColorSet.js";
+import { CodeBlockLanguage } from "../Enum/CodeBlockLanguage.js";
+import { ChoiceSetInput } from "../Input/ChoiceSet/ChoiceSetInput.js";
+import { DateInput } from "../Input/DateInput.js";
+import { NumberInput } from "../Input/NumberInput.js";
+import { RatingInput } from "../Input/RatingInput.js";
+import { TextInput } from "../Input/TextInput.js";
+import { TimeInput } from "../Input/TimeInput.js";
+import { ToggleInput } from "../Input/ToggleInput.js";
+import { Node } from "../Node.js";
 
 export class HasItems<T extends Node> {
   constructor(
     private readonly host: T,
-    private readonly itemsKey: string = 'items',
+    private readonly itemsKey: string = "items",
   ) {}
 
   /**
    * Add one or more block elements.
    */
-  public addItems(element: AbstractBlockElement | Iterable<AbstractBlockElement>): T {
-    if (!(element instanceof AbstractBlockElement) && Symbol.iterator in Object(element)) {
+  public addItems(
+    element: AbstractBlockElement | Iterable<AbstractBlockElement>,
+  ): T {
+    if (
+      !(element instanceof AbstractBlockElement) &&
+      Symbol.iterator in Object(element)
+    ) {
       for (const item of element) {
         this.host.pushProperty(this.itemsKey, item);
       }
@@ -87,7 +92,10 @@ export class HasItems<T extends Node> {
   /**
    * Add a standalone image element.
    */
-  public addImage(url: string, configure: ((image: Image) => unknown) | null = null): T {
+  public addImage(
+    url: string,
+    configure: ((image: Image) => unknown) | null = null,
+  ): T {
     const image = new Image().url(url);
 
     return this.addItems(this.configure(image, configure));
@@ -105,7 +113,9 @@ export class HasItems<T extends Node> {
   /**
    * Add a container for other elements.
    */
-  public addContainer(configure: ((container: Container) => unknown) | null = null): T {
+  public addContainer(
+    configure: ((container: Container) => unknown) | null = null,
+  ): T {
     return this.addItems(this.configure(new Container(), configure));
   }
 
@@ -113,7 +123,9 @@ export class HasItems<T extends Node> {
    * Add a set of columns, splitting the available horizontal space so elements
    * can be organized in a row.
    */
-  public addColumnSet(configure: ((columnSet: ColumnSet) => unknown) | null = null): T {
+  public addColumnSet(
+    configure: ((columnSet: ColumnSet) => unknown) | null = null,
+  ): T {
     return this.addItems(this.configure(new ColumnSet(), configure));
   }
 
@@ -135,7 +147,9 @@ export class HasItems<T extends Node> {
    * Add a set of images, displayed side-by-side and wrapped across multiple rows
    * as needed.
    */
-  public addImageSet(configure: ((imageSet: ImageSet) => unknown) | null = null): T {
+  public addImageSet(
+    configure: ((imageSet: ImageSet) => unknown) | null = null,
+  ): T {
     return this.addItems(this.configure(new ImageSet(), configure));
   }
 
@@ -156,7 +170,9 @@ export class HasItems<T extends Node> {
   /**
    * Add an action set, which can be placed anywhere in the card.
    */
-  public addActionSet(configure: ((actionSet: ActionSet) => unknown) | null = null): T {
+  public addActionSet(
+    configure: ((actionSet: ActionSet) => unknown) | null = null,
+  ): T {
     return this.addItems(this.configure(new ActionSet(), configure));
   }
 
@@ -174,7 +190,9 @@ export class HasItems<T extends Node> {
   /**
    * Add a carousel with sliding pages.
    */
-  public addCarousel(configure: ((carousel: Carousel) => unknown) | null = null): T {
+  public addCarousel(
+    configure: ((carousel: Carousel) => unknown) | null = null,
+  ): T {
     return this.addItems(this.configure(new Carousel(), configure));
   }
 
@@ -182,7 +200,9 @@ export class HasItems<T extends Node> {
    * Add an accordion, allowing the end-user to toggle the display of content by
    * expanding or collapsing pages.
    */
-  public addAccordion(configure: ((accordion: Accordion) => unknown) | null = null): T {
+  public addAccordion(
+    configure: ((accordion: Accordion) => unknown) | null = null,
+  ): T {
     return this.addItems(this.configure(new Accordion(), configure));
   }
 
@@ -224,7 +244,10 @@ export class HasItems<T extends Node> {
    * Add a standalone icon element. Icons can be picked from the vast Adaptive Card
    * icon catalog.
    */
-  public addIcon(name: string, configure: ((icon: Icon) => unknown) | null = null): T {
+  public addIcon(
+    name: string,
+    configure: ((icon: Icon) => unknown) | null = null,
+  ): T {
     const icon = new Icon().name(name);
 
     return this.addItems(this.configure(icon, configure));
@@ -385,7 +408,10 @@ export class HasItems<T extends Node> {
     configure: ((gaugeChart: GaugeChart) => unknown) | null = null,
   ): T {
     return this.addItems(
-      this.configure(new GaugeChart(title, showTitle, value, segments), configure),
+      this.configure(
+        new GaugeChart(title, showTitle, value, segments),
+        configure,
+      ),
     );
   }
 
@@ -399,7 +425,8 @@ export class HasItems<T extends Node> {
     xAxisTitle: string | null = null,
     yAxisTitle: string | null = null,
     colorSet: ChartColorSet | null = null,
-    configure: ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
+    configure:
+      ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
   ): T {
     return this.addItems(
       this.configure(

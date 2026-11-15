@@ -1,7 +1,7 @@
-import { Height } from '../Enum/Height.ts';
-import { AccordionPage } from '../Other/AccordionPage.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { Height } from "../Enum/Height.js";
+import { AccordionPage } from "../Other/AccordionPage.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * An element that allows the end-user to toggle the display of content by expanding
@@ -26,14 +26,14 @@ export class Accordion extends AbstractBlockElement {
    * Controls whether all accordion pages can be collapsed at the same time.
    */
   public allowCollapseAllPages(allow = true): this {
-    return this.set('allowCollapseAllPages', allow);
+    return this.set("allowCollapseAllPages", allow);
   }
 
   /**
    * Controls whether multiple accordion pages can be expanded at the same time.
    */
   public allowMultipleExpandedPages(allow = true): this {
-    return this.set('allowMultipleExpandedPages', allow);
+    return this.set("allowMultipleExpandedPages", allow);
   }
 
   /**
@@ -42,13 +42,13 @@ export class Accordion extends AbstractBlockElement {
   public addPages(page: AccordionPage | Iterable<AccordionPage>): this {
     if (!(page instanceof AccordionPage) && Symbol.iterator in Object(page)) {
       for (const item of page) {
-        this.push('pages', item);
+        this.push("pages", item);
       }
 
       return this;
     }
 
-    return this.push('pages', page);
+    return this.push("pages", page);
   }
 
   /**
@@ -64,10 +64,10 @@ export class Accordion extends AbstractBlockElement {
    * Valid values: "<number>px".
    */
   public minHeight(minHeight: string): this {
-    return this.set('minHeight', minHeight);
+    return this.set("minHeight", minHeight);
   }
 
   public getType(): string {
-    return 'Accordion';
+    return "Accordion";
   }
 }

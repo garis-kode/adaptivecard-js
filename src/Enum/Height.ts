@@ -1,4 +1,4 @@
 export enum Height {
-    Auto = 'auto',
-    Stretch = 'stretch',
+  Auto = "auto",
+  Stretch = "stretch",
 }

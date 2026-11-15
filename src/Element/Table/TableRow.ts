@@ -1,15 +1,15 @@
-import { ContainerStyle } from '../../Enum/ContainerStyle.ts';
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { VerticalAlignment } from '../../Enum/VerticalAlignment.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSeparator } from '../../Support/HasSeparator.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractElement } from '../AbstractElement.ts';
-import { TextBlock } from '../TextBlock.ts';
-import { TableCell } from './TableCell.ts';
+import { ContainerStyle } from "../../Enum/ContainerStyle.js";
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSeparator } from "../../Support/HasSeparator.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractElement } from "../AbstractElement.js";
+import { TextBlock } from "../TextBlock.js";
+import { TableCell } from "./TableCell.js";
 
 /**
  * Represents a row of cells in a table.
@@ -61,13 +61,13 @@ export class TableRow extends AbstractElement {
   public addCells(cell: TableCell | Iterable<TableCell>): this {
     if (!(cell instanceof TableCell) && Symbol.iterator in Object(cell)) {
       for (const item of cell) {
-        this.push('cells', item);
+        this.push("cells", item);
       }
 
       return this;
     }
 
-    return this.push('cells', cell);
+    return this.push("cells", cell);
   }
 
   /**
@@ -97,21 +97,21 @@ export class TableRow extends AbstractElement {
    * Valid values: "default", "emphasis", "accent", "good", "attention", "warning".
    */
   public style(style: ContainerStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
    * Controls if the container should have rounded corners.
    */
   public roundedCorners(value = true): this {
-    return this.set('roundedCorners', value);
+    return this.set("roundedCorners", value);
   }
 
   /**
    * Controls if a border should be displayed around the container.
    */
   public showBorder(value = true): this {
-    return this.set('showBorder', value);
+    return this.set("showBorder", value);
   }
 
   /**
@@ -120,7 +120,7 @@ export class TableRow extends AbstractElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalCellContentAlignment(alignment: HorizontalAlignment): this {
-    return this.set('horizontalCellContentAlignment', alignment);
+    return this.set("horizontalCellContentAlignment", alignment);
   }
 
   /**
@@ -129,10 +129,10 @@ export class TableRow extends AbstractElement {
    * Valid values: "Top", "Center", "Bottom".
    */
   public verticalCellContentAlignment(alignment: VerticalAlignment): this {
-    return this.set('verticalCellContentAlignment', alignment);
+    return this.set("verticalCellContentAlignment", alignment);
   }
 
   public getType(): string {
-    return 'TableRow';
+    return "TableRow";
   }
 }

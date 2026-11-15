@@ -1,8 +1,8 @@
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { VerticalAlignment } from '../../Enum/VerticalAlignment.ts';
-import { Width } from '../../Enum/Width.ts';
-import { Node } from '../../Node.ts';
-import { HasKey } from '../../Support/HasKey.ts';
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
+import { Width } from "../../Enum/Width.js";
+import { Node } from "../../Node.js";
+import { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Defines a column in a Table element.
@@ -17,7 +17,9 @@ export class TableColumnDefinition extends Node {
     }
   }
 
-  public static make(width: Width | string | number | null = null): TableColumnDefinition {
+  public static make(
+    width: Width | string | number | null = null,
+  ): TableColumnDefinition {
     return new TableColumnDefinition(width);
   }
 
@@ -36,7 +38,7 @@ export class TableColumnDefinition extends Node {
    * Valid values: "auto", "<number>px".
    */
   public width(width: Width | string | number): this {
-    return this.set('width', width);
+    return this.set("width", width);
   }
 
   /**
@@ -45,7 +47,7 @@ export class TableColumnDefinition extends Node {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalCellContentAlignment(alignment: HorizontalAlignment): this {
-    return this.set('horizontalCellContentAlignment', alignment);
+    return this.set("horizontalCellContentAlignment", alignment);
   }
 
   /**
@@ -54,7 +56,7 @@ export class TableColumnDefinition extends Node {
    * Valid values: "Top", "Center", "Bottom".
    */
   public verticalCellContentAlignment(alignment: VerticalAlignment): this {
-    return this.set('verticalCellContentAlignment', alignment);
+    return this.set("verticalCellContentAlignment", alignment);
   }
 
   public getType(): string | null {

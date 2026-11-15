@@ -6,6 +6,7 @@
 
 <p align="center">
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></a>
+    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-339933.svg?style=flat-square" alt="Node.js"></a>
     <a href="https://bun.sh"><img src="https://img.shields.io/badge/bun-%3E%3D1.0-f9f1e1.svg?style=flat-square" alt="Bun"></a>
     <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5%2B%20%7C%207%2B-3178C6.svg?style=flat-square" alt="TypeScript"></a>
 </p>
@@ -14,15 +15,17 @@
 
 ## Overview
 
-A fluent, fully typed TypeScript builder for Microsoft Adaptive Cards (v1.6).
+A fluent, fully typed TypeScript/JavaScript builder for Microsoft Adaptive Cards (v1.6), supporting both ESM (`import`) and CommonJS (`require`) across Node.js ($\ge 20$), Bun ($\ge 1.0$), and modern bundlers.
 
 ---
 
 ## Installation
 
-Install the package via Bun (or npm/pnpm/yarn):
+Install the package via npm, pnpm, yarn, or Bun:
 
 ```bash
+npm install adaptivecard-js
+# or
 bun add adaptivecard-js
 ```
 
@@ -34,19 +37,18 @@ Create an Adaptive Card with a formatted text block and an action button, and ex
 
 ```ts
 import {
-    AdaptiveCard,
-    OpenUrlAction,
-    TextBlock,
-    TextSize,
-    TextWeight,
-} from 'adaptivecard-js';
+  AdaptiveCard,
+  OpenUrlAction,
+  TextBlock,
+  TextSize,
+  TextWeight,
+} from "adaptivecard-js";
 
-const card = AdaptiveCard.make('1.6') // Version defaults to '1.6' if omitted
-    .addTextBlock('Hello from Adaptive Cards!', (t: TextBlock) => {
-        t.size(TextSize.Large)
-            .weight(TextWeight.Bolder);
-    })
-    .addActions(OpenUrlAction.make('https://adaptivecards.io/', 'Learn More'));
+const card = AdaptiveCard.make("1.6") // Version defaults to '1.6' if omitted
+  .addTextBlock("Hello from Adaptive Cards!", (t: TextBlock) => {
+    t.size(TextSize.Large).weight(TextWeight.Bolder);
+  })
+  .addActions(OpenUrlAction.make("https://adaptivecards.io/", "Learn More"));
 
 // Output JSON string
 console.log(card.toJson());
@@ -56,24 +58,24 @@ console.log(card.toJson());
 
 ```json
 {
-    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
-    "type": "AdaptiveCard",
-    "version": "1.6",
-    "body": [
-        {
-            "type": "TextBlock",
-            "text": "Hello from Adaptive Cards!",
-            "size": "Large",
-            "weight": "Bolder"
-        }
-    ],
-    "actions": [
-        {
-            "type": "Action.OpenUrl",
-            "url": "https://adaptivecards.io/",
-            "title": "Learn More"
-        }
-    ]
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Hello from Adaptive Cards!",
+      "size": "Large",
+      "weight": "Bolder"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "url": "https://adaptivecards.io/",
+      "title": "Learn More"
+    }
+  ]
 }
 ```
 
@@ -81,7 +83,7 @@ console.log(card.toJson());
 
 ## Documentation
 
-For comprehensive schema specifications, interactive designer, and payload samples, refer to the official [Adaptive Cards Documentation](https://adaptivecards.microsoft.com/) and the local [`docs/`](docs/) directory.
+For comprehensive schema specifications, interactive designer, and payload samples, refer to the official [Adaptive Cards Documentation](https://adaptivecards.microsoft.com/) and the repository [`docs/`](https://github.com/garis-kode/adaptivecard-js/tree/main/docs) directory.
 
 ---
 
@@ -95,9 +97,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 Install development dependencies with `bun install`.
 
-- `bun test` runs the test suite.
-- `bun run typecheck` checks TypeScript types using `bun check`.
-- `bun run check` runs tests and type checking.
+- `bun test` runs the unit and regression test suite.
+- `bun run typecheck` checks TypeScript types using `bun --check`.
+- `bun run build` compiles dual ESM (`dist/esm`) and CommonJS (`dist/cjs`) outputs and `.d.ts` declarations.
+- `bun run fmt` formats repository files (`bun run fmt:check` verifies formatting).
+- `bun run check` runs formatting check, type checking, unit tests, and build.
+- `bun run test:pack` packs the release tarball and verifies file allowlist, Node ESM/CJS imports, Bun execution, and TypeScript (`NodeNext`) consumer compilation.
 
 ---
 

@@ -1,11 +1,11 @@
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { AbstractInlineElement } from '../AbstractInlineElement.ts';
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { AbstractInlineElement } from "../AbstractInlineElement.js";
 
 /**
  * A rich text block that displays formatted text.
@@ -15,7 +15,11 @@ export class RichTextBlock extends AbstractBlockElement {
   private readonly hasHorizontalAlignment = new HasHorizontalAlignment(this);
   private readonly hasSpacing = new HasSpacing(this);
 
-  constructor(...inlines: Array<AbstractInlineElement | Iterable<AbstractInlineElement> | null>) {
+  constructor(
+    ...inlines: Array<
+      AbstractInlineElement | Iterable<AbstractInlineElement> | null
+    >
+  ) {
     super();
     for (const inline of inlines) {
       if (inline !== null) {
@@ -25,7 +29,9 @@ export class RichTextBlock extends AbstractBlockElement {
   }
 
   public static make(
-    ...inlines: Array<AbstractInlineElement | Iterable<AbstractInlineElement> | null>
+    ...inlines: Array<
+      AbstractInlineElement | Iterable<AbstractInlineElement> | null
+    >
   ): RichTextBlock {
     return new RichTextBlock(...inlines);
   }
@@ -57,16 +63,21 @@ export class RichTextBlock extends AbstractBlockElement {
   /**
    * Add inlines making up the rich text block.
    */
-  public addInlines(inline: AbstractInlineElement | Iterable<AbstractInlineElement>): this {
-    if (!(inline instanceof AbstractInlineElement) && Symbol.iterator in Object(inline)) {
+  public addInlines(
+    inline: AbstractInlineElement | Iterable<AbstractInlineElement>,
+  ): this {
+    if (
+      !(inline instanceof AbstractInlineElement) &&
+      Symbol.iterator in Object(inline)
+    ) {
       for (const item of inline) {
-        this.push('inlines', item);
+        this.push("inlines", item);
       }
 
       return this;
     }
 
-    return this.push('inlines', inline);
+    return this.push("inlines", inline);
   }
 
   /**
@@ -74,7 +85,9 @@ export class RichTextBlock extends AbstractBlockElement {
    * Valid values: "TextRun", "IconRun", "ImageRun", "CitationRun".
    */
   public inlines(
-    ...inlines: Array<AbstractInlineElement | Iterable<AbstractInlineElement> | null>
+    ...inlines: Array<
+      AbstractInlineElement | Iterable<AbstractInlineElement> | null
+    >
   ): this {
     for (const inline of inlines) {
       if (inline !== null) {
@@ -89,10 +102,10 @@ export class RichTextBlock extends AbstractBlockElement {
    * The Id of the input the RichTextBlock should act as the label of.
    */
   public labelFor(inputId: string): this {
-    return this.set('labelFor', inputId);
+    return this.set("labelFor", inputId);
   }
 
   public getType(): string {
-    return 'RichTextBlock';
+    return "RichTextBlock";
   }
 }

@@ -1,4 +1,4 @@
 export enum IconStyle {
-    Regular = 'Regular',
-    Filled = 'Filled',
+  Regular = "Regular",
+  Filled = "Filled",
 }

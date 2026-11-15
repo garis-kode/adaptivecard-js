@@ -1,4 +1,4 @@
 export enum RatingSize {
-    Medium = 'Medium',
-    Large = 'Large',
+  Medium = "Medium",
+  Large = "Large",
 }

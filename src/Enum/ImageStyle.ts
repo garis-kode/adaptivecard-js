@@ -1,5 +1,5 @@
 export enum ImageStyle {
-    Default = 'Default',
-    Person = 'Person',
-    RoundedCorners = 'RoundedCorners',
+  Default = "Default",
+  Person = "Person",
+  RoundedCorners = "RoundedCorners",
 }

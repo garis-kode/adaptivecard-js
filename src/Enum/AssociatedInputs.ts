@@ -1,4 +1,4 @@
 export enum AssociatedInputs {
-    Auto = 'auto',
-    None = 'none',
+  Auto = "auto",
+  None = "none",
 }

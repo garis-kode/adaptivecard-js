@@ -1,4 +1,4 @@
 export enum RatingColor {
-    Neutral = 'Neutral',
-    Marigold = 'Marigold',
+  Neutral = "Neutral",
+  Marigold = "Marigold",
 }

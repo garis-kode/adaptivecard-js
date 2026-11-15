@@ -1,5 +1,5 @@
 export enum TextWeight {
-    Default = 'Default',
-    Lighter = 'Lighter',
-    Bolder = 'Bolder',
+  Default = "Default",
+  Lighter = "Lighter",
+  Bolder = "Bolder",
 }

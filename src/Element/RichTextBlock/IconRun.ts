@@ -1,8 +1,8 @@
-import { AbstractAction } from '../../Action/AbstractAction.ts';
-import { Colors } from '../../Enum/Colors.ts';
-import { IconStyle } from '../../Enum/IconStyle.ts';
-import { TextSize } from '../../Enum/TextSize.ts';
-import { AbstractInlineElement } from '../AbstractInlineElement.ts';
+import { AbstractAction } from "../../Action/AbstractAction.js";
+import { Colors } from "../../Enum/Colors.js";
+import { IconStyle } from "../../Enum/IconStyle.js";
+import { TextSize } from "../../Enum/TextSize.js";
+import { AbstractInlineElement } from "../AbstractInlineElement.js";
 
 /**
  * An inline icon inside a RichTextBlock element.
@@ -21,7 +21,7 @@ export class IconRun extends AbstractInlineElement {
    * The name of the inline icon to display.
    */
   public name(name: string): this {
-    return this.set('name', name);
+    return this.set("name", name);
   }
 
   /**
@@ -29,7 +29,7 @@ export class IconRun extends AbstractInlineElement {
    * Valid values: "Default", "Dark", "Light", "Accent", "Good", "Warning", "Attention".
    */
   public color(color: Colors): this {
-    return this.set('color', color);
+    return this.set("color", color);
   }
 
   /**
@@ -37,7 +37,7 @@ export class IconRun extends AbstractInlineElement {
    * Valid values: "Small", "Default", "Medium", "Large", "ExtraLarge".
    */
   public size(size: TextSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -45,7 +45,7 @@ export class IconRun extends AbstractInlineElement {
    * Valid values: "Regular", "Filled".
    */
   public style(style: IconStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
@@ -55,10 +55,10 @@ export class IconRun extends AbstractInlineElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'IconRun';
+    return "IconRun";
   }
 }

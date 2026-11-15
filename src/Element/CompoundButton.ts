@@ -1,12 +1,12 @@
-import { AbstractAction } from '../Action/AbstractAction.ts';
-import { Height } from '../Enum/Height.ts';
-import { HorizontalAlignment } from '../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { IconInfo } from '../Other/IconInfo.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { AbstractAction } from "../Action/AbstractAction.js";
+import { Height } from "../Enum/Height.js";
+import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { IconInfo } from "../Other/IconInfo.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * A special type of button with an icon, title and description.
@@ -61,21 +61,21 @@ export class CompoundButton extends AbstractBlockElement {
    * The title of the button.
    */
   public title(title: string): this {
-    return this.set('title', title);
+    return this.set("title", title);
   }
 
   /**
    * The description text of the button.
    */
   public description(description: string): this {
-    return this.set('description', description);
+    return this.set("description", description);
   }
 
   /**
    * The badge to show on the button.
    */
   public badge(badge: string): this {
-    return this.set('badge', badge);
+    return this.set("badge", badge);
   }
 
   /**
@@ -83,7 +83,7 @@ export class CompoundButton extends AbstractBlockElement {
    * Valid values: "IconInfo".
    */
   public icon(icon: IconInfo): this {
-    return this.set('icon', icon);
+    return this.set("icon", icon);
   }
 
   /**
@@ -93,10 +93,10 @@ export class CompoundButton extends AbstractBlockElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'CompoundButton';
+    return "CompoundButton";
   }
 }

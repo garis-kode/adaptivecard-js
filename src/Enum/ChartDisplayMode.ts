@@ -1,5 +1,5 @@
 export enum ChartDisplayMode {
-    AbsoluteWithAxis = 'AbsoluteWithAxis',
-    AbsoluteNoAxis = 'AbsoluteNoAxis',
-    PartToWhole = 'PartToWhole',
+  AbsoluteWithAxis = "AbsoluteWithAxis",
+  AbsoluteNoAxis = "AbsoluteNoAxis",
+  PartToWhole = "PartToWhole",
 }

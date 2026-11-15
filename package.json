@@ -15,7 +15,7 @@
   "homepage": "https://github.com/garis-kode/adaptivecard-js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/garis-kode/adaptivecard-js.git"
+    "url": "git+https://github.com/garis-kode/adaptivecard-js.git"
   },
   "bugs": {
     "url": "https://github.com/garis-kode/adaptivecard-js/issues"
@@ -24,21 +24,47 @@
     "name": "Garis Kode",
     "email": "office@gariskode.com"
   },
-  "module": "index.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "exports": {
-    ".": "./index.ts"
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=20",
+    "bun": ">=1.0"
   },
   "scripts": {
+    "build": "bun run scripts/build.ts",
     "test": "bun test",
+    "test:pack": "bun run scripts/test-pack.ts",
     "typecheck": "bun --check",
     "fmt": "bun fmt",
-    "fmt:check": "bun fmt --check"
+    "fmt:check": "bun fmt --check",
+    "check": "bun run fmt:check && bun run typecheck && bun test && bun run build",
+    "prepack": "bun run build",
+    "prepublishOnly": "bun run check && bun run test:pack"
   },
   "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
+    "@types/bun": "latest",
     "typescript": "^7"
   }
 }

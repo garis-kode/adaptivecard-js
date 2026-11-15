@@ -1,5 +1,5 @@
-import { Node } from '../../Node.ts';
-import { HasKey } from '../../Support/HasKey.ts';
+import { Node } from "../../Node.js";
+import { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Defines the source URL of a media stream. YouTube, Dailymotion, Vimeo, and Microsoft Stream URLs are supported.
@@ -17,7 +17,10 @@ export class MediaSource extends Node {
     }
   }
 
-  public static make(url: string | null = null, mimeType: string | null = null): MediaSource {
+  public static make(
+    url: string | null = null,
+    mimeType: string | null = null,
+  ): MediaSource {
     return new MediaSource(url, mimeType);
   }
 
@@ -32,14 +35,14 @@ export class MediaSource extends Node {
    * The URL of the source.
    */
   public url(url: string): this {
-    return this.set('url', url);
+    return this.set("url", url);
   }
 
   /**
    * The MIME type of the source.
    */
   public mimeType(mimeType: string): this {
-    return this.set('mimeType', mimeType);
+    return this.set("mimeType", mimeType);
   }
 
   public getType(): string | null {

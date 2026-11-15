@@ -1,5 +1,5 @@
-import { Node } from '../../Node.ts';
-import { HasKey } from '../../Support/HasKey.ts';
+import { Node } from "../../Node.js";
+import { HasKey } from "../../Support/HasKey.js";
 
 /**
  * A fact in a FactSet element.
@@ -28,14 +28,14 @@ export class Fact extends Node {
    * The fact's title.
    */
   public title(title: string): this {
-    return this.set('title', title);
+    return this.set("title", title);
   }
 
   /**
    * The fact's value.
    */
   public value(value: string): this {
-    return this.set('value', value);
+    return this.set("value", value);
   }
 
   public getType(): string | null {

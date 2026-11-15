@@ -1,16 +1,16 @@
-import { ContainerStyle } from '../../Enum/ContainerStyle.ts';
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { VerticalAlignment } from '../../Enum/VerticalAlignment.ts';
-import { Width } from '../../Enum/Width.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { TextBlock } from '../TextBlock.ts';
-import { TableColumnDefinition } from './TableColumnDefinition.ts';
-import { TableRow } from './TableRow.ts';
+import { ContainerStyle } from "../../Enum/ContainerStyle.js";
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
+import { Width } from "../../Enum/Width.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { TextBlock } from "../TextBlock.js";
+import { TableColumnDefinition } from "./TableColumnDefinition.js";
+import { TableRow } from "./TableRow.js";
 
 /**
  * Use tables to display data in a tabular way, with rows, columns and cells.
@@ -67,16 +67,21 @@ export class Table extends AbstractBlockElement {
   /**
    * Add columns to the table.
    */
-  public addColumns(column: TableColumnDefinition | Iterable<TableColumnDefinition>): this {
-    if (!(column instanceof TableColumnDefinition) && Symbol.iterator in Object(column)) {
+  public addColumns(
+    column: TableColumnDefinition | Iterable<TableColumnDefinition>,
+  ): this {
+    if (
+      !(column instanceof TableColumnDefinition) &&
+      Symbol.iterator in Object(column)
+    ) {
       for (const item of column) {
-        this.push('columns', item);
+        this.push("columns", item);
       }
 
       return this;
     }
 
-    return this.push('columns', column);
+    return this.push("columns", column);
   }
 
   /**
@@ -93,13 +98,13 @@ export class Table extends AbstractBlockElement {
   public addRows(row: TableRow | Iterable<TableRow>): this {
     if (!(row instanceof TableRow) && Symbol.iterator in Object(row)) {
       for (const item of row) {
-        this.push('rows', item);
+        this.push("rows", item);
       }
 
       return this;
     }
 
-    return this.push('rows', row);
+    return this.push("rows", row);
   }
 
   /**
@@ -126,28 +131,28 @@ export class Table extends AbstractBlockElement {
    * Controls if grid lines should be displayed.
    */
   public showGridLines(value = true): this {
-    return this.set('showGridLines', value);
+    return this.set("showGridLines", value);
   }
 
   /**
    * Controls whether the first row of the table should be treated as a header.
    */
   public firstRowAsHeaders(value = true): this {
-    return this.set('firstRowAsHeaders', value);
+    return this.set("firstRowAsHeaders", value);
   }
 
   /**
    * Controls if the container should have rounded corners.
    */
   public roundedCorners(value = true): this {
-    return this.set('roundedCorners', value);
+    return this.set("roundedCorners", value);
   }
 
   /**
    * Controls if a border should be displayed around the container.
    */
   public showBorder(value = true): this {
-    return this.set('showBorder', value);
+    return this.set("showBorder", value);
   }
 
   /**
@@ -158,7 +163,7 @@ export class Table extends AbstractBlockElement {
    * Valid values: "auto", "<number>px".
    */
   public minWidth(width: Width | string): this {
-    return this.set('minWidth', width);
+    return this.set("minWidth", width);
   }
 
   /**
@@ -167,7 +172,7 @@ export class Table extends AbstractBlockElement {
    * Valid values: "default", "emphasis", "accent", "good", "attention", "warning".
    */
   public style(style: ContainerStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
@@ -175,7 +180,7 @@ export class Table extends AbstractBlockElement {
    * Valid values: "default", "emphasis", "accent", "good", "attention", "warning".
    */
   public gridStyle(style: ContainerStyle): this {
-    return this.set('gridStyle', style);
+    return this.set("gridStyle", style);
   }
 
   /**
@@ -183,7 +188,7 @@ export class Table extends AbstractBlockElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalCellContentAlignment(alignment: HorizontalAlignment): this {
-    return this.set('horizontalCellContentAlignment', alignment);
+    return this.set("horizontalCellContentAlignment", alignment);
   }
 
   /**
@@ -191,10 +196,10 @@ export class Table extends AbstractBlockElement {
    * Valid values: "Top", "Center", "Bottom".
    */
   public verticalCellContentAlignment(alignment: VerticalAlignment): this {
-    return this.set('verticalCellContentAlignment', alignment);
+    return this.set("verticalCellContentAlignment", alignment);
   }
 
   public getType(): string {
-    return 'Table';
+    return "Table";
   }
 }

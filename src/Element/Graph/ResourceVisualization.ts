@@ -1,33 +1,33 @@
-import { Node } from '../../Node.ts';
-import { HasKey } from '../../Support/HasKey.ts';
+import { Node } from "../../Node.js";
+import { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Represents a visualization of a resource.
  */
 export class ResourceVisualization extends Node {
-    private readonly hasKey = new HasKey(this);
+  private readonly hasKey = new HasKey(this);
 
-    public static make(): ResourceVisualization {
-        return new ResourceVisualization();
-    }
+  public static make(): ResourceVisualization {
+    return new ResourceVisualization();
+  }
 
-    /**
-     * Defines an optional key for the object. Keys are seldom needed, but in
-     * some scenarios, specifying keys can help maintain visual state in the
-     * host application.
-     */
-    public key(key: string): this {
-        return this.hasKey.key(key);
-    }
+  /**
+   * Defines an optional key for the object. Keys are seldom needed, but in
+   * some scenarios, specifying keys can help maintain visual state in the
+   * host application.
+   */
+  public key(key: string): this {
+    return this.hasKey.key(key);
+  }
 
-    /**
-     * The media associated with the resource.
-     */
-    public media(media: string): this {
-        return this.set('media', media);
-    }
+  /**
+   * The media associated with the resource.
+   */
+  public media(media: string): this {
+    return this.set("media", media);
+  }
 
-    public getType(): string | null {
-        return null;
-    }
+  public getType(): string | null {
+    return null;
+  }
 }

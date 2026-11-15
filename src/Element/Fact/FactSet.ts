@@ -1,9 +1,9 @@
-import { Height } from '../../Enum/Height.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { Fact } from './Fact.ts';
+import { Height } from "../../Enum/Height.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { Fact } from "./Fact.js";
 
 /**
  * A set of facts, displayed as a table or a vertical list when horizontal space is constrained.
@@ -38,13 +38,13 @@ export class FactSet extends AbstractBlockElement {
   public addFacts(fact: Fact | Iterable<Fact>): this {
     if (!(fact instanceof Fact) && Symbol.iterator in Object(fact)) {
       for (const item of fact) {
-        this.push('facts', item);
+        this.push("facts", item);
       }
 
       return this;
     }
 
-    return this.push('facts', fact);
+    return this.push("facts", fact);
   }
 
   /**
@@ -63,6 +63,6 @@ export class FactSet extends AbstractBlockElement {
   }
 
   public getType(): string {
-    return 'FactSet';
+    return "FactSet";
   }
 }

@@ -1,14 +1,14 @@
-import { AbstractAction } from '../../Action/AbstractAction.ts';
-import { ContainerStyle } from '../../Enum/ContainerStyle.ts';
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { Width } from '../../Enum/Width.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { Column } from './Column.ts';
+import { AbstractAction } from "../../Action/AbstractAction.js";
+import { ContainerStyle } from "../../Enum/ContainerStyle.js";
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { Width } from "../../Enum/Width.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { Column } from "./Column.js";
 
 /**
  * Splits the available horizontal space into separate columns, so elements can be organized in a row.
@@ -52,13 +52,13 @@ export class ColumnSet extends AbstractBlockElement {
   public addColumns(column: Column | Iterable<Column>): this {
     if (!(column instanceof Column) && Symbol.iterator in Object(column)) {
       for (const item of column) {
-        this.push('columns', item);
+        this.push("columns", item);
       }
 
       return this;
     }
 
-    return this.push('columns', column);
+    return this.push("columns", column);
   }
 
   /**
@@ -93,14 +93,14 @@ export class ColumnSet extends AbstractBlockElement {
    * Valid values: "default", "emphasis", "accent", "good", "attention", "warning".
    */
   public style(style: ContainerStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
    * Controls if the container should bleed into its parent. A bleeding container extends into its parent's padding.
    */
   public bleed(bleed = true): this {
-    return this.set('bleed', bleed);
+    return this.set("bleed", bleed);
   }
 
   /**
@@ -108,7 +108,7 @@ export class ColumnSet extends AbstractBlockElement {
    * Valid values: "<number>px".
    */
   public minHeight(minHeight: string): this {
-    return this.set('minHeight', minHeight);
+    return this.set("minHeight", minHeight);
   }
 
   /**
@@ -119,21 +119,21 @@ export class ColumnSet extends AbstractBlockElement {
    * Valid values: "auto", "<number>px".
    */
   public minWidth(minWidth: Width | string): this {
-    return this.set('minWidth', minWidth);
+    return this.set("minWidth", minWidth);
   }
 
   /**
    * Controls if the container should have rounded corners.
    */
   public roundedCorners(value = true): this {
-    return this.set('roundedCorners', value);
+    return this.set("roundedCorners", value);
   }
 
   /**
    * Controls if a border should be displayed around the container.
    */
   public showBorder(value = true): this {
-    return this.set('showBorder', value);
+    return this.set("showBorder", value);
   }
 
   /**
@@ -143,10 +143,10 @@ export class ColumnSet extends AbstractBlockElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'ColumnSet';
+    return "ColumnSet";
   }
 }

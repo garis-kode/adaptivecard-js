@@ -1,5 +1,5 @@
 export enum TextBlockStyle {
-    Default = 'default',
-    Heading = 'heading',
-    ColumnHeader = 'columnHeader',
+  Default = "default",
+  Heading = "heading",
+  ColumnHeader = "columnHeader",
 }

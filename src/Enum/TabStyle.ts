@@ -1,4 +1,4 @@
 export enum TabStyle {
-    IconOnly = 'IconOnly',
-    IconAndText = 'IconAndText',
+  IconOnly = "IconOnly",
+  IconAndText = "IconAndText",
 }

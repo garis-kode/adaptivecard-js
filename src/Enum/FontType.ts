@@ -1,4 +1,4 @@
 export enum FontType {
-    Default = 'Default',
-    Monospace = 'Monospace',
+  Default = "Default",
+  Monospace = "Monospace",
 }

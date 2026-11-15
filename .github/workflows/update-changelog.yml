@@ -4,15 +4,15 @@ on:
   workflow_call:
     inputs:
       branch:
-        description: 'Target branch'
-        default: 'main'
+        description: "Target branch"
+        default: "main"
         type: string
       version:
-        description: 'Released version'
+        description: "Released version"
         required: true
         type: string
       notes:
-        description: 'Release notes'
+        description: "Release notes"
         required: true
         type: string
 

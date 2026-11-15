@@ -1,10 +1,10 @@
-import { Height } from '../Enum/Height.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { TabSetSize } from '../Enum/TabSetSize.ts';
-import { TabPage } from '../Other/TabPage.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { Height } from "../Enum/Height.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { TabSetSize } from "../Enum/TabSetSize.js";
+import { TabPage } from "../Other/TabPage.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * An element that allows the end-user to navigate through pages using a tabbed interface.
@@ -39,13 +39,13 @@ export class TabSet extends AbstractBlockElement {
   public addPages(page: TabPage | Iterable<TabPage>): this {
     if (!(page instanceof TabPage) && Symbol.iterator in Object(page)) {
       for (const item of page) {
-        this.push('pages', item);
+        this.push("pages", item);
       }
 
       return this;
     }
 
-    return this.push('pages', page);
+    return this.push("pages", page);
   }
 
   /**
@@ -61,7 +61,7 @@ export class TabSet extends AbstractBlockElement {
    * Valid values: "Small", "Medium", "Large".
    */
   public size(size: TabSetSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -69,7 +69,7 @@ export class TabSet extends AbstractBlockElement {
    * into its parent's padding.
    */
   public bleed(bleed = true): this {
-    return this.set('bleed', bleed);
+    return this.set("bleed", bleed);
   }
 
   /**
@@ -77,10 +77,10 @@ export class TabSet extends AbstractBlockElement {
    * Valid values: "<number>px".
    */
   public minHeight(minHeight: string): this {
-    return this.set('minHeight', minHeight);
+    return this.set("minHeight", minHeight);
   }
 
   public getType(): string {
-    return 'TabSet';
+    return "TabSet";
   }
 }

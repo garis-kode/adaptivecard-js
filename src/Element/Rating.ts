@@ -1,13 +1,13 @@
-import { Height } from '../Enum/Height.ts';
-import { HorizontalAlignment } from '../Enum/HorizontalAlignment.ts';
-import { RatingColor } from '../Enum/RatingColor.ts';
-import { RatingSize } from '../Enum/RatingSize.ts';
-import { RatingStyle } from '../Enum/RatingStyle.ts';
-import { Spacing } from '../Enum/Spacing.ts';
-import { HasHeight } from '../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../Support/HasSpacing.ts';
-import { AbstractBlockElement } from './AbstractBlockElement.ts';
+import { Height } from "../Enum/Height.js";
+import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
+import { RatingColor } from "../Enum/RatingColor.js";
+import { RatingSize } from "../Enum/RatingSize.js";
+import { RatingStyle } from "../Enum/RatingStyle.js";
+import { Spacing } from "../Enum/Spacing.js";
+import { HasHeight } from "../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../Support/HasSpacing.js";
+import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * A read-only star rating element, to display the rating of something.
@@ -49,21 +49,21 @@ export class Rating extends AbstractBlockElement {
    * The value of the rating. Must be between 0 and `max`.
    */
   public value(value: number): this {
-    return this.set('value', value);
+    return this.set("value", value);
   }
 
   /**
    * The number of stars to display.
    */
   public max(max: number): this {
-    return this.set('max', max);
+    return this.set("max", max);
   }
 
   /**
    * The number of "votes" associated with the rating.
    */
   public count(count: number): this {
-    return this.set('count', count);
+    return this.set("count", count);
   }
 
   /**
@@ -71,7 +71,7 @@ export class Rating extends AbstractBlockElement {
    * Valid values: "Medium", "Large".
    */
   public size(size: RatingSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -79,7 +79,7 @@ export class Rating extends AbstractBlockElement {
    * Valid values: "Neutral", "Marigold".
    */
   public color(color: RatingColor): this {
-    return this.set('color', color);
+    return this.set("color", color);
   }
 
   /**
@@ -87,10 +87,10 @@ export class Rating extends AbstractBlockElement {
    * Valid values: "Default", "Compact".
    */
   public style(style: RatingStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   public getType(): string {
-    return 'Rating';
+    return "Rating";
   }
 }

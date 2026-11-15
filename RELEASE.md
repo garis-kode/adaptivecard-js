@@ -1,6 +1,6 @@
 # Release Instructions
 
-To create a new release for `garis-kode/adaptivecard-js`:
+## 1. Create the GitHub Release
 
 1. Go to the [Release GitHub Action](https://github.com/garis-kode/adaptivecard-js/actions/workflows/release.yml).
 2. Click **Run workflow**.
@@ -8,10 +8,34 @@ To create a new release for `garis-kode/adaptivecard-js`:
 4. Enter the **version** you wish to release (e.g., `1.0.0` or `v1.0.0`).
 5. Click **Run workflow**.
 
-## Automated Pipeline Steps
+### Automated GitHub Pipeline Steps
 
 Once triggered, the automated workflow:
-1. **Validates Version**: Ensures the input adheres to semantic versioning (`X.Y.Z`).
-2. **Generates Release Notes**: Compiles notes from pull requests and commits merged since the previous release.
-3. **Creates GitHub Release**: Publishes the GitHub release and creates the git tag `v<version>`.
-4. **Updates Changelog**: Runs the changelog updater job to append the new release notes and timestamp into `CHANGELOG.md` and commits it back to the repository.
+
+1. **Validates & Synchronizes Version**: Ensures the input adheres to semantic versioning (`X.Y.Z`) and updates/commits `package.json` if its `version` differs from the input.
+2. **Runs Verification Gates**: Executes `bun run check` (`fmt:check`, `typecheck`, `test`, `build`) and `bun run test:pack` (tarball allowlist verification and isolated Node ESM/CJS, Bun, and TypeScript `NodeNext` consumer checks).
+3. **Generates Release Notes**: Compiles notes from pull requests and commits merged since the previous release.
+4. **Creates GitHub Release**: Publishes the GitHub release and creates the git tag `v<version>`.
+5. **Updates Changelog**: Runs the changelog updater job to append the new release notes and timestamp into `CHANGELOG.md` and commits it back to the repository.
+
+---
+
+## 2. Publish Manually to npm
+
+After the GitHub Release workflow completes:
+
+1. Pull the latest `main` branch (including the synchronized `package.json` and `CHANGELOG.md`):
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+2. Ensure you are authenticated with npm:
+   ```bash
+   npm whoami
+   # or: npm login
+   ```
+3. Publish the package (`prepublishOnly` will automatically run `bun run check && bun run test:pack`, and `prepack` will run `bun run build`):
+   ```bash
+   npm publish --access public
+   # or: bun publish --access public
+   ```

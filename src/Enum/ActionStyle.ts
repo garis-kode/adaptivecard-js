@@ -1,5 +1,5 @@
 export enum ActionStyle {
-    Default = 'default',
-    Positive = 'positive',
-    Destructive = 'destructive',
+  Default = "default",
+  Positive = "positive",
+  Destructive = "destructive",
 }

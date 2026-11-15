@@ -1,4 +1,4 @@
 export enum ActionBehavior {
-    Default = 'Default',
-    Toggle = 'Toggle',
+  Default = "Default",
+  Toggle = "Toggle",
 }

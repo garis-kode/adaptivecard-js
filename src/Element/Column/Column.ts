@@ -1,68 +1,68 @@
-import { AbstractAction } from '../../Action/AbstractAction.ts';
-import { DonutChart } from '../../Chart/Donut/DonutChart.ts';
-import { DonutChartData } from '../../Chart/Donut/DonutChartData.ts';
-import { GaugeChart } from '../../Chart/Gauge/GaugeChart.ts';
-import { GaugeChartLegend } from '../../Chart/Gauge/GaugeChartLegend.ts';
-import { HorizontalBarChart } from '../../Chart/HorizontalBar/HorizontalBarChart.ts';
-import { HorizontalBarChartDataValue } from '../../Chart/HorizontalBar/HorizontalBarChartDataValue.ts';
-import { StackedHorizontalBarChart } from '../../Chart/HorizontalBar/StackedHorizontalBarChart.ts';
-import { StackedHorizontalBarChartData } from '../../Chart/HorizontalBar/StackedHorizontalBarChartData.ts';
-import { LineChart } from '../../Chart/Line/LineChart.ts';
-import { LineChartData } from '../../Chart/Line/LineChartData.ts';
-import { PieChart } from '../../Chart/Pie/PieChart.ts';
-import { GroupedVerticalBarChart } from '../../Chart/VerticalBar/GroupedVerticalBarChart.ts';
-import { GroupedVerticalBarChartData } from '../../Chart/VerticalBar/GroupedVerticalBarChartData.ts';
-import { VerticalBarChart } from '../../Chart/VerticalBar/VerticalBarChart.ts';
-import { VerticalBarChartDataValue } from '../../Chart/VerticalBar/VerticalBarChartDataValue.ts';
-import { ChartColorSet } from '../../Enum/ChartColorSet.ts';
-import { CodeBlockLanguage } from '../../Enum/CodeBlockLanguage.ts';
-import { ContainerStyle } from '../../Enum/ContainerStyle.ts';
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { VerticalAlignment } from '../../Enum/VerticalAlignment.ts';
-import { Width } from '../../Enum/Width.ts';
-import { ChoiceSetInput } from '../../Input/ChoiceSet/ChoiceSetInput.ts';
-import { DateInput } from '../../Input/DateInput.ts';
-import { NumberInput } from '../../Input/NumberInput.ts';
-import { RatingInput } from '../../Input/RatingInput.ts';
-import { TextInput } from '../../Input/TextInput.ts';
-import { TimeInput } from '../../Input/TimeInput.ts';
-import { ToggleInput } from '../../Input/ToggleInput.ts';
-import { AbstractLayout } from '../../Layout/AbstractLayout.ts';
-import { AreaGridLayout } from '../../Layout/AreaGridLayout.ts';
-import { FlowLayout } from '../../Layout/FlowLayout.ts';
-import { StackLayout } from '../../Layout/StackLayout.ts';
-import { BackgroundImage } from '../../Shared/BackgroundImage.ts';
-import { HasHeight } from '../../Support/HasHeight.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasItems } from '../../Support/HasItems.ts';
-import { HasLayouts } from '../../Support/HasLayouts.ts';
-import { HasSeparator } from '../../Support/HasSeparator.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { AbstractElement } from '../AbstractElement.ts';
-import { Accordion } from '../Accordion.ts';
-import { ActionSet } from '../ActionSet.ts';
-import { Badge } from '../Badge.ts';
-import { Carousel } from '../Carousel/Carousel.ts';
-import { CodeBlock } from '../CodeBlock.ts';
-import { CompoundButton } from '../CompoundButton.ts';
-import { Container } from '../Container.ts';
-import { Fact } from '../Fact/Fact.ts';
-import { FactSet } from '../Fact/FactSet.ts';
-import { Icon } from '../Icon.ts';
-import { Image } from '../Image/Image.ts';
-import { ImageSet } from '../Image/ImageSet.ts';
-import { Media } from '../Media/Media.ts';
-import { ProgressBar } from '../Progress/ProgressBar.ts';
-import { ProgressRing } from '../Progress/ProgressRing.ts';
-import { Rating } from '../Rating.ts';
-import { RichTextBlock } from '../RichTextBlock/RichTextBlock.ts';
-import { Table } from '../Table/Table.ts';
-import { TabSet } from '../TabSet.ts';
-import { TextBlock } from '../TextBlock.ts';
-import { ColumnSet } from './ColumnSet.ts';
+import { AbstractAction } from "../../Action/AbstractAction.js";
+import { DonutChart } from "../../Chart/Donut/DonutChart.js";
+import { DonutChartData } from "../../Chart/Donut/DonutChartData.js";
+import { GaugeChart } from "../../Chart/Gauge/GaugeChart.js";
+import { GaugeChartLegend } from "../../Chart/Gauge/GaugeChartLegend.js";
+import { HorizontalBarChart } from "../../Chart/HorizontalBar/HorizontalBarChart.js";
+import { HorizontalBarChartDataValue } from "../../Chart/HorizontalBar/HorizontalBarChartDataValue.js";
+import { StackedHorizontalBarChart } from "../../Chart/HorizontalBar/StackedHorizontalBarChart.js";
+import { StackedHorizontalBarChartData } from "../../Chart/HorizontalBar/StackedHorizontalBarChartData.js";
+import { LineChart } from "../../Chart/Line/LineChart.js";
+import { LineChartData } from "../../Chart/Line/LineChartData.js";
+import { PieChart } from "../../Chart/Pie/PieChart.js";
+import { GroupedVerticalBarChart } from "../../Chart/VerticalBar/GroupedVerticalBarChart.js";
+import { GroupedVerticalBarChartData } from "../../Chart/VerticalBar/GroupedVerticalBarChartData.js";
+import { VerticalBarChart } from "../../Chart/VerticalBar/VerticalBarChart.js";
+import { VerticalBarChartDataValue } from "../../Chart/VerticalBar/VerticalBarChartDataValue.js";
+import { ChartColorSet } from "../../Enum/ChartColorSet.js";
+import { CodeBlockLanguage } from "../../Enum/CodeBlockLanguage.js";
+import { ContainerStyle } from "../../Enum/ContainerStyle.js";
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
+import { Width } from "../../Enum/Width.js";
+import { ChoiceSetInput } from "../../Input/ChoiceSet/ChoiceSetInput.js";
+import { DateInput } from "../../Input/DateInput.js";
+import { NumberInput } from "../../Input/NumberInput.js";
+import { RatingInput } from "../../Input/RatingInput.js";
+import { TextInput } from "../../Input/TextInput.js";
+import { TimeInput } from "../../Input/TimeInput.js";
+import { ToggleInput } from "../../Input/ToggleInput.js";
+import { AbstractLayout } from "../../Layout/AbstractLayout.js";
+import { AreaGridLayout } from "../../Layout/AreaGridLayout.js";
+import { FlowLayout } from "../../Layout/FlowLayout.js";
+import { StackLayout } from "../../Layout/StackLayout.js";
+import { BackgroundImage } from "../../Shared/BackgroundImage.js";
+import { HasHeight } from "../../Support/HasHeight.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasItems } from "../../Support/HasItems.js";
+import { HasLayouts } from "../../Support/HasLayouts.js";
+import { HasSeparator } from "../../Support/HasSeparator.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { AbstractElement } from "../AbstractElement.js";
+import { Accordion } from "../Accordion.js";
+import { ActionSet } from "../ActionSet.js";
+import { Badge } from "../Badge.js";
+import { Carousel } from "../Carousel/Carousel.js";
+import { CodeBlock } from "../CodeBlock.js";
+import { CompoundButton } from "../CompoundButton.js";
+import { Container } from "../Container.js";
+import { Fact } from "../Fact/Fact.js";
+import { FactSet } from "../Fact/FactSet.js";
+import { Icon } from "../Icon.js";
+import { Image } from "../Image/Image.js";
+import { ImageSet } from "../Image/ImageSet.js";
+import { Media } from "../Media/Media.js";
+import { ProgressBar } from "../Progress/ProgressBar.js";
+import { ProgressRing } from "../Progress/ProgressRing.js";
+import { Rating } from "../Rating.js";
+import { RichTextBlock } from "../RichTextBlock/RichTextBlock.js";
+import { Table } from "../Table/Table.js";
+import { TabSet } from "../TabSet.js";
+import { TextBlock } from "../TextBlock.js";
+import { ColumnSet } from "./ColumnSet.js";
 
 /**
  * A column in a `ColumnSet` element.
@@ -103,11 +103,15 @@ export class Column extends AbstractElement {
     return this.hasLayouts.layouts(layouts);
   }
 
-  public addStackLayout(callback: ((layout: StackLayout) => void) | null = null): this {
+  public addStackLayout(
+    callback: ((layout: StackLayout) => void) | null = null,
+  ): this {
     return this.hasLayouts.addStackLayout(callback);
   }
 
-  public addFlowLayout(callback: ((layout: FlowLayout) => void) | null = null): this {
+  public addFlowLayout(
+    callback: ((layout: FlowLayout) => void) | null = null,
+  ): this {
     return this.hasLayouts.addFlowLayout(callback);
   }
 
@@ -117,7 +121,9 @@ export class Column extends AbstractElement {
     return this.hasLayouts.addAreaGridLayout(callback);
   }
 
-  public addItems(element: AbstractBlockElement | Iterable<AbstractBlockElement>): this {
+  public addItems(
+    element: AbstractBlockElement | Iterable<AbstractBlockElement>,
+  ): this {
     return this.hasItems.addItems(element);
   }
 
@@ -132,7 +138,10 @@ export class Column extends AbstractElement {
     return this.hasItems.addTextBlock(text, configure);
   }
 
-  public addImage(url: string, configure: ((image: Image) => unknown) | null = null): this {
+  public addImage(
+    url: string,
+    configure: ((image: Image) => unknown) | null = null,
+  ): this {
     return this.hasItems.addImage(url, configure);
   }
 
@@ -142,11 +151,15 @@ export class Column extends AbstractElement {
     return this.hasItems.addRichTextBlock(configure);
   }
 
-  public addContainer(configure: ((container: Container) => unknown) | null = null): this {
+  public addContainer(
+    configure: ((container: Container) => unknown) | null = null,
+  ): this {
     return this.hasItems.addContainer(configure);
   }
 
-  public addColumnSet(configure: ((columnSet: ColumnSet) => unknown) | null = null): this {
+  public addColumnSet(
+    configure: ((columnSet: ColumnSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addColumnSet(configure);
   }
 
@@ -157,7 +170,9 @@ export class Column extends AbstractElement {
     return this.hasItems.addFactSet(facts, configure);
   }
 
-  public addImageSet(configure: ((imageSet: ImageSet) => unknown) | null = null): this {
+  public addImageSet(
+    configure: ((imageSet: ImageSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addImageSet(configure);
   }
 
@@ -169,7 +184,9 @@ export class Column extends AbstractElement {
     return this.hasItems.addTable(configure);
   }
 
-  public addActionSet(configure: ((actionSet: ActionSet) => unknown) | null = null): this {
+  public addActionSet(
+    configure: ((actionSet: ActionSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addActionSet(configure);
   }
 
@@ -180,15 +197,21 @@ export class Column extends AbstractElement {
     return this.hasItems.addBadge(text, configure);
   }
 
-  public addCarousel(configure: ((carousel: Carousel) => unknown) | null = null): this {
+  public addCarousel(
+    configure: ((carousel: Carousel) => unknown) | null = null,
+  ): this {
     return this.hasItems.addCarousel(configure);
   }
 
-  public addAccordion(configure: ((accordion: Accordion) => unknown) | null = null): this {
+  public addAccordion(
+    configure: ((accordion: Accordion) => unknown) | null = null,
+  ): this {
     return this.hasItems.addAccordion(configure);
   }
 
-  public addTabSet(configure: ((tabSet: TabSet) => unknown) | null = null): this {
+  public addTabSet(
+    configure: ((tabSet: TabSet) => unknown) | null = null,
+  ): this {
     return this.hasItems.addTabSet(configure);
   }
 
@@ -208,7 +231,10 @@ export class Column extends AbstractElement {
     return this.hasItems.addCompoundButton(title, description, configure);
   }
 
-  public addIcon(name: string, configure: ((icon: Icon) => unknown) | null = null): this {
+  public addIcon(
+    name: string,
+    configure: ((icon: Icon) => unknown) | null = null,
+  ): this {
     return this.hasItems.addIcon(name, configure);
   }
 
@@ -308,7 +334,13 @@ export class Column extends AbstractElement {
     segments: Iterable<GaugeChartLegend> | null = null,
     configure: ((gaugeChart: GaugeChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addGaugeChart(title, showTitle, value, segments, configure);
+    return this.hasItems.addGaugeChart(
+      title,
+      showTitle,
+      value,
+      segments,
+      configure,
+    );
   }
 
   public addHorizontalBarChart(
@@ -318,7 +350,8 @@ export class Column extends AbstractElement {
     xAxisTitle: string | null = null,
     yAxisTitle: string | null = null,
     colorSet: ChartColorSet | null = null,
-    configure: ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
+    configure:
+      ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
   ): this {
     return this.hasItems.addHorizontalBarChart(
       title,
@@ -427,7 +460,7 @@ export class Column extends AbstractElement {
    * Valid values: "auto", "stretch", "<number>px".
    */
   public width(width: Width | string | number): this {
-    return this.set('width', width);
+    return this.set("width", width);
   }
 
   /**
@@ -436,7 +469,7 @@ export class Column extends AbstractElement {
    * Valid values: "default", "emphasis", "accent", "good", "attention", "warning".
    */
   public style(style: ContainerStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
@@ -444,14 +477,14 @@ export class Column extends AbstractElement {
    * Valid values: "Top", "Center", "Bottom".
    */
   public verticalContentAlignment(alignment: VerticalAlignment): this {
-    return this.set('verticalContentAlignment', alignment);
+    return this.set("verticalContentAlignment", alignment);
   }
 
   /**
    * Controls if the container should bleed into its parent. A bleeding container extends into its parent's padding.
    */
   public bleed(bleed = true): this {
-    return this.set('bleed', bleed);
+    return this.set("bleed", bleed);
   }
 
   /**
@@ -459,7 +492,7 @@ export class Column extends AbstractElement {
    * Valid values: "<number>px".
    */
   public minHeight(minHeight: string): this {
-    return this.set('minHeight', minHeight);
+    return this.set("minHeight", minHeight);
   }
 
   /**
@@ -468,28 +501,28 @@ export class Column extends AbstractElement {
    * Valid values: "<number>px".
    */
   public maxHeight(maxHeight: string): this {
-    return this.set('maxHeight', maxHeight);
+    return this.set("maxHeight", maxHeight);
   }
 
   /**
    * Controls if the container should have rounded corners.
    */
   public roundedCorners(value = true): this {
-    return this.set('roundedCorners', value);
+    return this.set("roundedCorners", value);
   }
 
   /**
    * Controls if a border should be displayed around the container.
    */
   public showBorder(value = true): this {
-    return this.set('showBorder', value);
+    return this.set("showBorder", value);
   }
 
   /**
    * Controls if the content of the card is to be rendered left-to-right or right-to-left.
    */
   public rtl(rtl = true): this {
-    return this.set('rtl', rtl);
+    return this.set("rtl", rtl);
   }
 
   /**
@@ -497,7 +530,7 @@ export class Column extends AbstractElement {
    * Valid values: "BackgroundImage".
    */
   public backgroundImage(backgroundImage: BackgroundImage): this {
-    return this.set('backgroundImage', backgroundImage);
+    return this.set("backgroundImage", backgroundImage);
   }
 
   /**
@@ -507,10 +540,10 @@ export class Column extends AbstractElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'Column';
+    return "Column";
   }
 }

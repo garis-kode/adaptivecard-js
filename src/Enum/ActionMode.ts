@@ -1,4 +1,4 @@
 export enum ActionMode {
-    Primary = 'primary',
-    Secondary = 'secondary',
+  Primary = "primary",
+  Secondary = "secondary",
 }

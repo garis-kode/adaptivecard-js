@@ -1,5 +1,5 @@
 export enum InsertPosition {
-    Selection = 'Selection',
-    Top = 'Top',
-    Bottom = 'Bottom',
+  Selection = "Selection",
+  Top = "Top",
+  Bottom = "Bottom",
 }

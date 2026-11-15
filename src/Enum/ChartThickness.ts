@@ -1,4 +1,4 @@
 export enum ChartThickness {
-    Thin = 'Thin',
-    Thick = 'Thick',
+  Thin = "Thin",
+  Thick = "Thick",
 }

@@ -1,4 +1,4 @@
 export enum RatingStyle {
-    Default = 'Default',
-    Compact = 'Compact',
+  Default = "Default",
+  Compact = "Compact",
 }

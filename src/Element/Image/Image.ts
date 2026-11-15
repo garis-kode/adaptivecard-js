@@ -1,17 +1,17 @@
-import { AbstractAction } from '../../Action/AbstractAction.ts';
-import { Height } from '../../Enum/Height.ts';
-import { HorizontalAlignment } from '../../Enum/HorizontalAlignment.ts';
-import { ImageFitMode } from '../../Enum/ImageFitMode.ts';
-import { ImageSize } from '../../Enum/ImageSize.ts';
-import { ImageStyle } from '../../Enum/ImageStyle.ts';
-import { Spacing } from '../../Enum/Spacing.ts';
-import { VerticalAlignment } from '../../Enum/VerticalAlignment.ts';
-import { Width } from '../../Enum/Width.ts';
-import { ThemedUrl } from '../../Other/ThemedUrl.ts';
-import { HasHorizontalAlignment } from '../../Support/HasHorizontalAlignment.ts';
-import { HasSpacing } from '../../Support/HasSpacing.ts';
-import { AbstractBlockElement } from '../AbstractBlockElement.ts';
-import { TeamsImageProperties } from './TeamsImageProperties.ts';
+import { AbstractAction } from "../../Action/AbstractAction.js";
+import { Height } from "../../Enum/Height.js";
+import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
+import { ImageFitMode } from "../../Enum/ImageFitMode.js";
+import { ImageSize } from "../../Enum/ImageSize.js";
+import { ImageStyle } from "../../Enum/ImageStyle.js";
+import { Spacing } from "../../Enum/Spacing.js";
+import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
+import { Width } from "../../Enum/Width.js";
+import { ThemedUrl } from "../../Other/ThemedUrl.js";
+import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import { HasSpacing } from "../../Support/HasSpacing.js";
+import { AbstractBlockElement } from "../AbstractBlockElement.js";
+import { TeamsImageProperties } from "./TeamsImageProperties.js";
 
 /**
  * A standalone image element.
@@ -51,14 +51,14 @@ export class Image extends AbstractBlockElement {
    * The URL (or Base64-encoded Data URI) of the image. Acceptable formats are PNG, JPEG, GIF and SVG.
    */
   public url(url: string): this {
-    return this.set('url', url);
+    return this.set("url", url);
   }
 
   /**
    * The alternate text for the image, used for accessibility purposes.
    */
   public altText(altText: string): this {
-    return this.set('altText', altText);
+    return this.set("altText", altText);
   }
 
   /**
@@ -66,7 +66,7 @@ export class Image extends AbstractBlockElement {
    * Valid values: "Auto", "Stretch", "Small", "Medium", "Large".
    */
   public size(size: ImageSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -74,14 +74,14 @@ export class Image extends AbstractBlockElement {
    * Valid values: "Default", "Person", "RoundedCorners".
    */
   public style(style: ImageStyle): this {
-    return this.set('style', style);
+    return this.set("style", style);
   }
 
   /**
    * The background color of the image in the `#RRGGBB` or `#AARRGGBB` format.
    */
   public backgroundColor(color: string): this {
-    return this.set('backgroundColor', color);
+    return this.set("backgroundColor", color);
   }
 
   /**
@@ -89,7 +89,7 @@ export class Image extends AbstractBlockElement {
    * Valid values: "auto", "stretch", "<number>px".
    */
   public width(width: Width | string): this {
-    return this.set('width', width);
+    return this.set("width", width);
   }
 
   /**
@@ -97,14 +97,14 @@ export class Image extends AbstractBlockElement {
    * Valid values: "auto", "stretch", "<number>px".
    */
   public height(height: Height | string): this {
-    return this.set('height', height);
+    return this.set("height", height);
   }
 
   /**
    * Controls if the image can be expanded to full screen.
    */
   public allowExpand(allow = true): this {
-    return this.set('allowExpand', allow);
+    return this.set("allowExpand", allow);
   }
 
   /**
@@ -114,7 +114,7 @@ export class Image extends AbstractBlockElement {
    * Valid values: "Cover", "Contain", "Fill".
    */
   public fitMode(fitMode: ImageFitMode): this {
-    return this.set('fitMode', fitMode);
+    return this.set("fitMode", fitMode);
   }
 
   /**
@@ -124,7 +124,7 @@ export class Image extends AbstractBlockElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalContentAlignment(alignment: HorizontalAlignment): this {
-    return this.set('horizontalContentAlignment', alignment);
+    return this.set("horizontalContentAlignment", alignment);
   }
 
   /**
@@ -134,22 +134,25 @@ export class Image extends AbstractBlockElement {
    * Valid values: "Top", "Center", "Bottom".
    */
   public verticalContentAlignment(alignment: VerticalAlignment): this {
-    return this.set('verticalContentAlignment', alignment);
+    return this.set("verticalContentAlignment", alignment);
   }
 
   /**
    * Add a set of theme-specific image URLs.
    */
   public addThemedUrls(themedUrl: ThemedUrl | Iterable<ThemedUrl>): this {
-    if (!(themedUrl instanceof ThemedUrl) && Symbol.iterator in Object(themedUrl)) {
+    if (
+      !(themedUrl instanceof ThemedUrl) &&
+      Symbol.iterator in Object(themedUrl)
+    ) {
       for (const item of themedUrl) {
-        this.push('themedUrls', item);
+        this.push("themedUrls", item);
       }
 
       return this;
     }
 
-    return this.push('themedUrls', themedUrl);
+    return this.push("themedUrls", themedUrl);
   }
 
   /**
@@ -164,12 +167,15 @@ export class Image extends AbstractBlockElement {
    * Teams-specific metadata associated with the image.
    * Valid values: "TeamsImageProperties".
    */
-  public msteams(properties: TeamsImageProperties, useCamelCaseKey = false): this {
+  public msteams(
+    properties: TeamsImageProperties,
+    useCamelCaseKey = false,
+  ): this {
     if (useCamelCaseKey) {
-      return this.set('msTeams', properties);
+      return this.set("msTeams", properties);
     }
 
-    return this.set('msteams', properties);
+    return this.set("msteams", properties);
   }
 
   /**
@@ -179,10 +185,10 @@ export class Image extends AbstractBlockElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'Image';
+    return "Image";
   }
 }

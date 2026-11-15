@@ -1,9 +1,9 @@
-import { AbstractAction } from '../../Action/AbstractAction.ts';
-import { Colors } from '../../Enum/Colors.ts';
-import { FontType } from '../../Enum/FontType.ts';
-import { TextSize } from '../../Enum/TextSize.ts';
-import { TextWeight } from '../../Enum/TextWeight.ts';
-import { AbstractInlineElement } from '../AbstractInlineElement.ts';
+import { AbstractAction } from "../../Action/AbstractAction.js";
+import { Colors } from "../../Enum/Colors.js";
+import { FontType } from "../../Enum/FontType.js";
+import { TextSize } from "../../Enum/TextSize.js";
+import { TextWeight } from "../../Enum/TextWeight.js";
+import { AbstractInlineElement } from "../AbstractInlineElement.js";
 
 /**
  * A block of text inside a RichTextBlock element.
@@ -22,7 +22,7 @@ export class TextRun extends AbstractInlineElement {
    * The text to display. A subset of markdown is supported.
    */
   public text(text: string): this {
-    return this.set('text', text);
+    return this.set("text", text);
   }
 
   /**
@@ -30,7 +30,7 @@ export class TextRun extends AbstractInlineElement {
    * TextBlock at runtime.
    */
   public textDynamic(expression: string): this {
-    return this.set('text.dynamic', expression);
+    return this.set("text.dynamic", expression);
   }
 
   /**
@@ -38,7 +38,7 @@ export class TextRun extends AbstractInlineElement {
    * Valid values: "Default", "Dark", "Light", "Accent", "Good", "Warning", "Attention".
    */
   public color(color: Colors): this {
-    return this.set('color', color);
+    return this.set("color", color);
   }
 
   /**
@@ -46,7 +46,7 @@ export class TextRun extends AbstractInlineElement {
    * Valid values: "Default", "Monospace".
    */
   public fontType(fontType: FontType): this {
-    return this.set('fontType', fontType);
+    return this.set("fontType", fontType);
   }
 
   /**
@@ -54,7 +54,7 @@ export class TextRun extends AbstractInlineElement {
    * Valid values: "Small", "Default", "Medium", "Large", "ExtraLarge".
    */
   public size(size: TextSize): this {
-    return this.set('size', size);
+    return this.set("size", size);
   }
 
   /**
@@ -62,42 +62,42 @@ export class TextRun extends AbstractInlineElement {
    * Valid values: "Lighter", "Default", "Bolder".
    */
   public weight(weight: TextWeight): this {
-    return this.set('weight', weight);
+    return this.set("weight", weight);
   }
 
   /**
    * Controls whether the text should be renderer using a subtler variant of the select color.
    */
   public isSubtle(subtle = true): this {
-    return this.set('isSubtle', subtle);
+    return this.set("isSubtle", subtle);
   }
 
   /**
    * Controls if the text should be italicized.
    */
   public italic(italic = true): this {
-    return this.set('italic', italic);
+    return this.set("italic", italic);
   }
 
   /**
    * Controls if the text should be struck through.
    */
   public strikethrough(strikethrough = true): this {
-    return this.set('strikethrough', strikethrough);
+    return this.set("strikethrough", strikethrough);
   }
 
   /**
    * Controls if the text should be highlighted.
    */
   public highlight(highlight = true): this {
-    return this.set('highlight', highlight);
+    return this.set("highlight", highlight);
   }
 
   /**
    * Controls if the text should be underlined.
    */
   public underline(underline = true): this {
-    return this.set('underline', underline);
+    return this.set("underline", underline);
   }
 
   /**
@@ -107,10 +107,10 @@ export class TextRun extends AbstractInlineElement {
    * "Action.Popover", "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public selectAction(action: AbstractAction): this {
-    return this.set('selectAction', action);
+    return this.set("selectAction", action);
   }
 
   public getType(): string {
-    return 'TextRun';
+    return "TextRun";
   }
 }

@@ -1,5 +1,5 @@
-import { Node } from '../../Node.ts';
-import { HasKey } from '../../Support/HasKey.ts';
+import { Node } from "../../Node.js";
+import { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Defines a source URL for a video captions.
@@ -14,7 +14,11 @@ export class CaptionSource extends Node {
     this.label(label);
   }
 
-  public static make(url: string, mimeType: string, label: string): CaptionSource {
+  public static make(
+    url: string,
+    mimeType: string,
+    label: string,
+  ): CaptionSource {
     return new CaptionSource(url, mimeType, label);
   }
 
@@ -29,21 +33,21 @@ export class CaptionSource extends Node {
    * The URL of the source.
    */
   public url(url: string): this {
-    return this.set('url', url);
+    return this.set("url", url);
   }
 
   /**
    * The MIME type of the source.
    */
   public mimeType(mimeType: string): this {
-    return this.set('mimeType', mimeType);
+    return this.set("mimeType", mimeType);
   }
 
   /**
    * The label of this caption source.
    */
   public label(label: string): this {
-    return this.set('label', label);
+    return this.set("label", label);
   }
 
   public getType(): string | null {

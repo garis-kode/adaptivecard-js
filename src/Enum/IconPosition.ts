@@ -1,4 +1,4 @@
 export enum IconPosition {
-    Before = 'Before',
-    After = 'After',
+  Before = "Before",
+  After = "After",
 }
