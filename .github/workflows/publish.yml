@@ -1,8 +1,7 @@
 name: Publish
 
 on:
-  release:
-    types: [published]
+  workflow_call:
   workflow_dispatch:
 
 permissions:
@@ -41,9 +40,9 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Verify package version
+      - name: Verify
         run: |
           npm view adaptivecard-js@$(node -p "require('./package.json').version") version && exit 1 || true
 
-      - name: Stage package for approval
+      - name: Stage
         run: npm stage publish
