@@ -1,7 +1,7 @@
 {
   "name": "adaptivecard-js",
   "description": "Fluent TypeScript builder that programmatically constructs Microsoft Adaptive Card (v1.6) JSON payloads.",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "keywords": [
     "adaptivecards",
