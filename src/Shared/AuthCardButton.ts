@@ -1,12 +1,10 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * Defines a button as displayed when prompting a user to authenticate.
  */
-export class AuthCardButton extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class AuthCardButton extends Node implements HasKey {
   public constructor(
     type: string = "signin",
     title: string | null = null,
@@ -41,7 +39,7 @@ export class AuthCardButton extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

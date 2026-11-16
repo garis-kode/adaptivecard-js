@@ -54,18 +54,10 @@ export abstract class Node {
   }
 
   /**
-   * Escape hatch for properties this library does not model explicitly,
-   * and used by composed Support helpers.
+   * Escape hatch for properties this library does not model explicitly.
    */
   public setProperty(key: string, value: unknown): this {
     return this.set(key, value);
-  }
-
-  /**
-   * Append a value onto an array-valued property. Used by composed Support helpers.
-   */
-  public pushProperty(key: string, value: unknown): this {
-    return this.push(key, value);
   }
 
   /**

@@ -1,15 +1,13 @@
 import { PersonaIconStyle } from "../../Enum/PersonaIconStyle.js";
 import { PersonaStyle } from "../../Enum/PersonaStyle.js";
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import { PersonaProperties } from "./PersonaProperties.js";
 
 /**
  * Represents the properties of a PersonaSet component.
  */
-export class PersonaSetProperties extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class PersonaSetProperties extends Node implements HasKey {
   public static make(): PersonaSetProperties {
     return new PersonaSetProperties();
   }
@@ -20,7 +18,7 @@ export class PersonaSetProperties extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

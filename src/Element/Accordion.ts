@@ -1,25 +1,24 @@
 import { Height } from "../Enum/Height.js";
 import { AccordionPage } from "../Other/AccordionPage.js";
-import { HasHeight } from "../Support/HasHeight.js";
+import type { HasHeight } from "../Support/HasHeight.js";
 import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * An element that allows the end-user to toggle the display of content by expanding
  * or collapsing pages.
  */
-export class Accordion extends AbstractBlockElement {
-  private readonly hasHeight = new HasHeight(this);
-
+export class Accordion extends AbstractBlockElement implements HasHeight {
   public static make(): Accordion {
     return new Accordion();
   }
 
   /**
-   * Controls how the element should be vertically sized.
+   * The height of the element. When set to `stretch`, the element will use
+   * the remaining vertical space in its container.
    * Valid values: "auto", "stretch".
    */
   public height(height: Height): this {
-    return this.hasHeight.height(height);
+    return this.set("height", height);
   }
 
   /**

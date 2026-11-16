@@ -1,13 +1,11 @@
 import type { ExecuteAction } from "../Action/ExecuteAction.js";
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * Defines how a card can be refreshed by making a request to the target Bot.
  */
-export class Refresh extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class Refresh extends Node implements HasKey {
   public static make(): Refresh {
     return new Refresh();
   }
@@ -18,7 +16,7 @@ export class Refresh extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

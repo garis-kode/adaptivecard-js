@@ -1,12 +1,10 @@
-import { HasMenuActions } from "../../Support/HasMenuActions.js";
+import type { HasMenuActions } from "../../Support/HasMenuActions.js";
 import { AbstractAction } from "../AbstractAction.js";
 
 /**
  * Opens the provided URL in either a separate browser tab or within the host application.
  */
-export class OpenUrlAction extends AbstractAction {
-  private readonly hasMenuActions = new HasMenuActions(this);
-
+export class OpenUrlAction extends AbstractAction implements HasMenuActions {
   public constructor(url: string, title: string | null = null) {
     super();
     this.url(url);
@@ -26,7 +24,18 @@ export class OpenUrlAction extends AbstractAction {
   public addMenuActions(
     action: AbstractAction | Iterable<AbstractAction>,
   ): this {
-    return this.hasMenuActions.addMenuActions(action);
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
+      for (const item of action) {
+        this.push("menuActions", item);
+      }
+
+      return this;
+    }
+
+    return this.push("menuActions", action);
   }
 
   /**
@@ -35,7 +44,7 @@ export class OpenUrlAction extends AbstractAction {
    * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public menuActions(actions: Iterable<AbstractAction>): this {
-    return this.hasMenuActions.menuActions(actions);
+    return this.addMenuActions(actions);
   }
 
   /**

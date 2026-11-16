@@ -1,12 +1,10 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Represents a data point in a bar chart or grouped series.
  */
-export class BarChartDataValue extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class BarChartDataValue extends Node implements HasKey {
   public constructor(x: string | number, y: number, key: string | null = null) {
     super();
     this.x(x);
@@ -31,7 +29,7 @@ export class BarChartDataValue extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

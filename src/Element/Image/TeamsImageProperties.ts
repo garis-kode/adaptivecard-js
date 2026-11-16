@@ -1,12 +1,10 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Represents a set of Teams-specific properties on an image.
  */
-export class TeamsImageProperties extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class TeamsImageProperties extends Node implements HasKey {
   constructor(allowExpand: boolean | null = null) {
     super();
     if (allowExpand !== null) {
@@ -19,10 +17,12 @@ export class TeamsImageProperties extends Node {
   }
 
   /**
-   * Key that identifies the element in the list of items.
+   * Defines an optional key for the object. Keys are seldom needed, but in
+   * some scenarios, specifying keys can help maintain visual state in the
+   * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

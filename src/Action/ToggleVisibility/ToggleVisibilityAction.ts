@@ -1,4 +1,4 @@
-import { HasMenuActions } from "../../Support/HasMenuActions.js";
+import type { HasMenuActions } from "../../Support/HasMenuActions.js";
 import { AbstractAction } from "../AbstractAction.js";
 import { TargetElement } from "./TargetElement.js";
 
@@ -6,9 +6,10 @@ import { TargetElement } from "./TargetElement.js";
  * Toggles the visibility of a set of elements. `Action.ToggleVisibility` is useful for creating
  * "Show more" type UI patterns.
  */
-export class ToggleVisibilityAction extends AbstractAction {
-  private readonly hasMenuActions = new HasMenuActions(this);
-
+export class ToggleVisibilityAction
+  extends AbstractAction
+  implements HasMenuActions
+{
   public constructor(title: string | null = null) {
     super();
     if (title !== null) {
@@ -26,7 +27,18 @@ export class ToggleVisibilityAction extends AbstractAction {
   public addMenuActions(
     action: AbstractAction | Iterable<AbstractAction>,
   ): this {
-    return this.hasMenuActions.addMenuActions(action);
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
+      for (const item of action) {
+        this.push("menuActions", item);
+      }
+
+      return this;
+    }
+
+    return this.push("menuActions", action);
   }
 
   /**
@@ -35,7 +47,7 @@ export class ToggleVisibilityAction extends AbstractAction {
    * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public menuActions(actions: Iterable<AbstractAction>): this {
-    return this.hasMenuActions.menuActions(actions);
+    return this.addMenuActions(actions);
   }
 
   /**

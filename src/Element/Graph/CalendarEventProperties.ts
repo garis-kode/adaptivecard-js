@@ -1,13 +1,11 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import { CalendarEventAttendee } from "./CalendarEventAttendee.js";
 
 /**
  * The properties of a calendar event.
  */
-export class CalendarEventProperties extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class CalendarEventProperties extends Node implements HasKey {
   public static make(): CalendarEventProperties {
     return new CalendarEventProperties();
   }
@@ -18,7 +16,7 @@ export class CalendarEventProperties extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

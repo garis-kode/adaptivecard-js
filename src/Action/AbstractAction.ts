@@ -5,18 +5,16 @@ import { ActionStyle } from "../Enum/ActionStyle.js";
 import { Node } from "../Node.js";
 import type { HostCapabilities } from "../Other/HostCapabilities.js";
 import { ThemedUrl } from "../Other/ThemedUrl.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
-export abstract class AbstractAction extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export abstract class AbstractAction extends Node implements HasKey {
   /**
    * Defines an optional key for the object. Keys are seldom needed, but in
    * some scenarios, specifying keys can help maintain visual state in the
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

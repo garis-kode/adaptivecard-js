@@ -1,13 +1,11 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import type { TeamsSubmitActionDataInterface } from "./TeamsSubmitActionDataInterface.js";
 
 /**
  * Represents the data of an Action.Submit or Action.Execute.
  */
-export class SubmitActionData extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class SubmitActionData extends Node implements HasKey {
   public constructor(customProperties: Record<string, unknown> = {}) {
     super();
     this.with(customProperties);
@@ -25,7 +23,7 @@ export class SubmitActionData extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

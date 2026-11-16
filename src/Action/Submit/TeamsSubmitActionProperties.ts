@@ -1,13 +1,11 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import type { TeamsSubmitActionFeedback } from "./TeamsSubmitActionFeedback.js";
 
 /**
  * Teams-specific properties associated with the action.
  */
-export class TeamsSubmitActionProperties extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class TeamsSubmitActionProperties extends Node implements HasKey {
   public constructor(feedback: TeamsSubmitActionFeedback | null = null) {
     super();
     if (feedback !== null) {
@@ -27,7 +25,7 @@ export class TeamsSubmitActionProperties extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

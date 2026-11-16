@@ -8,18 +8,18 @@ import { Spacing } from "../../Enum/Spacing.js";
 import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
 import { Width } from "../../Enum/Width.js";
 import { ThemedUrl } from "../../Other/ThemedUrl.js";
-import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
-import { HasSpacing } from "../../Support/HasSpacing.js";
+import type { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import type { HasSpacing } from "../../Support/HasSpacing.js";
 import { AbstractBlockElement } from "../AbstractBlockElement.js";
 import { TeamsImageProperties } from "./TeamsImageProperties.js";
 
 /**
  * A standalone image element.
  */
-export class Image extends AbstractBlockElement {
-  private readonly hasHorizontalAlignment = new HasHorizontalAlignment(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export class Image
+  extends AbstractBlockElement
+  implements HasHorizontalAlignment, HasSpacing
+{
   constructor(url: string | null = null) {
     super();
     if (url !== null) {
@@ -36,15 +36,16 @@ export class Image extends AbstractBlockElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalAlignment(alignment: HorizontalAlignment): this {
-    return this.hasHorizontalAlignment.horizontalAlignment(alignment);
+    return this.set("horizontalAlignment", alignment);
   }
 
   /**
-   * Controls the amount of space between this element and the preceding one.
-   * Valid values: "none", "extraSmall", "small", "default", "medium", "large", "extraLarge", "padding".
+   * Controls the amount of space between this element and the previous one.
+   * No space will be added for the first element in a container.
+   * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
    */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
   /**

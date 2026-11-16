@@ -4,17 +4,17 @@ import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
 import { IconSize } from "../Enum/IconSize.js";
 import { IconStyle } from "../Enum/IconStyle.js";
 import { Spacing } from "../Enum/Spacing.js";
-import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
-import { HasSpacing } from "../Support/HasSpacing.js";
+import type { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import type { HasSpacing } from "../Support/HasSpacing.js";
 import { AbstractBlockElement } from "./AbstractBlockElement.js";
 
 /**
  * A standalone icon element. Icons can be picked from the vast Adaptive Card icon catalog.
  */
-export class Icon extends AbstractBlockElement {
-  private readonly hasHorizontalAlignment = new HasHorizontalAlignment(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export class Icon
+  extends AbstractBlockElement
+  implements HasHorizontalAlignment, HasSpacing
+{
   public static make(): Icon {
     return new Icon();
   }
@@ -24,15 +24,16 @@ export class Icon extends AbstractBlockElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalAlignment(alignment: HorizontalAlignment): this {
-    return this.hasHorizontalAlignment.horizontalAlignment(alignment);
+    return this.set("horizontalAlignment", alignment);
   }
 
   /**
-   * Controls the amount of space between this element and the preceding one.
-   * Valid values: "none", "extraSmall", "small", "default", "medium", "large", "extraLarge", "padding".
+   * Controls the amount of space between this element and the previous one.
+   * No space will be added for the first element in a container.
+   * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
    */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
   /**

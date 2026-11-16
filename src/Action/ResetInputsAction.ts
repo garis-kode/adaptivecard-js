@@ -1,12 +1,13 @@
-import { HasMenuActions } from "../Support/HasMenuActions.js";
+import type { HasMenuActions } from "../Support/HasMenuActions.js";
 import { AbstractAction } from "./AbstractAction.js";
 
 /**
  * Resets the values of the inputs in the card.
  */
-export class ResetInputsAction extends AbstractAction {
-  private readonly hasMenuActions = new HasMenuActions(this);
-
+export class ResetInputsAction
+  extends AbstractAction
+  implements HasMenuActions
+{
   public constructor(title: string | null = null) {
     super();
     if (title !== null) {
@@ -24,7 +25,18 @@ export class ResetInputsAction extends AbstractAction {
   public addMenuActions(
     action: AbstractAction | Iterable<AbstractAction>,
   ): this {
-    return this.hasMenuActions.addMenuActions(action);
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
+      for (const item of action) {
+        this.push("menuActions", item);
+      }
+
+      return this;
+    }
+
+    return this.push("menuActions", action);
   }
 
   /**
@@ -33,7 +45,7 @@ export class ResetInputsAction extends AbstractAction {
    * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public menuActions(actions: Iterable<AbstractAction>): this {
-    return this.hasMenuActions.menuActions(actions);
+    return this.addMenuActions(actions);
   }
 
   /**

@@ -1,12 +1,10 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Defines a source URL for a video captions.
  */
-export class CaptionSource extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class CaptionSource extends Node implements HasKey {
   constructor(url: string, mimeType: string, label: string) {
     super();
     this.url(url);
@@ -23,10 +21,12 @@ export class CaptionSource extends Node {
   }
 
   /**
-   * Key that identifies the element in the list of items.
+   * Defines an optional key for the object. Keys are seldom needed, but in
+   * some scenarios, specifying keys can help maintain visual state in the
+   * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

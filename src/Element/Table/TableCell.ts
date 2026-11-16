@@ -32,11 +32,11 @@ import { AreaGridLayout } from "../../Layout/AreaGridLayout.js";
 import { FlowLayout } from "../../Layout/FlowLayout.js";
 import { StackLayout } from "../../Layout/StackLayout.js";
 import { BackgroundImage } from "../../Shared/BackgroundImage.js";
-import { HasHeight } from "../../Support/HasHeight.js";
-import { HasItems } from "../../Support/HasItems.js";
-import { HasLayouts } from "../../Support/HasLayouts.js";
-import { HasSeparator } from "../../Support/HasSeparator.js";
-import { HasSpacing } from "../../Support/HasSpacing.js";
+import type { HasHeight } from "../../Support/HasHeight.js";
+import type { HasItems } from "../../Support/HasItems.js";
+import type { HasLayouts } from "../../Support/HasLayouts.js";
+import type { HasSeparator } from "../../Support/HasSeparator.js";
+import type { HasSpacing } from "../../Support/HasSpacing.js";
 import { AbstractBlockElement } from "../AbstractBlockElement.js";
 import { AbstractElement } from "../AbstractElement.js";
 import { Accordion } from "../Accordion.js";
@@ -64,261 +64,472 @@ import { Table } from "./Table.js";
 /**
  * Represents a cell in a table row.
  */
-export class TableCell extends AbstractElement {
-  private readonly hasHeight = new HasHeight(this);
-  private readonly hasItems = new HasItems(this);
-  private readonly hasLayouts = new HasLayouts(this);
-  private readonly hasSeparator = new HasSeparator(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export class TableCell
+  extends AbstractElement
+  implements HasHeight, HasItems, HasLayouts, HasSeparator, HasSpacing
+{
   public static make(): TableCell {
     return new TableCell();
   }
 
+  /**
+   * The height of the element. When set to `stretch`, the element will use
+   * the remaining vertical space in its container.
+   * Valid values: "auto", "stretch".
+   */
   public height(height: Height): this {
-    return this.hasHeight.height(height);
+    return this.set("height", height);
   }
 
-  public separator(separator = true): this {
-    return this.hasSeparator.separator(separator);
+  /**
+   * Controls whether a separator line should be displayed above the element
+   * to visually separate it from the previous element. No separator will be
+   * displayed for the first element in a container, even if this property is
+   * set to true.
+   */
+  public separator(separator: boolean = true): this {
+    return this.set("separator", separator);
   }
 
+  /**
+   * Controls the amount of space between this element and the previous one.
+   * No space will be added for the first element in a container.
+   * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
+   */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
+  /**
+   * Add layouts associated with the container. The container can dynamically switch from one layout to
+   * another as the card's width changes.
+   */
   public addLayouts(layout: AbstractLayout | Iterable<AbstractLayout>): this {
-    return this.hasLayouts.addLayouts(layout);
+    if (
+      !(layout instanceof AbstractLayout) &&
+      Symbol.iterator in Object(layout)
+    ) {
+      for (const item of layout) {
+        this.push("layouts", item);
+      }
+
+      return this;
+    }
+
+    return this.push("layouts", layout);
   }
 
+  /**
+   * The layouts associated with the container. The container can dynamically switch
+   * from one layout to another as the card's width changes.
+   * Valid values: "Layout.Stack", "Layout.Flow", "Layout.AreaGrid".
+   */
   public layouts(layouts: Iterable<AbstractLayout>): this {
-    return this.hasLayouts.layouts(layouts);
+    return this.addLayouts(layouts);
   }
 
+  /**
+   * Add a layout that stacks elements on top of each other (the default layout) to the container's
+   * layouts.
+   */
   public addStackLayout(
     callback: ((layout: StackLayout) => void) | null = null,
   ): this {
-    return this.hasLayouts.addStackLayout(callback);
+    const layout = StackLayout.make();
+    if (callback !== null) {
+      callback(layout);
+    }
+
+    return this.addLayouts(layout);
   }
 
+  /**
+   * Add a layout that spreads elements horizontally and wraps them across multiple rows, as needed, to the
+   * container's layouts.
+   */
   public addFlowLayout(
     callback: ((layout: FlowLayout) => void) | null = null,
   ): this {
-    return this.hasLayouts.addFlowLayout(callback);
+    const layout = FlowLayout.make();
+    if (callback !== null) {
+      callback(layout);
+    }
+
+    return this.addLayouts(layout);
   }
 
+  /**
+   * Add a layout that divides the container into named areas, into which elements can be placed via the
+   * `grid.area` property, to the container's layouts.
+   */
   public addAreaGridLayout(
     callback: ((layout: AreaGridLayout) => void) | null = null,
   ): this {
-    return this.hasLayouts.addAreaGridLayout(callback);
+    const layout = AreaGridLayout.make();
+    if (callback !== null) {
+      callback(layout);
+    }
+
+    return this.addLayouts(layout);
   }
 
+  /**
+   * JSON key the items are stored under. AdaptiveCard overrides this to "body".
+   */
+  protected itemsKey(): string {
+    return "items";
+  }
+
+  /**
+   * Add one or more block elements.
+   */
   public addItems(
     element: AbstractBlockElement | Iterable<AbstractBlockElement>,
   ): this {
-    return this.hasItems.addItems(element);
+    if (
+      !(element instanceof AbstractBlockElement) &&
+      Symbol.iterator in Object(element)
+    ) {
+      for (const item of element) {
+        this.push(this.itemsKey(), item);
+      }
+
+      return this;
+    }
+
+    return this.push(this.itemsKey(), element);
   }
 
+  /**
+   * The items in the container.
+   */
   public items(elements: Iterable<AbstractBlockElement>): this {
-    return this.hasItems.items(elements);
+    return this.addItems(elements);
   }
 
+  /**
+   * Add a block of text, optionally formatted using Markdown.
+   */
   public addTextBlock(
     text: string,
     configure: ((textBlock: TextBlock) => unknown) | null = null,
   ): this {
-    return this.hasItems.addTextBlock(text, configure);
+    return this.addItems(this.configure(new TextBlock(text), configure));
   }
 
+  /**
+   * Add a standalone image element.
+   */
   public addImage(
     url: string,
     configure: ((image: Image) => unknown) | null = null,
   ): this {
-    return this.hasItems.addImage(url, configure);
+    const image = new Image().url(url);
+
+    return this.addItems(this.configure(image, configure));
   }
 
+  /**
+   * Add a rich text block that displays formatted text.
+   */
   public addRichTextBlock(
     configure: ((richTextBlock: RichTextBlock) => unknown) | null = null,
   ): this {
-    return this.hasItems.addRichTextBlock(configure);
+    return this.addItems(this.configure(new RichTextBlock(), configure));
   }
 
+  /**
+   * Add a container for other elements.
+   */
   public addContainer(
     configure: ((container: Container) => unknown) | null = null,
   ): this {
-    return this.hasItems.addContainer(configure);
+    return this.addItems(this.configure(new Container(), configure));
   }
 
+  /**
+   * Add a set of columns, splitting the available horizontal space so elements
+   * can be organized in a row.
+   */
   public addColumnSet(
     configure: ((columnSet: ColumnSet) => unknown) | null = null,
   ): this {
-    return this.hasItems.addColumnSet(configure);
+    return this.addItems(this.configure(new ColumnSet(), configure));
   }
 
+  /**
+   * Add a set of facts, displayed as a table or a vertical list when horizontal
+   * space is constrained.
+   */
   public addFactSet(
     facts: Iterable<Fact> = [],
     configure: ((factSet: FactSet) => unknown) | null = null,
   ): this {
-    return this.hasItems.addFactSet(facts, configure);
+    const factSet = new FactSet();
+    factSet.facts(facts);
+
+    return this.addItems(this.configure(factSet, configure));
   }
 
+  /**
+   * Add a set of images, displayed side-by-side and wrapped across multiple rows
+   * as needed.
+   */
   public addImageSet(
     configure: ((imageSet: ImageSet) => unknown) | null = null,
   ): this {
-    return this.hasItems.addImageSet(configure);
+    return this.addItems(this.configure(new ImageSet(), configure));
   }
 
+  /**
+   * Add a media element, making it possible to embed videos inside a card.
+   */
   public addMedia(configure: ((media: Media) => unknown) | null = null): this {
-    return this.hasItems.addMedia(configure);
+    return this.addItems(this.configure(new Media(), configure));
   }
 
+  /**
+   * Add a table to display data in a tabular way, with rows, columns and cells.
+   */
   public addTable(configure: ((table: Table) => unknown) | null = null): this {
-    return this.hasItems.addTable(configure);
+    return this.addItems(this.configure(new Table(), configure));
   }
 
+  /**
+   * Add an action set, which can be placed anywhere in the card.
+   */
   public addActionSet(
     configure: ((actionSet: ActionSet) => unknown) | null = null,
   ): this {
-    return this.hasItems.addActionSet(configure);
+    return this.addItems(this.configure(new ActionSet(), configure));
   }
 
+  /**
+   * Add a badge element to show an icon and/or text in a compact form over a
+   * colored background.
+   */
   public addBadge(
     text: string | null = null,
     configure: ((badge: Badge) => unknown) | null = null,
   ): this {
-    return this.hasItems.addBadge(text, configure);
+    return this.addItems(this.configure(new Badge(text), configure));
   }
 
+  /**
+   * Add a carousel with sliding pages.
+   */
   public addCarousel(
     configure: ((carousel: Carousel) => unknown) | null = null,
   ): this {
-    return this.hasItems.addCarousel(configure);
+    return this.addItems(this.configure(new Carousel(), configure));
   }
 
+  /**
+   * Add an accordion, allowing the end-user to toggle the display of content by
+   * expanding or collapsing pages.
+   */
   public addAccordion(
     configure: ((accordion: Accordion) => unknown) | null = null,
   ): this {
-    return this.hasItems.addAccordion(configure);
+    return this.addItems(this.configure(new Accordion(), configure));
   }
 
+  /**
+   * Add a tab set, allowing the end-user to navigate through pages using a tabbed
+   * interface.
+   */
   public addTabSet(
     configure: ((tabSet: TabSet) => unknown) | null = null,
   ): this {
-    return this.hasItems.addTabSet(configure);
+    return this.addItems(this.configure(new TabSet(), configure));
   }
 
+  /**
+   * Add a formatted and syntax-colored code block.
+   */
   public addCodeBlock(
     code: string,
     language: CodeBlockLanguage = CodeBlockLanguage.PlainText,
     configure: ((codeBlock: CodeBlock) => unknown) | null = null,
   ): this {
-    return this.hasItems.addCodeBlock(code, language, configure);
+    const codeBlock = new CodeBlock().codeSnippet(code).language(language);
+
+    return this.addItems(this.configure(codeBlock, configure));
   }
 
+  /**
+   * Add a special type of button with an icon, title and description.
+   */
   public addCompoundButton(
     title: string | null = null,
     description: string | null = null,
     configure: ((compoundButton: CompoundButton) => unknown) | null = null,
   ): this {
-    return this.hasItems.addCompoundButton(title, description, configure);
+    return this.addItems(
+      this.configure(new CompoundButton(title, description), configure),
+    );
   }
 
+  /**
+   * Add a standalone icon element. Icons can be picked from the vast Adaptive Card
+   * icon catalog.
+   */
   public addIcon(
     name: string,
     configure: ((icon: Icon) => unknown) | null = null,
   ): this {
-    return this.hasItems.addIcon(name, configure);
+    const icon = new Icon().name(name);
+
+    return this.addItems(this.configure(icon, configure));
   }
 
+  /**
+   * Add a progress bar element to represent a value within a range.
+   */
   public addProgressBar(
     value: number | null = null,
     max = 100,
     configure: ((progressBar: ProgressBar) => unknown) | null = null,
   ): this {
-    return this.hasItems.addProgressBar(value, max, configure);
+    const bar = new ProgressBar();
+    if (value !== null) {
+      bar.value(value);
+    }
+    if (max !== 100) {
+      bar.max(max);
+    }
+
+    return this.addItems(this.configure(bar, configure));
   }
 
+  /**
+   * Add a spinning ring element to indicate progress.
+   */
   public addProgressRing(
     label: string | null = null,
     configure: ((progressRing: ProgressRing) => unknown) | null = null,
   ): this {
-    return this.hasItems.addProgressRing(label, configure);
+    return this.addItems(this.configure(new ProgressRing(label), configure));
   }
 
+  /**
+   * Add a read-only star rating element to display the rating of something.
+   */
   public addRating(
     value: number | null = null,
     max = 5,
     configure: ((rating: Rating) => unknown) | null = null,
   ): this {
-    return this.hasItems.addRating(value, max, configure);
+    const rating = new Rating();
+    if (value !== null) {
+      rating.value(value);
+    }
+    if (max !== 5) {
+      rating.max(max);
+    }
+
+    return this.addItems(this.configure(rating, configure));
   }
 
+  /**
+   * Add an input to allow the user to enter text.
+   */
   public addTextInput(
     id: string,
     label: string | null = null,
     placeholder: string | null = null,
     configure: ((textInput: TextInput) => unknown) | null = null,
   ): this {
-    return this.hasItems.addTextInput(id, label, placeholder, configure);
+    return this.addItems(
+      this.configure(new TextInput(id, label, placeholder), configure),
+    );
   }
 
+  /**
+   * Add an input to allow the user to enter a number.
+   */
   public addNumberInput(
     id: string,
     label: string | null = null,
     placeholder: string | null = null,
     configure: ((numberInput: NumberInput) => unknown) | null = null,
   ): this {
-    return this.hasItems.addNumberInput(id, label, placeholder, configure);
+    return this.addItems(
+      this.configure(new NumberInput(id, label, placeholder), configure),
+    );
   }
 
+  /**
+   * Add an input to allow the user to select a date.
+   */
   public addDateInput(
     id: string,
     label: string | null = null,
     configure: ((dateInput: DateInput) => unknown) | null = null,
   ): this {
-    return this.hasItems.addDateInput(id, label, configure);
+    return this.addItems(this.configure(new DateInput(id, label), configure));
   }
 
+  /**
+   * Add an input to allow the user to select a time.
+   */
   public addTimeInput(
     id: string,
     label: string | null = null,
     configure: ((timeInput: TimeInput) => unknown) | null = null,
   ): this {
-    return this.hasItems.addTimeInput(id, label, configure);
+    return this.addItems(this.configure(new TimeInput(id, label), configure));
   }
 
+  /**
+   * Add an input to allow the user to select between on/off states.
+   */
   public addToggleInput(
     id: string,
     title: string | null = null,
     configure: ((toggleInput: ToggleInput) => unknown) | null = null,
   ): this {
-    return this.hasItems.addToggleInput(id, title, configure);
+    return this.addItems(this.configure(new ToggleInput(id, title), configure));
   }
 
+  /**
+   * Add an input to allow the user to select one or more values.
+   */
   public addChoiceSetInput(
     id: string,
     configure: ((choiceSetInput: ChoiceSetInput) => unknown) | null = null,
   ): this {
-    return this.hasItems.addChoiceSetInput(id, configure);
+    return this.addItems(this.configure(new ChoiceSetInput(id), configure));
   }
 
+  /**
+   * Add an input to allow the user to rate something using stars.
+   */
   public addRatingInput(
     id: string,
     label: string | null = null,
     configure: ((ratingInput: RatingInput) => unknown) | null = null,
   ): this {
-    return this.hasItems.addRatingInput(id, label, configure);
+    return this.addItems(this.configure(new RatingInput(id, label), configure));
   }
 
+  /**
+   * Add a donut chart.
+   */
   public addDonutChart(
     title: string,
     showTitle: boolean | null = null,
     data: Iterable<DonutChartData> | null = null,
     configure: ((donutChart: DonutChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addDonutChart(title, showTitle, data, configure);
+    return this.addItems(
+      this.configure(new DonutChart(title, showTitle, data), configure),
+    );
   }
 
+  /**
+   * Add a gauge chart.
+   */
   public addGaugeChart(
     title: string,
     showTitle: boolean | null = null,
@@ -326,15 +537,17 @@ export class TableCell extends AbstractElement {
     segments: Iterable<GaugeChartLegend> | null = null,
     configure: ((gaugeChart: GaugeChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addGaugeChart(
-      title,
-      showTitle,
-      value,
-      segments,
-      configure,
+    return this.addItems(
+      this.configure(
+        new GaugeChart(title, showTitle, value, segments),
+        configure,
+      ),
     );
   }
 
+  /**
+   * Add a horizontal bar chart.
+   */
   public addHorizontalBarChart(
     title: string,
     data: Iterable<HorizontalBarChartDataValue>,
@@ -345,17 +558,24 @@ export class TableCell extends AbstractElement {
     configure:
       ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addHorizontalBarChart(
-      title,
-      data,
-      showTitle,
-      xAxisTitle,
-      yAxisTitle,
-      colorSet,
-      configure,
+    return this.addItems(
+      this.configure(
+        new HorizontalBarChart(
+          title,
+          data,
+          showTitle,
+          xAxisTitle,
+          yAxisTitle,
+          colorSet,
+        ),
+        configure,
+      ),
     );
   }
 
+  /**
+   * Add a stacked horizontal bar chart.
+   */
   public addStackedHorizontalBarChart(
     title: string,
     data: Iterable<StackedHorizontalBarChartData>,
@@ -364,14 +584,17 @@ export class TableCell extends AbstractElement {
       | ((stackedHorizontalBarChart: StackedHorizontalBarChart) => unknown)
       | null = null,
   ): this {
-    return this.hasItems.addStackedHorizontalBarChart(
-      title,
-      data,
-      showTitle,
-      configure,
+    return this.addItems(
+      this.configure(
+        new StackedHorizontalBarChart(title, data, showTitle),
+        configure,
+      ),
     );
   }
 
+  /**
+   * Add a line chart.
+   */
   public addLineChart(
     title: string,
     showTitle: boolean | null = null,
@@ -381,26 +604,31 @@ export class TableCell extends AbstractElement {
     data: Iterable<LineChartData> | null = null,
     configure: ((lineChart: LineChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addLineChart(
-      title,
-      showTitle,
-      xAxisTitle,
-      yAxisTitle,
-      colorSet,
-      data,
-      configure,
+    return this.addItems(
+      this.configure(
+        new LineChart(title, showTitle, xAxisTitle, yAxisTitle, colorSet, data),
+        configure,
+      ),
     );
   }
 
+  /**
+   * Add a pie chart.
+   */
   public addPieChart(
     title: string,
     showTitle: boolean | null = null,
     data: Iterable<DonutChartData> | null = null,
     configure: ((pieChart: PieChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addPieChart(title, showTitle, data, configure);
+    return this.addItems(
+      this.configure(new PieChart(title, showTitle, data), configure),
+    );
   }
 
+  /**
+   * Add a vertical bar chart.
+   */
   public addVerticalBarChart(
     title: string,
     data: Iterable<VerticalBarChartDataValue>,
@@ -410,17 +638,24 @@ export class TableCell extends AbstractElement {
     colorSet: ChartColorSet | null = null,
     configure: ((verticalBarChart: VerticalBarChart) => unknown) | null = null,
   ): this {
-    return this.hasItems.addVerticalBarChart(
-      title,
-      data,
-      showTitle,
-      xAxisTitle,
-      yAxisTitle,
-      colorSet,
-      configure,
+    return this.addItems(
+      this.configure(
+        new VerticalBarChart(
+          title,
+          data,
+          showTitle,
+          xAxisTitle,
+          yAxisTitle,
+          colorSet,
+        ),
+        configure,
+      ),
     );
   }
 
+  /**
+   * Add a grouped vertical bar chart.
+   */
   public addGroupedVerticalBarChart(
     title: string,
     data: Iterable<GroupedVerticalBarChartData> | null = null,
@@ -432,15 +667,30 @@ export class TableCell extends AbstractElement {
       | ((groupedVerticalBarChart: GroupedVerticalBarChart) => unknown)
       | null = null,
   ): this {
-    return this.hasItems.addGroupedVerticalBarChart(
-      title,
-      data,
-      showTitle,
-      xAxisTitle,
-      yAxisTitle,
-      colorSet,
-      configure,
+    return this.addItems(
+      this.configure(
+        new GroupedVerticalBarChart(
+          title,
+          data,
+          showTitle,
+          xAxisTitle,
+          yAxisTitle,
+          colorSet,
+        ),
+        configure,
+      ),
     );
+  }
+
+  private configure<E extends object>(
+    element: E,
+    configure: ((el: E) => unknown) | null,
+  ): E {
+    if (configure !== null) {
+      configure(element);
+    }
+
+    return element;
   }
 
   /**

@@ -1,14 +1,9 @@
-import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
-import type { Node } from "../Node.js";
+import type { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
 
-export class HasHorizontalAlignment<T extends Node> {
-  public constructor(private readonly host: T) {}
-
+export interface HasHorizontalAlignment {
   /**
    * Controls how the element should be horizontally aligned.
    * Valid values: "Left", "Center", "Right".
    */
-  public horizontalAlignment(alignment: HorizontalAlignment): T {
-    return this.host.setProperty("horizontalAlignment", alignment);
-  }
+  horizontalAlignment(alignment: HorizontalAlignment): this;
 }

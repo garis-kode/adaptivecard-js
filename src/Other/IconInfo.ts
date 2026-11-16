@@ -2,14 +2,12 @@ import { Colors } from "../Enum/Colors.js";
 import { IconSize } from "../Enum/IconSize.js";
 import { IconStyle } from "../Enum/IconStyle.js";
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * Defines information about a Fluent icon and how it should be rendered.
  */
-export class IconInfo extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class IconInfo extends Node implements HasKey {
   public constructor(
     name: string | null = null,
     color: Colors | null = null,
@@ -46,7 +44,7 @@ export class IconInfo extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

@@ -1,13 +1,11 @@
 import { MentionType } from "../Enum/MentionType.js";
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * Represents a mentioned person or tag.
  */
-export class MentionedEntity extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class MentionedEntity extends Node implements HasKey {
   public constructor(
     id: string,
     name: string,
@@ -33,7 +31,7 @@ export class MentionedEntity extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

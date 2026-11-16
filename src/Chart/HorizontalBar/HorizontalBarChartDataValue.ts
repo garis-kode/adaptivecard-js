@@ -1,13 +1,11 @@
 import { ChartColor } from "../../Enum/ChartColor.js";
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Represents a data point in a horizontal bar chart.
  */
-export class HorizontalBarChartDataValue extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class HorizontalBarChartDataValue extends Node implements HasKey {
   public constructor(
     x: string | number,
     y: number,
@@ -40,7 +38,7 @@ export class HorizontalBarChartDataValue extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

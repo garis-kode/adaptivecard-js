@@ -1,13 +1,11 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 import type { MentionedEntity } from "./MentionedEntity.js";
 
 /**
  * Represents a mention to a person.
  */
-export class Mention extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class Mention extends Node implements HasKey {
   public constructor(text: string, mentioned: MentionedEntity) {
     super();
     this.text(text);
@@ -24,7 +22,7 @@ export class Mention extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

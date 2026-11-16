@@ -1,5 +1,5 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import type { CollabStageInvokeDataValue } from "./CollabStageInvokeDataValue.js";
 import type { TeamsSubmitActionDataInterface } from "./TeamsSubmitActionDataInterface.js";
 
@@ -8,10 +8,8 @@ import type { TeamsSubmitActionDataInterface } from "./TeamsSubmitActionDataInte
  */
 export class InvokeSubmitActionData
   extends Node
-  implements TeamsSubmitActionDataInterface
+  implements TeamsSubmitActionDataInterface, HasKey
 {
-  private readonly hasKey = new HasKey(this);
-
   public constructor(
     value: CollabStageInvokeDataValue | string | number | boolean | null = null,
   ) {
@@ -33,7 +31,7 @@ export class InvokeSubmitActionData
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

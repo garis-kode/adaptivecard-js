@@ -1,13 +1,11 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 import { Mention } from "./Mention.js";
 
 /**
  * Represents a set of Teams-specific properties on a card.
  */
-export class TeamsCardProperties extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class TeamsCardProperties extends Node implements HasKey {
   public static make(): TeamsCardProperties {
     return new TeamsCardProperties();
   }
@@ -18,7 +16,7 @@ export class TeamsCardProperties extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**
