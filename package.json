@@ -58,7 +58,7 @@
     "test:pack": "bun run scripts/test-pack.ts",
     "typecheck": "bun --check",
     "fmt": "bun fmt",
-    "fmt:check": "bun fmt --check",
+    "fmt:check": "bun fmt --check src",
     "check": "bun run fmt:check && bun run typecheck && bun test && bun run build",
     "prepack": "bun run build",
     "prepublishOnly": "bun run check && bun run test:pack"
