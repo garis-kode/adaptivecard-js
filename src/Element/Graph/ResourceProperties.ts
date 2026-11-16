@@ -1,13 +1,11 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import type { ResourceVisualization } from "./ResourceVisualization.js";
 
 /**
  * Represents the properties of a resource component.
  */
-export class ResourceProperties extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class ResourceProperties extends Node implements HasKey {
   public static make(): ResourceProperties {
     return new ResourceProperties();
   }
@@ -18,7 +16,7 @@ export class ResourceProperties extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

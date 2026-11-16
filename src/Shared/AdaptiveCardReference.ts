@@ -1,12 +1,10 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * A type of reference whose content is an Adaptive Card.
  */
-export class AdaptiveCardReference extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class AdaptiveCardReference extends Node implements HasKey {
   public static make(): AdaptiveCardReference {
     return new AdaptiveCardReference();
   }
@@ -17,7 +15,7 @@ export class AdaptiveCardReference extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

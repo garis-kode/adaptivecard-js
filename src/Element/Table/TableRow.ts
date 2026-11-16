@@ -3,10 +3,10 @@ import { Height } from "../../Enum/Height.js";
 import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
 import { Spacing } from "../../Enum/Spacing.js";
 import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
-import { HasHeight } from "../../Support/HasHeight.js";
-import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
-import { HasSeparator } from "../../Support/HasSeparator.js";
-import { HasSpacing } from "../../Support/HasSpacing.js";
+import type { HasHeight } from "../../Support/HasHeight.js";
+import type { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import type { HasSeparator } from "../../Support/HasSeparator.js";
+import type { HasSpacing } from "../../Support/HasSpacing.js";
 import { AbstractElement } from "../AbstractElement.js";
 import { TextBlock } from "../TextBlock.js";
 import { TableCell } from "./TableCell.js";
@@ -14,22 +14,21 @@ import { TableCell } from "./TableCell.js";
 /**
  * Represents a row of cells in a table.
  */
-export class TableRow extends AbstractElement {
-  private readonly hasHeight = new HasHeight(this);
-  private readonly hasHorizontalAlignment = new HasHorizontalAlignment(this);
-  private readonly hasSeparator = new HasSeparator(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export class TableRow
+  extends AbstractElement
+  implements HasHeight, HasHorizontalAlignment, HasSeparator, HasSpacing
+{
   public static make(): TableRow {
     return new TableRow();
   }
 
   /**
-   * Controls how the element should be vertically sized.
+   * The height of the element. When set to `stretch`, the element will use
+   * the remaining vertical space in its container.
    * Valid values: "auto", "stretch".
    */
   public height(height: Height): this {
-    return this.hasHeight.height(height);
+    return this.set("height", height);
   }
 
   /**
@@ -37,22 +36,26 @@ export class TableRow extends AbstractElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalAlignment(alignment: HorizontalAlignment): this {
-    return this.hasHorizontalAlignment.horizontalAlignment(alignment);
+    return this.set("horizontalAlignment", alignment);
   }
 
   /**
-   * Controls if a separator line should be displayed above the element to visually separate it from the previous element.
+   * Controls whether a separator line should be displayed above the element
+   * to visually separate it from the previous element. No separator will be
+   * displayed for the first element in a container, even if this property is
+   * set to true.
    */
-  public separator(separator = true): this {
-    return this.hasSeparator.separator(separator);
+  public separator(separator: boolean = true): this {
+    return this.set("separator", separator);
   }
 
   /**
-   * Controls the amount of space between this element and the preceding one.
-   * Valid values: "none", "extraSmall", "small", "default", "medium", "large", "extraLarge", "padding".
+   * Controls the amount of space between this element and the previous one.
+   * No space will be added for the first element in a container.
+   * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
    */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
   /**

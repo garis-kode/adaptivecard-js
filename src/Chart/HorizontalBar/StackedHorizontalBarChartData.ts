@@ -1,13 +1,11 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import { StackedHorizontalBarChartDataPoint } from "./StackedHorizontalBarChartDataPoint.js";
 
 /**
  * Defines a data series to display in a stacked horizontal bar chart.
  */
-export class StackedHorizontalBarChartData extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class StackedHorizontalBarChartData extends Node implements HasKey {
   public constructor(
     title: string,
     data: Iterable<StackedHorizontalBarChartDataPoint> = [],
@@ -35,7 +33,7 @@ export class StackedHorizontalBarChartData extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

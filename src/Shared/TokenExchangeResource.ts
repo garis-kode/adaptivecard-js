@@ -1,12 +1,10 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * Defines information required to enable on-behalf-of single sign-on user authentication.
  */
-export class TokenExchangeResource extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class TokenExchangeResource extends Node implements HasKey {
   public constructor(
     id: string | null = null,
     providerId: string | null = null,
@@ -38,7 +36,7 @@ export class TokenExchangeResource extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

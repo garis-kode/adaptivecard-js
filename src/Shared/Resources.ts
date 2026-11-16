@@ -1,13 +1,11 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 import type { StringResource } from "./StringResource.js";
 
 /**
  * The resources that can be used in the body of the card.
  */
-export class Resources extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class Resources extends Node implements HasKey {
   public static make(): Resources {
     return new Resources();
   }
@@ -18,7 +16,7 @@ export class Resources extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

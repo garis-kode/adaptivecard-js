@@ -2,14 +2,12 @@ import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
 import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
 import { Width } from "../../Enum/Width.js";
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Defines a column in a Table element.
  */
-export class TableColumnDefinition extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class TableColumnDefinition extends Node implements HasKey {
   constructor(width: Width | string | number | null = null) {
     super();
     if (width !== null) {
@@ -24,10 +22,12 @@ export class TableColumnDefinition extends Node {
   }
 
   /**
-   * Key that identifies the element in the list of items.
+   * Defines an optional key for the object. Keys are seldom needed, but in
+   * some scenarios, specifying keys can help maintain visual state in the
+   * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

@@ -1,13 +1,14 @@
 import { InsertPosition } from "../Enum/InsertPosition.js";
-import { HasMenuActions } from "../Support/HasMenuActions.js";
+import type { HasMenuActions } from "../Support/HasMenuActions.js";
 import { AbstractAction } from "./AbstractAction.js";
 
 /**
  * Inserts an image into the host application's canvas.
  */
-export class InsertImageAction extends AbstractAction {
-  private readonly hasMenuActions = new HasMenuActions(this);
-
+export class InsertImageAction
+  extends AbstractAction
+  implements HasMenuActions
+{
   public constructor(
     url: string,
     altText: string,
@@ -36,7 +37,18 @@ export class InsertImageAction extends AbstractAction {
   public addMenuActions(
     action: AbstractAction | Iterable<AbstractAction>,
   ): this {
-    return this.hasMenuActions.addMenuActions(action);
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
+      for (const item of action) {
+        this.push("menuActions", item);
+      }
+
+      return this;
+    }
+
+    return this.push("menuActions", action);
   }
 
   /**
@@ -45,7 +57,7 @@ export class InsertImageAction extends AbstractAction {
    * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public menuActions(actions: Iterable<AbstractAction>): this {
-    return this.hasMenuActions.menuActions(actions);
+    return this.addMenuActions(actions);
   }
 
   /**

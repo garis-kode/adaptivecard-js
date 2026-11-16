@@ -3,15 +3,15 @@ export { AdaptiveCard } from "./src/AdaptiveCard.js";
 export { Node } from "./src/Node.js";
 export { AdaptiveCardException } from "./src/Exception/AdaptiveCardException.js";
 
-// Support Helpers (Composition Pattern)
-export { HasHeight } from "./src/Support/HasHeight.js";
-export { HasHorizontalAlignment } from "./src/Support/HasHorizontalAlignment.js";
-export { HasItems } from "./src/Support/HasItems.js";
-export { HasKey } from "./src/Support/HasKey.js";
-export { HasLayouts } from "./src/Support/HasLayouts.js";
-export { HasMenuActions } from "./src/Support/HasMenuActions.js";
-export { HasSeparator } from "./src/Support/HasSeparator.js";
-export { HasSpacing } from "./src/Support/HasSpacing.js";
+// Support Interfaces
+export type { HasHeight } from "./src/Support/HasHeight.js";
+export type { HasHorizontalAlignment } from "./src/Support/HasHorizontalAlignment.js";
+export type { HasItems } from "./src/Support/HasItems.js";
+export type { HasKey } from "./src/Support/HasKey.js";
+export type { HasLayouts } from "./src/Support/HasLayouts.js";
+export type { HasMenuActions } from "./src/Support/HasMenuActions.js";
+export type { HasSeparator } from "./src/Support/HasSeparator.js";
+export type { HasSpacing } from "./src/Support/HasSpacing.js";
 
 // Enums (57)
 export { ActionBehavior } from "./src/Enum/ActionBehavior.js";

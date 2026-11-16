@@ -2,13 +2,13 @@ import type { AbstractAction } from "../Action/AbstractAction.js";
 import { AbstractBlockElement } from "../Element/AbstractBlockElement.js";
 import { Height } from "../Enum/Height.js";
 import { Spacing } from "../Enum/Spacing.js";
-import { HasHeight } from "../Support/HasHeight.js";
-import { HasSpacing } from "../Support/HasSpacing.js";
+import type { HasHeight } from "../Support/HasHeight.js";
+import type { HasSpacing } from "../Support/HasSpacing.js";
 
-export abstract class AbstractInput extends AbstractBlockElement {
-  private readonly hasHeight = new HasHeight(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export abstract class AbstractInput
+  extends AbstractBlockElement
+  implements HasHeight, HasSpacing
+{
   public constructor(id: string) {
     super();
     this.id(id);
@@ -20,7 +20,7 @@ export abstract class AbstractInput extends AbstractBlockElement {
    * Valid values: "auto", "stretch".
    */
   public height(height: Height): this {
-    return this.hasHeight.height(height);
+    return this.set("height", height);
   }
 
   /**
@@ -29,7 +29,7 @@ export abstract class AbstractInput extends AbstractBlockElement {
    * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
    */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
   /**

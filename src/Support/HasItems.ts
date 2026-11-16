@@ -1,565 +1,357 @@
-import { DonutChart } from "../Chart/Donut/DonutChart.js";
-import { DonutChartData } from "../Chart/Donut/DonutChartData.js";
-import { GaugeChart } from "../Chart/Gauge/GaugeChart.js";
-import { GaugeChartLegend } from "../Chart/Gauge/GaugeChartLegend.js";
-import { HorizontalBarChart } from "../Chart/HorizontalBar/HorizontalBarChart.js";
-import { HorizontalBarChartDataValue } from "../Chart/HorizontalBar/HorizontalBarChartDataValue.js";
-import { StackedHorizontalBarChart } from "../Chart/HorizontalBar/StackedHorizontalBarChart.js";
-import { StackedHorizontalBarChartData } from "../Chart/HorizontalBar/StackedHorizontalBarChartData.js";
-import { LineChart } from "../Chart/Line/LineChart.js";
-import { LineChartData } from "../Chart/Line/LineChartData.js";
-import { PieChart } from "../Chart/Pie/PieChart.js";
-import { GroupedVerticalBarChart } from "../Chart/VerticalBar/GroupedVerticalBarChart.js";
-import { GroupedVerticalBarChartData } from "../Chart/VerticalBar/GroupedVerticalBarChartData.js";
-import { VerticalBarChart } from "../Chart/VerticalBar/VerticalBarChart.js";
-import { VerticalBarChartDataValue } from "../Chart/VerticalBar/VerticalBarChartDataValue.js";
-import { AbstractBlockElement } from "../Element/AbstractBlockElement.js";
-import { Accordion } from "../Element/Accordion.js";
-import { ActionSet } from "../Element/ActionSet.js";
-import { Badge } from "../Element/Badge.js";
-import { Carousel } from "../Element/Carousel/Carousel.js";
-import { CodeBlock } from "../Element/CodeBlock.js";
-import { ColumnSet } from "../Element/Column/ColumnSet.js";
-import { CompoundButton } from "../Element/CompoundButton.js";
-import { Container } from "../Element/Container.js";
-import { Fact } from "../Element/Fact/Fact.js";
-import { FactSet } from "../Element/Fact/FactSet.js";
-import { Icon } from "../Element/Icon.js";
-import { Image } from "../Element/Image/Image.js";
-import { ImageSet } from "../Element/Image/ImageSet.js";
-import { Media } from "../Element/Media/Media.js";
-import { ProgressBar } from "../Element/Progress/ProgressBar.js";
-import { ProgressRing } from "../Element/Progress/ProgressRing.js";
-import { Rating } from "../Element/Rating.js";
-import { RichTextBlock } from "../Element/RichTextBlock/RichTextBlock.js";
-import { Table } from "../Element/Table/Table.js";
-import { TabSet } from "../Element/TabSet.js";
-import { TextBlock } from "../Element/TextBlock.js";
-import { ChartColorSet } from "../Enum/ChartColorSet.js";
-import { CodeBlockLanguage } from "../Enum/CodeBlockLanguage.js";
-import { ChoiceSetInput } from "../Input/ChoiceSet/ChoiceSetInput.js";
-import { DateInput } from "../Input/DateInput.js";
-import { NumberInput } from "../Input/NumberInput.js";
-import { RatingInput } from "../Input/RatingInput.js";
-import { TextInput } from "../Input/TextInput.js";
-import { TimeInput } from "../Input/TimeInput.js";
-import { ToggleInput } from "../Input/ToggleInput.js";
-import { Node } from "../Node.js";
+import type { DonutChart } from "../Chart/Donut/DonutChart.js";
+import type { DonutChartData } from "../Chart/Donut/DonutChartData.js";
+import type { GaugeChart } from "../Chart/Gauge/GaugeChart.js";
+import type { GaugeChartLegend } from "../Chart/Gauge/GaugeChartLegend.js";
+import type { HorizontalBarChart } from "../Chart/HorizontalBar/HorizontalBarChart.js";
+import type { HorizontalBarChartDataValue } from "../Chart/HorizontalBar/HorizontalBarChartDataValue.js";
+import type { StackedHorizontalBarChart } from "../Chart/HorizontalBar/StackedHorizontalBarChart.js";
+import type { StackedHorizontalBarChartData } from "../Chart/HorizontalBar/StackedHorizontalBarChartData.js";
+import type { LineChart } from "../Chart/Line/LineChart.js";
+import type { LineChartData } from "../Chart/Line/LineChartData.js";
+import type { PieChart } from "../Chart/Pie/PieChart.js";
+import type { GroupedVerticalBarChart } from "../Chart/VerticalBar/GroupedVerticalBarChart.js";
+import type { GroupedVerticalBarChartData } from "../Chart/VerticalBar/GroupedVerticalBarChartData.js";
+import type { VerticalBarChart } from "../Chart/VerticalBar/VerticalBarChart.js";
+import type { VerticalBarChartDataValue } from "../Chart/VerticalBar/VerticalBarChartDataValue.js";
+import type { AbstractBlockElement } from "../Element/AbstractBlockElement.js";
+import type { Accordion } from "../Element/Accordion.js";
+import type { ActionSet } from "../Element/ActionSet.js";
+import type { Badge } from "../Element/Badge.js";
+import type { Carousel } from "../Element/Carousel/Carousel.js";
+import type { CodeBlock } from "../Element/CodeBlock.js";
+import type { ColumnSet } from "../Element/Column/ColumnSet.js";
+import type { CompoundButton } from "../Element/CompoundButton.js";
+import type { Container } from "../Element/Container.js";
+import type { Fact } from "../Element/Fact/Fact.js";
+import type { FactSet } from "../Element/Fact/FactSet.js";
+import type { Icon } from "../Element/Icon.js";
+import type { Image } from "../Element/Image/Image.js";
+import type { ImageSet } from "../Element/Image/ImageSet.js";
+import type { Media } from "../Element/Media/Media.js";
+import type { ProgressBar } from "../Element/Progress/ProgressBar.js";
+import type { ProgressRing } from "../Element/Progress/ProgressRing.js";
+import type { Rating } from "../Element/Rating.js";
+import type { RichTextBlock } from "../Element/RichTextBlock/RichTextBlock.js";
+import type { Table } from "../Element/Table/Table.js";
+import type { TabSet } from "../Element/TabSet.js";
+import type { TextBlock } from "../Element/TextBlock.js";
+import type { ChartColorSet } from "../Enum/ChartColorSet.js";
+import type { CodeBlockLanguage } from "../Enum/CodeBlockLanguage.js";
+import type { ChoiceSetInput } from "../Input/ChoiceSet/ChoiceSetInput.js";
+import type { DateInput } from "../Input/DateInput.js";
+import type { NumberInput } from "../Input/NumberInput.js";
+import type { RatingInput } from "../Input/RatingInput.js";
+import type { TextInput } from "../Input/TextInput.js";
+import type { TimeInput } from "../Input/TimeInput.js";
+import type { ToggleInput } from "../Input/ToggleInput.js";
 
-export class HasItems<T extends Node> {
-  constructor(
-    private readonly host: T,
-    private readonly itemsKey: string = "items",
-  ) {}
-
+export interface HasItems {
   /**
    * Add one or more block elements.
    */
-  public addItems(
+  addItems(
     element: AbstractBlockElement | Iterable<AbstractBlockElement>,
-  ): T {
-    if (
-      !(element instanceof AbstractBlockElement) &&
-      Symbol.iterator in Object(element)
-    ) {
-      for (const item of element) {
-        this.host.pushProperty(this.itemsKey, item);
-      }
-
-      return this.host;
-    }
-
-    return this.host.pushProperty(this.itemsKey, element);
-  }
+  ): this;
 
   /**
    * The items in the container.
    */
-  public items(elements: Iterable<AbstractBlockElement>): T {
-    return this.addItems(elements);
-  }
+  items(elements: Iterable<AbstractBlockElement>): this;
 
   /**
    * Add a block of text, optionally formatted using Markdown.
    */
-  public addTextBlock(
+  addTextBlock(
     text: string,
-    configure: ((textBlock: TextBlock) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new TextBlock(text), configure));
-  }
+    configure?: ((textBlock: TextBlock) => unknown) | null,
+  ): this;
 
   /**
    * Add a standalone image element.
    */
-  public addImage(
-    url: string,
-    configure: ((image: Image) => unknown) | null = null,
-  ): T {
-    const image = new Image().url(url);
-
-    return this.addItems(this.configure(image, configure));
-  }
+  addImage(url: string, configure?: ((image: Image) => unknown) | null): this;
 
   /**
    * Add a rich text block that displays formatted text.
    */
-  public addRichTextBlock(
-    configure: ((richTextBlock: RichTextBlock) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new RichTextBlock(), configure));
-  }
+  addRichTextBlock(
+    configure?: ((richTextBlock: RichTextBlock) => unknown) | null,
+  ): this;
 
   /**
    * Add a container for other elements.
    */
-  public addContainer(
-    configure: ((container: Container) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new Container(), configure));
-  }
+  addContainer(configure?: ((container: Container) => unknown) | null): this;
 
   /**
    * Add a set of columns, splitting the available horizontal space so elements
    * can be organized in a row.
    */
-  public addColumnSet(
-    configure: ((columnSet: ColumnSet) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new ColumnSet(), configure));
-  }
+  addColumnSet(configure?: ((columnSet: ColumnSet) => unknown) | null): this;
 
   /**
    * Add a set of facts, displayed as a table or a vertical list when horizontal
    * space is constrained.
    */
-  public addFactSet(
-    facts: Iterable<Fact> = [],
-    configure: ((factSet: FactSet) => unknown) | null = null,
-  ): T {
-    const factSet = new FactSet();
-    factSet.facts(facts);
-
-    return this.addItems(this.configure(factSet, configure));
-  }
+  addFactSet(
+    facts?: Iterable<Fact>,
+    configure?: ((factSet: FactSet) => unknown) | null,
+  ): this;
 
   /**
    * Add a set of images, displayed side-by-side and wrapped across multiple rows
    * as needed.
    */
-  public addImageSet(
-    configure: ((imageSet: ImageSet) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new ImageSet(), configure));
-  }
+  addImageSet(configure?: ((imageSet: ImageSet) => unknown) | null): this;
 
   /**
    * Add a media element, making it possible to embed videos inside a card.
    */
-  public addMedia(configure: ((media: Media) => unknown) | null = null): T {
-    return this.addItems(this.configure(new Media(), configure));
-  }
+  addMedia(configure?: ((media: Media) => unknown) | null): this;
 
   /**
    * Add a table to display data in a tabular way, with rows, columns and cells.
    */
-  public addTable(configure: ((table: Table) => unknown) | null = null): T {
-    return this.addItems(this.configure(new Table(), configure));
-  }
+  addTable(configure?: ((table: Table) => unknown) | null): this;
 
   /**
    * Add an action set, which can be placed anywhere in the card.
    */
-  public addActionSet(
-    configure: ((actionSet: ActionSet) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new ActionSet(), configure));
-  }
+  addActionSet(configure?: ((actionSet: ActionSet) => unknown) | null): this;
 
   /**
    * Add a badge element to show an icon and/or text in a compact form over a
    * colored background.
    */
-  public addBadge(
-    text: string | null = null,
-    configure: ((badge: Badge) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new Badge(text), configure));
-  }
+  addBadge(
+    text?: string | null,
+    configure?: ((badge: Badge) => unknown) | null,
+  ): this;
 
   /**
    * Add a carousel with sliding pages.
    */
-  public addCarousel(
-    configure: ((carousel: Carousel) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new Carousel(), configure));
-  }
+  addCarousel(configure?: ((carousel: Carousel) => unknown) | null): this;
 
   /**
    * Add an accordion, allowing the end-user to toggle the display of content by
    * expanding or collapsing pages.
    */
-  public addAccordion(
-    configure: ((accordion: Accordion) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new Accordion(), configure));
-  }
+  addAccordion(configure?: ((accordion: Accordion) => unknown) | null): this;
 
   /**
    * Add a tab set, allowing the end-user to navigate through pages using a tabbed
    * interface.
    */
-  public addTabSet(configure: ((tabSet: TabSet) => unknown) | null = null): T {
-    return this.addItems(this.configure(new TabSet(), configure));
-  }
+  addTabSet(configure?: ((tabSet: TabSet) => unknown) | null): this;
 
   /**
    * Add a formatted and syntax-colored code block.
    */
-  public addCodeBlock(
+  addCodeBlock(
     code: string,
-    language: CodeBlockLanguage = CodeBlockLanguage.PlainText,
-    configure: ((codeBlock: CodeBlock) => unknown) | null = null,
-  ): T {
-    const codeBlock = new CodeBlock().codeSnippet(code).language(language);
-
-    return this.addItems(this.configure(codeBlock, configure));
-  }
+    language?: CodeBlockLanguage,
+    configure?: ((codeBlock: CodeBlock) => unknown) | null,
+  ): this;
 
   /**
    * Add a special type of button with an icon, title and description.
    */
-  public addCompoundButton(
-    title: string | null = null,
-    description: string | null = null,
-    configure: ((compoundButton: CompoundButton) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(new CompoundButton(title, description), configure),
-    );
-  }
+  addCompoundButton(
+    title?: string | null,
+    description?: string | null,
+    configure?: ((compoundButton: CompoundButton) => unknown) | null,
+  ): this;
 
   /**
    * Add a standalone icon element. Icons can be picked from the vast Adaptive Card
    * icon catalog.
    */
-  public addIcon(
-    name: string,
-    configure: ((icon: Icon) => unknown) | null = null,
-  ): T {
-    const icon = new Icon().name(name);
-
-    return this.addItems(this.configure(icon, configure));
-  }
+  addIcon(name: string, configure?: ((icon: Icon) => unknown) | null): this;
 
   /**
    * Add a progress bar element to represent a value within a range.
    */
-  public addProgressBar(
-    value: number | null = null,
-    max = 100,
-    configure: ((progressBar: ProgressBar) => unknown) | null = null,
-  ): T {
-    const bar = new ProgressBar();
-    if (value !== null) {
-      bar.value(value);
-    }
-    if (max !== 100) {
-      bar.max(max);
-    }
-
-    return this.addItems(this.configure(bar, configure));
-  }
+  addProgressBar(
+    value?: number | null,
+    max?: number,
+    configure?: ((progressBar: ProgressBar) => unknown) | null,
+  ): this;
 
   /**
    * Add a spinning ring element to indicate progress.
    */
-  public addProgressRing(
-    label: string | null = null,
-    configure: ((progressRing: ProgressRing) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new ProgressRing(label), configure));
-  }
+  addProgressRing(
+    label?: string | null,
+    configure?: ((progressRing: ProgressRing) => unknown) | null,
+  ): this;
 
   /**
    * Add a read-only star rating element to display the rating of something.
    */
-  public addRating(
-    value: number | null = null,
-    max = 5,
-    configure: ((rating: Rating) => unknown) | null = null,
-  ): T {
-    const rating = new Rating();
-    if (value !== null) {
-      rating.value(value);
-    }
-    if (max !== 5) {
-      rating.max(max);
-    }
-
-    return this.addItems(this.configure(rating, configure));
-  }
+  addRating(
+    value?: number | null,
+    max?: number,
+    configure?: ((rating: Rating) => unknown) | null,
+  ): this;
 
   /**
    * Add an input to allow the user to enter text.
    */
-  public addTextInput(
+  addTextInput(
     id: string,
-    label: string | null = null,
-    placeholder: string | null = null,
-    configure: ((textInput: TextInput) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(new TextInput(id, label, placeholder), configure),
-    );
-  }
+    label?: string | null,
+    placeholder?: string | null,
+    configure?: ((textInput: TextInput) => unknown) | null,
+  ): this;
 
   /**
    * Add an input to allow the user to enter a number.
    */
-  public addNumberInput(
+  addNumberInput(
     id: string,
-    label: string | null = null,
-    placeholder: string | null = null,
-    configure: ((numberInput: NumberInput) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(new NumberInput(id, label, placeholder), configure),
-    );
-  }
+    label?: string | null,
+    placeholder?: string | null,
+    configure?: ((numberInput: NumberInput) => unknown) | null,
+  ): this;
 
   /**
    * Add an input to allow the user to select a date.
    */
-  public addDateInput(
+  addDateInput(
     id: string,
-    label: string | null = null,
-    configure: ((dateInput: DateInput) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new DateInput(id, label), configure));
-  }
+    label?: string | null,
+    configure?: ((dateInput: DateInput) => unknown) | null,
+  ): this;
 
   /**
    * Add an input to allow the user to select a time.
    */
-  public addTimeInput(
+  addTimeInput(
     id: string,
-    label: string | null = null,
-    configure: ((timeInput: TimeInput) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new TimeInput(id, label), configure));
-  }
+    label?: string | null,
+    configure?: ((timeInput: TimeInput) => unknown) | null,
+  ): this;
 
   /**
    * Add an input to allow the user to select between on/off states.
    */
-  public addToggleInput(
+  addToggleInput(
     id: string,
-    title: string | null = null,
-    configure: ((toggleInput: ToggleInput) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new ToggleInput(id, title), configure));
-  }
+    title?: string | null,
+    configure?: ((toggleInput: ToggleInput) => unknown) | null,
+  ): this;
 
   /**
    * Add an input to allow the user to select one or more values.
    */
-  public addChoiceSetInput(
+  addChoiceSetInput(
     id: string,
-    configure: ((choiceSetInput: ChoiceSetInput) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new ChoiceSetInput(id), configure));
-  }
+    configure?: ((choiceSetInput: ChoiceSetInput) => unknown) | null,
+  ): this;
 
   /**
    * Add an input to allow the user to rate something using stars.
    */
-  public addRatingInput(
+  addRatingInput(
     id: string,
-    label: string | null = null,
-    configure: ((ratingInput: RatingInput) => unknown) | null = null,
-  ): T {
-    return this.addItems(this.configure(new RatingInput(id, label), configure));
-  }
+    label?: string | null,
+    configure?: ((ratingInput: RatingInput) => unknown) | null,
+  ): this;
 
   /**
    * Add a donut chart.
    */
-  public addDonutChart(
+  addDonutChart(
     title: string,
-    showTitle: boolean | null = null,
-    data: Iterable<DonutChartData> | null = null,
-    configure: ((donutChart: DonutChart) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(new DonutChart(title, showTitle, data), configure),
-    );
-  }
+    showTitle?: boolean | null,
+    data?: Iterable<DonutChartData> | null,
+    configure?: ((donutChart: DonutChart) => unknown) | null,
+  ): this;
 
   /**
    * Add a gauge chart.
    */
-  public addGaugeChart(
+  addGaugeChart(
     title: string,
-    showTitle: boolean | null = null,
-    value: number | null = null,
-    segments: Iterable<GaugeChartLegend> | null = null,
-    configure: ((gaugeChart: GaugeChart) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(
-        new GaugeChart(title, showTitle, value, segments),
-        configure,
-      ),
-    );
-  }
+    showTitle?: boolean | null,
+    value?: number | null,
+    segments?: Iterable<GaugeChartLegend> | null,
+    configure?: ((gaugeChart: GaugeChart) => unknown) | null,
+  ): this;
 
   /**
    * Add a horizontal bar chart.
    */
-  public addHorizontalBarChart(
+  addHorizontalBarChart(
     title: string,
     data: Iterable<HorizontalBarChartDataValue>,
-    showTitle: boolean | null = null,
-    xAxisTitle: string | null = null,
-    yAxisTitle: string | null = null,
-    colorSet: ChartColorSet | null = null,
-    configure:
-      ((horizontalBarChart: HorizontalBarChart) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(
-        new HorizontalBarChart(
-          title,
-          data,
-          showTitle,
-          xAxisTitle,
-          yAxisTitle,
-          colorSet,
-        ),
-        configure,
-      ),
-    );
-  }
+    showTitle?: boolean | null,
+    xAxisTitle?: string | null,
+    yAxisTitle?: string | null,
+    colorSet?: ChartColorSet | null,
+    configure?: ((horizontalBarChart: HorizontalBarChart) => unknown) | null,
+  ): this;
 
   /**
    * Add a stacked horizontal bar chart.
    */
-  public addStackedHorizontalBarChart(
+  addStackedHorizontalBarChart(
     title: string,
     data: Iterable<StackedHorizontalBarChartData>,
-    showTitle: boolean | null = null,
-    configure:
+    showTitle?: boolean | null,
+    configure?:
       | ((stackedHorizontalBarChart: StackedHorizontalBarChart) => unknown)
-      | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(
-        new StackedHorizontalBarChart(title, data, showTitle),
-        configure,
-      ),
-    );
-  }
+      | null,
+  ): this;
 
   /**
    * Add a line chart.
    */
-  public addLineChart(
+  addLineChart(
     title: string,
-    showTitle: boolean | null = null,
-    xAxisTitle: string | null = null,
-    yAxisTitle: string | null = null,
-    colorSet: ChartColorSet | null = null,
-    data: Iterable<LineChartData> | null = null,
-    configure: ((lineChart: LineChart) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(
-        new LineChart(title, showTitle, xAxisTitle, yAxisTitle, colorSet, data),
-        configure,
-      ),
-    );
-  }
+    showTitle?: boolean | null,
+    xAxisTitle?: string | null,
+    yAxisTitle?: string | null,
+    colorSet?: ChartColorSet | null,
+    data?: Iterable<LineChartData> | null,
+    configure?: ((lineChart: LineChart) => unknown) | null,
+  ): this;
 
   /**
    * Add a pie chart.
    */
-  public addPieChart(
+  addPieChart(
     title: string,
-    showTitle: boolean | null = null,
-    data: Iterable<DonutChartData> | null = null,
-    configure: ((pieChart: PieChart) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(new PieChart(title, showTitle, data), configure),
-    );
-  }
+    showTitle?: boolean | null,
+    data?: Iterable<DonutChartData> | null,
+    configure?: ((pieChart: PieChart) => unknown) | null,
+  ): this;
 
   /**
    * Add a vertical bar chart.
    */
-  public addVerticalBarChart(
+  addVerticalBarChart(
     title: string,
     data: Iterable<VerticalBarChartDataValue>,
-    showTitle: boolean | null = null,
-    xAxisTitle: string | null = null,
-    yAxisTitle: string | null = null,
-    colorSet: ChartColorSet | null = null,
-    configure: ((verticalBarChart: VerticalBarChart) => unknown) | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(
-        new VerticalBarChart(
-          title,
-          data,
-          showTitle,
-          xAxisTitle,
-          yAxisTitle,
-          colorSet,
-        ),
-        configure,
-      ),
-    );
-  }
+    showTitle?: boolean | null,
+    xAxisTitle?: string | null,
+    yAxisTitle?: string | null,
+    colorSet?: ChartColorSet | null,
+    configure?: ((verticalBarChart: VerticalBarChart) => unknown) | null,
+  ): this;
 
   /**
    * Add a grouped vertical bar chart.
    */
-  public addGroupedVerticalBarChart(
+  addGroupedVerticalBarChart(
     title: string,
-    data: Iterable<GroupedVerticalBarChartData> | null = null,
-    showTitle: boolean | null = null,
-    xAxisTitle: string | null = null,
-    yAxisTitle: string | null = null,
-    colorSet: ChartColorSet | null = null,
-    configure:
-      | ((groupedVerticalBarChart: GroupedVerticalBarChart) => unknown)
-      | null = null,
-  ): T {
-    return this.addItems(
-      this.configure(
-        new GroupedVerticalBarChart(
-          title,
-          data,
-          showTitle,
-          xAxisTitle,
-          yAxisTitle,
-          colorSet,
-        ),
-        configure,
-      ),
-    );
-  }
-
-  private configure<E extends object>(
-    element: E,
-    configure: ((el: E) => unknown) | null,
-  ): E {
-    if (configure !== null) {
-      configure(element);
-    }
-
-    return element;
-  }
+    data?: Iterable<GroupedVerticalBarChartData> | null,
+    showTitle?: boolean | null,
+    xAxisTitle?: string | null,
+    yAxisTitle?: string | null,
+    colorSet?: ChartColorSet | null,
+    configure?:
+      ((groupedVerticalBarChart: GroupedVerticalBarChart) => unknown) | null,
+  ): this;
 }

@@ -1,13 +1,11 @@
 import { AssociatedInputs } from "../../Enum/AssociatedInputs.js";
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 
 /**
  * Defines a query to dynamically fetch data from a Bot.
  */
-export class DataQuery extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class DataQuery extends Node implements HasKey {
   public constructor(
     dataset: string | null = null,
     count: number | null = null,
@@ -44,7 +42,7 @@ export class DataQuery extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

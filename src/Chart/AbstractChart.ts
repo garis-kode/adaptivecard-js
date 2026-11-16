@@ -3,22 +3,21 @@ import { ChartColorSet } from "../Enum/ChartColorSet.js";
 import { Height } from "../Enum/Height.js";
 import { HorizontalAlignment } from "../Enum/HorizontalAlignment.js";
 import { Spacing } from "../Enum/Spacing.js";
-import { HasHeight } from "../Support/HasHeight.js";
-import { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
-import { HasSpacing } from "../Support/HasSpacing.js";
+import type { HasHeight } from "../Support/HasHeight.js";
+import type { HasHorizontalAlignment } from "../Support/HasHorizontalAlignment.js";
+import type { HasSpacing } from "../Support/HasSpacing.js";
 
-export abstract class AbstractChart extends AbstractBlockElement {
-  private readonly hasHeight = new HasHeight(this);
-  private readonly hasHorizontalAlignment = new HasHorizontalAlignment(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export abstract class AbstractChart
+  extends AbstractBlockElement
+  implements HasHeight, HasHorizontalAlignment, HasSpacing
+{
   /**
    * The height of the element. When set to `stretch`, the element will use
    * the remaining vertical space in its container.
    * Valid values: "auto", "stretch".
    */
   public height(height: Height): this {
-    return this.hasHeight.height(height);
+    return this.set("height", height);
   }
 
   /**
@@ -26,7 +25,7 @@ export abstract class AbstractChart extends AbstractBlockElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalAlignment(alignment: HorizontalAlignment): this {
-    return this.hasHorizontalAlignment.horizontalAlignment(alignment);
+    return this.set("horizontalAlignment", alignment);
   }
 
   /**
@@ -35,7 +34,7 @@ export abstract class AbstractChart extends AbstractBlockElement {
    * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
    */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
   /**

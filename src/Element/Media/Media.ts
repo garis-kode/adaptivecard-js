@@ -1,7 +1,7 @@
 import { Height } from "../../Enum/Height.js";
 import { Spacing } from "../../Enum/Spacing.js";
-import { HasHeight } from "../../Support/HasHeight.js";
-import { HasSpacing } from "../../Support/HasSpacing.js";
+import type { HasHeight } from "../../Support/HasHeight.js";
+import type { HasSpacing } from "../../Support/HasSpacing.js";
 import { AbstractBlockElement } from "../AbstractBlockElement.js";
 import { CaptionSource } from "./CaptionSource.js";
 import { MediaSource } from "./MediaSource.js";
@@ -9,28 +9,30 @@ import { MediaSource } from "./MediaSource.js";
 /**
  * A media element that makes it possible to embed videos inside a card.
  */
-export class Media extends AbstractBlockElement {
-  private readonly hasHeight = new HasHeight(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export class Media
+  extends AbstractBlockElement
+  implements HasHeight, HasSpacing
+{
   public static make(): Media {
     return new Media();
   }
 
   /**
-   * Controls how the element should be vertically sized.
+   * The height of the element. When set to `stretch`, the element will use
+   * the remaining vertical space in its container.
    * Valid values: "auto", "stretch".
    */
   public height(height: Height): this {
-    return this.hasHeight.height(height);
+    return this.set("height", height);
   }
 
   /**
-   * Controls the amount of space between this element and the preceding one.
-   * Valid values: "none", "extraSmall", "small", "default", "medium", "large", "extraLarge", "padding".
+   * Controls the amount of space between this element and the previous one.
+   * No space will be added for the first element in a container.
+   * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
    */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
   /**

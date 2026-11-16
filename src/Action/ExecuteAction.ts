@@ -1,5 +1,5 @@
 import { AssociatedInputs } from "../Enum/AssociatedInputs.js";
-import { HasMenuActions } from "../Support/HasMenuActions.js";
+import type { HasMenuActions } from "../Support/HasMenuActions.js";
 import { AbstractAction } from "./AbstractAction.js";
 import type { SubmitActionData } from "./Submit/SubmitActionData.js";
 
@@ -8,9 +8,7 @@ import type { SubmitActionData } from "./Submit/SubmitActionData.js";
  * Bot via an Invoke activity. The Bot can respond synchronously and return an updated Adaptive Card
  * to be displayed by the client. `Action.Execute` works in all Adaptive Card hosts.
  */
-export class ExecuteAction extends AbstractAction {
-  private readonly hasMenuActions = new HasMenuActions(this);
-
+export class ExecuteAction extends AbstractAction implements HasMenuActions {
   public constructor(title: string | null = null) {
     super();
     if (title !== null) {
@@ -28,7 +26,18 @@ export class ExecuteAction extends AbstractAction {
   public addMenuActions(
     action: AbstractAction | Iterable<AbstractAction>,
   ): this {
-    return this.hasMenuActions.addMenuActions(action);
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
+      for (const item of action) {
+        this.push("menuActions", item);
+      }
+
+      return this;
+    }
+
+    return this.push("menuActions", action);
   }
 
   /**
@@ -37,7 +46,7 @@ export class ExecuteAction extends AbstractAction {
    * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public menuActions(actions: Iterable<AbstractAction>): this {
-    return this.hasMenuActions.menuActions(actions);
+    return this.addMenuActions(actions);
   }
 
   /**

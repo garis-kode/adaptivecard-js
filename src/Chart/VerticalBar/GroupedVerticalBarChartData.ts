@@ -1,14 +1,12 @@
 import { ChartColor } from "../../Enum/ChartColor.js";
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import { BarChartDataValue } from "../HorizontalBar/BarChartDataValue.js";
 
 /**
  * Represents a series of data points in a grouped vertical bar chart.
  */
-export class GroupedVerticalBarChartData extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class GroupedVerticalBarChartData extends Node implements HasKey {
   public constructor(
     legend: string,
     values: Iterable<BarChartDataValue> = [],
@@ -41,7 +39,7 @@ export class GroupedVerticalBarChartData extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

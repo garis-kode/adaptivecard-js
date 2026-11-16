@@ -1,13 +1,11 @@
 import { Theme } from "../Enum/Theme.js";
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * Defines a theme-specific URL.
  */
-export class ThemedUrl extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class ThemedUrl extends Node implements HasKey {
   public constructor(theme: Theme | null = null, url: string | null = null) {
     super();
     if (theme !== null) {
@@ -31,7 +29,7 @@ export class ThemedUrl extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

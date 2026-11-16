@@ -1,14 +1,12 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 import { AuthCardButton } from "./AuthCardButton.js";
 import type { TokenExchangeResource } from "./TokenExchangeResource.js";
 
 /**
  * Defines authentication information associated with a card.
  */
-export class Authentication extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class Authentication extends Node implements HasKey {
   public static make(): Authentication {
     return new Authentication();
   }
@@ -19,7 +17,7 @@ export class Authentication extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

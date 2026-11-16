@@ -1,13 +1,14 @@
 import { DialogSize } from "../../Enum/DialogSize.js";
-import { HasMenuActions } from "../../Support/HasMenuActions.js";
+import type { HasMenuActions } from "../../Support/HasMenuActions.js";
 import { AbstractAction } from "../AbstractAction.js";
 
 /**
  * Opens a task module in a modal dialog hosting the content at a provided URL.
  */
-export class OpenUrlDialogAction extends AbstractAction {
-  private readonly hasMenuActions = new HasMenuActions(this);
-
+export class OpenUrlDialogAction
+  extends AbstractAction
+  implements HasMenuActions
+{
   public constructor(
     dialogTitle: string,
     dialogHeight: DialogSize | string,
@@ -39,7 +40,18 @@ export class OpenUrlDialogAction extends AbstractAction {
   public addMenuActions(
     action: AbstractAction | Iterable<AbstractAction>,
   ): this {
-    return this.hasMenuActions.addMenuActions(action);
+    if (
+      !(action instanceof AbstractAction) &&
+      Symbol.iterator in Object(action)
+    ) {
+      for (const item of action) {
+        this.push("menuActions", item);
+      }
+
+      return this;
+    }
+
+    return this.push("menuActions", action);
   }
 
   /**
@@ -48,7 +60,7 @@ export class OpenUrlDialogAction extends AbstractAction {
    * "Action.ResetInputs", "Action.RunCommands", "Action.Submit", "Action.ToggleVisibility".
    */
   public menuActions(actions: Iterable<AbstractAction>): this {
-    return this.hasMenuActions.menuActions(actions);
+    return this.addMenuActions(actions);
   }
 
   /**

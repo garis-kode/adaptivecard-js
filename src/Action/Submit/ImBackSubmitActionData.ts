@@ -1,5 +1,5 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 import type { TeamsSubmitActionDataInterface } from "./TeamsSubmitActionDataInterface.js";
 
 /**
@@ -7,10 +7,8 @@ import type { TeamsSubmitActionDataInterface } from "./TeamsSubmitActionDataInte
  */
 export class ImBackSubmitActionData
   extends Node
-  implements TeamsSubmitActionDataInterface
+  implements TeamsSubmitActionDataInterface, HasKey
 {
-  private readonly hasKey = new HasKey(this);
-
   public constructor(value: string | null = null) {
     super();
     if (value !== null) {
@@ -28,7 +26,7 @@ export class ImBackSubmitActionData
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

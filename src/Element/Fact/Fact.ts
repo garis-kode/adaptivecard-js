@@ -1,12 +1,10 @@
 import { Node } from "../../Node.js";
-import { HasKey } from "../../Support/HasKey.js";
+import type { HasKey } from "../../Support/HasKey.js";
 
 /**
  * A fact in a FactSet element.
  */
-export class Fact extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class Fact extends Node implements HasKey {
   constructor(title: string, value: string) {
     super();
     this.title(title);
@@ -18,10 +16,12 @@ export class Fact extends Node {
   }
 
   /**
-   * Key that identifies the element in the list of items.
+   * Defines an optional key for the object. Keys are seldom needed, but in
+   * some scenarios, specifying keys can help maintain visual state in the
+   * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

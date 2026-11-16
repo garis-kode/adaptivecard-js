@@ -1,12 +1,10 @@
 import { Node } from "../Node.js";
-import { HasKey } from "../Support/HasKey.js";
+import type { HasKey } from "../Support/HasKey.js";
 
 /**
  * Defines an area in a Layout.AreaGrid layout.
  */
-export class GridArea extends Node {
-  private readonly hasKey = new HasKey(this);
-
+export class GridArea extends Node implements HasKey {
   public constructor(name: string | null = null) {
     super();
     if (name !== null) {
@@ -24,7 +22,7 @@ export class GridArea extends Node {
    * host application.
    */
   public key(key: string): this {
-    return this.hasKey.key(key);
+    return this.set("key", key);
   }
 
   /**

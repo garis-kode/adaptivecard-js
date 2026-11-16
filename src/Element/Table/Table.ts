@@ -4,9 +4,9 @@ import { HorizontalAlignment } from "../../Enum/HorizontalAlignment.js";
 import { Spacing } from "../../Enum/Spacing.js";
 import { VerticalAlignment } from "../../Enum/VerticalAlignment.js";
 import { Width } from "../../Enum/Width.js";
-import { HasHeight } from "../../Support/HasHeight.js";
-import { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
-import { HasSpacing } from "../../Support/HasSpacing.js";
+import type { HasHeight } from "../../Support/HasHeight.js";
+import type { HasHorizontalAlignment } from "../../Support/HasHorizontalAlignment.js";
+import type { HasSpacing } from "../../Support/HasSpacing.js";
 import { AbstractBlockElement } from "../AbstractBlockElement.js";
 import { TextBlock } from "../TextBlock.js";
 import { TableColumnDefinition } from "./TableColumnDefinition.js";
@@ -15,11 +15,10 @@ import { TableRow } from "./TableRow.js";
 /**
  * Use tables to display data in a tabular way, with rows, columns and cells.
  */
-export class Table extends AbstractBlockElement {
-  private readonly hasHeight = new HasHeight(this);
-  private readonly hasHorizontalAlignment = new HasHorizontalAlignment(this);
-  private readonly hasSpacing = new HasSpacing(this);
-
+export class Table
+  extends AbstractBlockElement
+  implements HasHeight, HasHorizontalAlignment, HasSpacing
+{
   constructor(
     columns: Iterable<TableColumnDefinition> | null = null,
     rows: Iterable<TableRow> | null = null,
@@ -41,11 +40,12 @@ export class Table extends AbstractBlockElement {
   }
 
   /**
-   * Controls how the element should be vertically sized.
+   * The height of the element. When set to `stretch`, the element will use
+   * the remaining vertical space in its container.
    * Valid values: "auto", "stretch".
    */
   public height(height: Height): this {
-    return this.hasHeight.height(height);
+    return this.set("height", height);
   }
 
   /**
@@ -53,15 +53,16 @@ export class Table extends AbstractBlockElement {
    * Valid values: "Left", "Center", "Right".
    */
   public horizontalAlignment(alignment: HorizontalAlignment): this {
-    return this.hasHorizontalAlignment.horizontalAlignment(alignment);
+    return this.set("horizontalAlignment", alignment);
   }
 
   /**
-   * Controls the amount of space between this element and the preceding one.
-   * Valid values: "none", "extraSmall", "small", "default", "medium", "large", "extraLarge", "padding".
+   * Controls the amount of space between this element and the previous one.
+   * No space will be added for the first element in a container.
+   * Valid values: "None", "ExtraSmall", "Small", "Default", "Medium", "Large", "ExtraLarge", "Padding".
    */
   public spacing(spacing: Spacing): this {
-    return this.hasSpacing.spacing(spacing);
+    return this.set("spacing", spacing);
   }
 
   /**
