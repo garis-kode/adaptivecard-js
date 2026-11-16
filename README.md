@@ -83,7 +83,7 @@ console.log(card.toJson());
 
 ## Documentation
 
-For comprehensive schema specifications, interactive designer, and payload samples, refer to the official [Adaptive Cards Documentation](https://adaptivecards.microsoft.com/) and the repository [`docs/`](https://github.com/garis-kode/adaptivecard-js/tree/main/docs) directory.
+For comprehensive schema specifications, interactive designer, and payload samples, refer to the official [Adaptive Cards Documentation](https://adaptivecards.microsoft.com/).
 
 ---
 
