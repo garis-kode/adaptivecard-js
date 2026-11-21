@@ -12,12 +12,11 @@
 
 Once triggered, the automated workflow:
 
-1. **Validates & Synchronizes Version**: Ensures the input adheres to semantic versioning (`X.Y.Z`) and updates/commits `package.json` if its `version` differs from the input.
+1. **Validates & Synchronizes Version**: Ensures the input adheres to semantic versioning (`X.Y.Z`) and updates `package.json` if its `version` differs from the input.
 2. **Runs Verification Gates**: Executes `bun run check` (`fmt:check`, `typecheck`, `test`, `build`) and `bun run test:pack` (tarball allowlist verification and isolated Node ESM/CJS, Bun, and TypeScript `NodeNext` consumer checks).
-3. **Generates Release Notes**: Compiles notes from pull requests and commits merged since the previous release.
-4. **Creates GitHub Release**: Publishes the GitHub release and creates the git tag `v<version>`.
-5. **Updates Changelog**: Runs the changelog updater job to append the new release notes and timestamp into `CHANGELOG.md` and commits it back to the repository.
-6. **Publishes to npm (OIDC)**: Checks out the updated release branch, verifies the target version is not yet published on npm, and publishes the package using npm Trusted Publishing (OIDC) without stored npm tokens.
+3. **Generates Release Notes & Updates Changelog**: Compiles release notes from pull requests and commits merged since the previous release, appends them with the release date into `CHANGELOG.md`, and commits the updated `package.json` and `CHANGELOG.md` in a single `chore(release): v<version>` commit.
+4. **Creates GitHub Release**: Publishes the GitHub release and creates the git tag `v<version>` pointing at the release commit.
+5. **Publishes to npm (OIDC)**: Checks out that exact release commit, verifies the target version is not yet published on npm, and publishes the package using npm Trusted Publishing (OIDC) without stored npm tokens.
 
 ---
 
