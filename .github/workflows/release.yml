@@ -22,7 +22,7 @@ jobs:
 
     outputs:
       version: ${{ steps.version.outputs.version }}
-      notes: ${{ steps.cleaned-notes.outputs.notes }}
+      ref: ${{ steps.publish-ref.outputs.ref }}
 
     steps:
       - name: Checkout repository
@@ -80,13 +80,6 @@ jobs:
         env:
           TARGET_VERSION: ${{ steps.version.outputs.version }}
 
-      - name: Commit synchronized package.json version
-        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
-        with:
-          branch: ${{ github.ref_name }}
-          commit_message: "chore(release): bump version to v${{ steps.version.outputs.version }}"
-          file_pattern: package.json
-
       - name: Run full verification check
         run: bun run check
 
@@ -134,6 +127,30 @@ jobs:
         env:
           RELEASE_NOTES: ${{ steps.generated-notes.outputs.release-notes }}
 
+      - name: Get release date
+        id: release-date
+        run: echo "date=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@a938690fad7edf25368f37e43a1ed1b34303eb36 # v1
+        with:
+          release-date: ${{ steps.release-date.outputs.date }}
+          release-notes: ${{ steps.cleaned-notes.outputs.notes }}
+          latest-version: v${{ steps.version.outputs.version }}
+          compare-url-target-revision: ${{ github.ref_name }}
+          parse-github-usernames: true
+
+      - name: Commit release changes
+        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
+        with:
+          branch: ${{ github.ref_name }}
+          commit_message: "chore(release): v${{ steps.version.outputs.version }}"
+          file_pattern: package.json CHANGELOG.md
+
+      - name: Resolve publish ref
+        id: publish-ref
+        run: echo "ref=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         env:
@@ -142,23 +159,14 @@ jobs:
           tag_name: v${{ steps.version.outputs.version }}
           name: v${{ steps.version.outputs.version }}
           body: ${{ steps.cleaned-notes.outputs.notes }}
-          target_commitish: ${{ github.ref_name }}
+          target_commitish: ${{ steps.publish-ref.outputs.ref }}
           make_latest: true
 
-  update-changelog:
-    needs: release
-    name: Update changelog
-    uses: ./.github/workflows/update-changelog.yml
-    with:
-      branch: ${{ github.ref_name }}
-      version: "v${{ needs.release.outputs.version }}"
-      notes: ${{ needs.release.outputs.notes }}
-
   publish:
-    needs: [release, update-changelog]
+    needs: release
     uses: ./.github/workflows/publish.yml
     with:
-      ref: ${{ needs.update-changelog.outputs.ref }}
+      ref: ${{ needs.release.outputs.ref }}
       version: ${{ needs.release.outputs.version }}
     permissions:
       contents: read
